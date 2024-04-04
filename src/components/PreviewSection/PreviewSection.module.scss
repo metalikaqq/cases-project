@@ -1,0 +1,112 @@
+@import "../../utils/mixins.scss";
+@import "../../utils/vars.scss";
+
+.preview_section {
+  display: flex;
+  gap: 70px;
+  align-items: center;
+
+  &__image {
+    max-width: 700px;
+    height: 466.67px;
+    // order: 1;
+
+    &__order__left {
+      order: 2;
+    }
+
+    &__order__right {
+      order: 1;
+    }
+  }
+
+  &__main__text {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    // order: 2;
+
+    &__order__left {
+      order: 1;
+    }
+
+    &__order__right {
+      order: 2;
+    }
+  }
+
+  &__title {
+    color: $default-black-font;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0%;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    color: $default-black-font;
+    font-size: 13.28px;
+    font-weight: 400;
+    line-height: 23.8px;
+    letter-spacing: 0.43px;
+    text-align: left;
+  }
+
+  &__button {
+    position: relative; // Make sure it's positioned relatively to use absolute positioning for the shimmer effect
+    overflow: hidden; // Hide overflow to prevent shimmer from extending outside the button
+    background: $blue-button-color;
+    width: 188px;
+    align-items: center;
+    padding: 12px 21px 12px 21px;
+    color: $white;
+    font-size: 10.87px;
+    font-weight: 700;
+    line-height: 18.46px;
+    letter-spacing: 3.9px;
+    text-align: center;
+    text-transform: uppercase;
+    text-wrap: nowrap;
+    transition: color 0.3s;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -50%; // Move the shimmer element above the button
+      left: -100%; // Move the shimmer element outside the button to start the animation from the left
+      width: 150%; // Make it wider to ensure full coverage during animation
+      height: 200%; // Make it taller to ensure full coverage during animation
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+      ); // Gradient for the shimmer effect
+      animation: none; // Initially, don't play the shimmer animation
+      transition: opacity 0.3s; // Add a transition for smoother appearance
+    }
+
+    &:hover:before {
+      animation: shimmer 1s infinite; // Apply shimmer animation on hover
+    }
+
+    &:hover {
+      // color: $hover-color; // Change to desired hover color
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(
+      -100%
+    ); // Start the animation from outside the button on the left
+  }
+  100% {
+    transform: translateX(
+      100%
+    ); // Move the shimmer element outside the button on the right
+  }
+}

@@ -1,0 +1,50 @@
+@import "../../utils/vars.scss";
+@import "../../utils/mixins.scss";
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.selection_cases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 22px;
+
+  &__item {
+    // width: 338.5px;
+    // height: 338.5px;
+    // border: 1px solid #ccc;
+    // padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Add transition */
+
+    &__text {
+      color: rgb(17, 17, 17);
+      font-size: 17.34px;
+      font-weight: 400;
+      line-height: 25px;
+      letter-spacing: 4px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s ease-in-out; /* Add transition for smooth animation */
+
+      &:hover {
+        transform: scale(1.04); /* Zoom in the image on hover */
+      }
+    }
+  }
+
+  .image__container {
+    overflow: hidden; /* Hide overflowing part of the image */
+    transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
+  }
+}
