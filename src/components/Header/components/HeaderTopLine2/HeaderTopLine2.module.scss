@@ -3,7 +3,7 @@
 
 .tl2 {
   @include container;
-  border: 1px solid black;
+  // border: 1px solid black;
 
   display: flex;
   flex-direction: row;
@@ -11,6 +11,7 @@
   align-items: center;
 
   &__text_links {
+    margin-left: $header-inner-margin;
     display: flex;
 
     &__link {
@@ -24,7 +25,46 @@
     }
   }
 
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 5px;
+    cursor: pointer;
+  }
+
   &__right_block {
     display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.currency_picker__wrapper {
+  margin-right: $header-inner-margin;
+}
+
+.currency_picker {
+  display: flex;
+  align-items: center;
+
+  &__circle_ico {
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+  }
+
+  &__text {
+    color: $black;
+    font-size: 10.83px;
+    font-weight: 400;
+    letter-spacing: 0.35px;
+    text-align: center;
+  }
+
+  &__open_arrow {
+    padding: 0 10px;
+    margin-bottom: 4px;
   }
 }

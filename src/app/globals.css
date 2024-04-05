@@ -204,6 +204,9 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
 }
 
 /**
@@ -216,6 +219,9 @@ button::-moz-focus-inner,
 [type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
+  cursor: pointer;
+  background: transparent;
+  outline: none;
 }
 
 /**
