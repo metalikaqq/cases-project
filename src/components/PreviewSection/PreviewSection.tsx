@@ -1,6 +1,6 @@
 import Image from "next/image";
 import s from "./PreviewSection.module.scss";
-import deliveryImage from "../../image/Case_loading_1080x.webp";
+import deliveryImage from "@/assets/image/Case_loading_1080x.webp";
 import classNames from "classnames";
 
 export enum TextPosition {

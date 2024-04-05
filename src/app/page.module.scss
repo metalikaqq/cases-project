@@ -1,11 +1,17 @@
 @import "../utils/mixins.scss";
 @import "../utils/vars.scss";
 
+.app {
+  // max-width: 1500px;
+}
+
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 75px;
+
+  @include container;
 }
 
 .title {

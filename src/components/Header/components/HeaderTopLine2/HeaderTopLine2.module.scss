@@ -1,0 +1,30 @@
+@import "@/utils/mixins.scss";
+@import "@/utils/vars.scss";
+
+.tl2 {
+  @include container;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &__text_links {
+    display: flex;
+
+    &__link {
+      color: $black;
+      text-decoration: none;
+      font-size: 11.33px;
+      font-weight: 400;
+      letter-spacing: 0.43px;
+
+      padding: 10px;
+    }
+  }
+
+  &__right_block {
+    display: flex;
+  }
+}
