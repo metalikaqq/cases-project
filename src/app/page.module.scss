@@ -1,6 +1,10 @@
 @import "../utils/mixins.scss";
 @import "../utils/vars.scss";
 
+.app {
+  // max-width: 1500px;
+}
+
 .main {
   width: 100%;
   height: 100%;
@@ -9,6 +13,8 @@
   align-items: center;
   justify-content: flex-end;
   gap: 75px;
+
+  @include container;
 }
 
 .title {

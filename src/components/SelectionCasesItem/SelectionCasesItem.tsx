@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import s from './SelectionCases.module.scss'
-import caseImage from '../../image/road_cases_collection_1_360x.webp'
+import caseImage from '@/assets/image/road_cases_collection_1_360x.webp'
 
 export type SelectionCasesItemProps = {
   // props go here
