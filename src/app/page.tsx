@@ -2,6 +2,7 @@ import SelectionCases from "@/components/SelectionCases";
 import s from "./page.module.scss";
 import PreviewSection from "@/components/PreviewSection";
 import { TextPosition } from "@/components/PreviewSection/PreviewSection";
+import Footer from "@/components/Footer";
 
 // Create a variable to store the text position
 const firstBlockPosition = TextPosition.Left; // or TextPosition.Left
@@ -11,7 +12,7 @@ const thirdBlockPosition = TextPosition.Left;
 export default function Home() {
   return (
     <main className={s.main}>
-      <div>
+      {/* <div>
         <h1 className={s.title}>The Tour Family</h1>
 
         <span className={s.sub_title}>
@@ -25,7 +26,9 @@ export default function Home() {
 
       <PreviewSection textPosition={firstBlockPosition} />
       <PreviewSection textPosition={secondBlockPositiom} />
-      <PreviewSection textPosition={thirdBlockPosition} />
+      <PreviewSection textPosition={thirdBlockPosition} /> */}
+
+      <Footer />
     </main>
   );
 }
