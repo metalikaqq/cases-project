@@ -1,0 +1,59 @@
+@import "../../utils/vars.scss";
+
+.toggleable_content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  gap: 15px;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+  }
+
+  &__text {
+    color: rgb(0, 0, 0);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 4px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  &__img {
+    position: absolute;
+    right: 40px;
+
+    &__rotate {
+      transform: rotate(180);
+    }
+  }
+
+  &__email__info {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__text {
+      color: rgb(0, 0, 0);
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0.43px;
+      text-align: center;
+    }
+
+    &__input {
+      border: solid 1px $gray-border-color;
+    }
+  }
+}

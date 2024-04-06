@@ -2,20 +2,150 @@
 @import "../../utils/mixins.scss";
 
 .footer {
+  margin-top: 40px;
   width: 100%;
-  height: 430.16px;
+  // height: 430.16px;
   padding: 20px;
   border-top: 1px solid $gray-border-color;
   display: flex;
-  // justify-content: center;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 
+  @include responsive(desktop-md) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+  }
 
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
   &__logo {
+    @include responsive(desktop-md) {
+      width: 178.5px;
+      height: 80px;
+      margin-left: 40px;
+    }
+  }
 
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    @include responsive(desktop-md) {
+      align-items: flex-start;
+    }
+  }
+
+  &__item {
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.39px;
+    text-align: center;
+    text-wrap: nowrap;
+  }
+
+  &__text {
+    color: rgb(0, 0, 0);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 4px;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include responsive(desktop-md) {
+      text-align: start;
+    }
+  }
+
+  &__description {
+    display: none;
+
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.43px;
+    text-align: left;
+
+    @include responsive(desktop-md) {
+      display: block;
+    }
+  }
+
+  &__contact_us {
+    // display: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    // align-self: center;
+
+    @include responsive(desktop-md) {
+      display: flex;
+      flex-direction: column;
+      align-items: self-start;
+      gap: 15px;
+      width: fit-content;
+    }
+
+    &__text {
+      display: none;
+
+      @include responsive(desktop-md) {
+        display: block;
+        color: rgb(0, 0, 0);
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 4px;
+        text-align: start;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__input {
+    display: none;
+
+    @include responsive(desktop-md) {
+      display: block;
+      border: 1px solid $gray-border-color;
+    }
+  }
+
+  &__email {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &__text {
+      color: rgb(0, 0, 0);
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 18px;
+      letter-spacing: 4px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    &__img {
+      position: absolute;
+      right: 30px;
+    }
   }
 }
 
@@ -23,4 +153,130 @@
   width: 100%;
   height: 1px;
   background-color: $gray-border-color;
+
+  @include responsive(desktop-md) {
+    display: none;
+  }
+}
+
+.currency_picker__wrapper {
+  align-self: center;
+  margin-top: 20px;
+
+  @include responsive(desktop-md) {
+    display: none;
+  }
+}
+
+.currency_picker {
+  display: flex;
+  align-items: center;
+
+  @include responsive(desktop-md) {
+    display: none;
+  }
+
+  &__circle_ico {
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+
+    @include responsive(desktop-md) {
+      display: none;
+    }
+  }
+
+  &__text {
+    color: $black;
+    font-size: 10.83px;
+    font-weight: 400;
+    letter-spacing: 0.35px;
+    text-align: center;
+
+    @include responsive(desktop-md) {
+      display: none;
+    }
+  }
+
+  &__open_arrow {
+    padding: 0 10px;
+    margin-bottom: 4px;
+
+    @include responsive(desktop-md) {
+      display: none;
+    }
+  }
+}
+
+.toggleable__content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  @include responsive(desktop-md) {
+    display: none;
+  }
+}
+
+.custom__input {
+  display: none;
+
+  @include responsive(desktop-md) {
+    display: block;
+  }
+}
+
+.currency_picker__desktop {
+  display: none;
+
+  @include responsive(desktop-md) {
+    display: flex;
+    align-items: center;
+  }
+
+  &__wrapper {
+    display: none;
+
+    @include responsive(desktop-md) {
+      display: block;
+      align-self: center;
+      margin-top: 20px;
+    }
+  }
+
+  &__circle_ico {
+    display: none;
+
+    @include responsive(desktop-md) {
+      display: block;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      margin-right: 10px;
+    }
+  }
+
+  &__text {
+    display: none;
+
+    @include responsive(desktop-md) {
+      display: block;
+      color: $black;
+      font-size: 10.83px;
+      font-weight: 400;
+      letter-spacing: 0.35px;
+      text-align: center;
+    }
+  }
+
+  &__open_arrow {
+    display: none;
+
+    @include responsive(desktop-md) {
+      display: block;
+      padding: 0 10px;
+      margin-bottom: 4px;
+    }
+  }
 }
