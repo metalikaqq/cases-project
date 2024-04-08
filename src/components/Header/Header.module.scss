@@ -5,6 +5,8 @@
   width: 100%;
 }
 
-.tl2__wrapper {
-  margin-bottom: 20px;
+.nav__wrapper {
+  @include responsive(desktop-md) {
+    margin-bottom: 20px;
+  }
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import bannerLogo from "@/assets/svg/banner-logo-main.svg";
 import searchIcon from "@/assets/svg/search-black.svg";
+import burgerIcon from "@/assets/svg/burger-button-ico.svg"
 
 export type HeaderMainProps = {
   // props go here
@@ -27,7 +28,12 @@ export default function HeaderMain(props: HeaderMainProps) {
           />
         </div>
 
-        <div className={s.empty}></div>
+        <div className={s.header_main__burger}>
+          <Image
+            src={burgerIcon}
+            alt="burger-menu"
+          />
+        </div>
       </div>
     </div>
   );

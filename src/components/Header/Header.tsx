@@ -15,7 +15,7 @@ export default function Header(props: HeaderProps) {
       <HeaderTopLine2 />
       <HeaderMain />
 
-      <div className={s.tl2__wrapper}>
+      <div className={s.nav__wrapper}>
         <HeaderNav />
       </div>
     </header>

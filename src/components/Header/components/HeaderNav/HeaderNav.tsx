@@ -28,6 +28,13 @@ export default function HeaderNav(props: HeaderNavProps) {
         >
           More Info
         </Link>
+
+        <Link
+          href={"google.com"}
+          className={s.nav__link}
+        >
+          Huynia
+        </Link>
       </nav>
     </div>
   );

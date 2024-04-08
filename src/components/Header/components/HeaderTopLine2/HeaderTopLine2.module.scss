@@ -6,11 +6,15 @@
 }
 
 .tl2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   margin: 0 $header-inner-margin;
+  display: none;
+
+  @include responsive(desktop-lg) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__text_links {
     display: flex;

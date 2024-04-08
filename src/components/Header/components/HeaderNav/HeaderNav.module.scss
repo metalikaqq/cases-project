@@ -6,9 +6,13 @@
 }
 
 .nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
+
+  @include responsive(desktop-md) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__link {
     color: $black;
