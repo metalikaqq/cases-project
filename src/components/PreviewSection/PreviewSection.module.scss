@@ -12,7 +12,7 @@
 
   &__image {
     max-width: 700px;
-    height: 466.67px;
+    height: 467px;
     // order: 1;
 
     &__order__left {
@@ -94,10 +94,6 @@
 
     &:hover:before {
       animation: shimmer 1s infinite; // Apply shimmer animation on hover
-    }
-
-    &:hover {
-      // color: $hover-color; // Change to desired hover color
     }
   }
 }

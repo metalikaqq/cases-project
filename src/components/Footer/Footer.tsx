@@ -1,6 +1,6 @@
 import Image from "next/image";
 import s from "./Footer.module.scss";
-import logo from "../../image/Fiasco_BLACK_140x.png";
+import logo from "@/assets/image/Fiasco_BLACK_140x.png";
 
 export type FooterProps = {
   // props go here

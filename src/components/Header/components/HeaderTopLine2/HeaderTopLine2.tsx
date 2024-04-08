@@ -15,65 +15,67 @@ export type HeaderTopLine2Props = {
 
 export default function HeaderTopLine2(props: HeaderTopLine2Props) {
   return (
-    <div className={s.tl2}>
-      <div className={s.tl2__text_links}>
-        <Link
-          className={s.tl2__text_links__link}
-          href={"google.com"}
-        >
-          Contact
-        </Link>
+    <div className={s.wrapper}>
+      <div className={s.tl2}>
+        <div className={s.tl2__text_links}>
+          <Link
+            className={s.tl2__text_links__link}
+            href={"google.com"}
+          >
+            Contact
+          </Link>
 
-        <Link
-          className={s.tl2__text_links__link}
-          href={"google.com"}
-        >
-          About Us
-        </Link>
-      </div>
-
-      <div className={s.tl2__right_block}>
-        <div className={s.tl2__socials}>
-          <Image
-            className={s.tl2__socials__link}
-            src={instaIcon}
-            alt="link-to-our-instagram"
-          />
-
-          <Image
-            className={s.tl2__socials__link}
-            src={fbIcon}
-            alt="link-to-our-facebook"
-          />
-
-          <Image
-            className={s.tl2__socials__link}
-            src={ytIcon}
-            alt="link-to-our-youtube"
-          />
+          <Link
+            className={s.tl2__text_links__link}
+            href={"google.com"}
+          >
+            About Us
+          </Link>
         </div>
 
-        <div className={s.currency_picker__wrapper}>
-          <button
-            className={s.currency_picker}
-          >
+        <div className={s.tl2__right_block}>
+          <div className={s.tl2__socials}>
             <Image
-              className={s.currency_picker__circle_ico}
-              src={ukraineFlagIco}
-              alt="icon-of-selected-currency"
+              className={s.tl2__socials__link}
+              src={instaIcon}
+              alt="link-to-our-instagram"
             />
 
-            <p className={s.currency_picker__text}>
-              Ukrainian (UAH ₴)
-            </p>
+            <Image
+              className={s.tl2__socials__link}
+              src={fbIcon}
+              alt="link-to-our-facebook"
+            />
 
-            <div className={s.currency_picker__open_arrow}>
+            <Image
+              className={s.tl2__socials__link}
+              src={ytIcon}
+              alt="link-to-our-youtube"
+            />
+          </div>
+
+          <div className={s.currency_picker__wrapper}>
+            <button
+              className={s.currency_picker}
+            >
               <Image
-                src={arrowDown}
-                alt="drop-down-opener-arrow"
+                className={s.currency_picker__circle_ico}
+                src={ukraineFlagIco}
+                alt="icon-of-selected-currency"
               />
-            </div>
-          </button>
+
+              <p className={s.currency_picker__text}>
+                Ukrainian (UAH ₴)
+              </p>
+
+              <div className={s.currency_picker__open_arrow}>
+                <Image
+                  src={arrowDown}
+                  alt="drop-down-opener-arrow"
+                />
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>

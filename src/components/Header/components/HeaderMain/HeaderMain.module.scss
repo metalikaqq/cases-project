@@ -2,9 +2,35 @@
 @import "@/utils/vars.scss";
 
 .header_main {
-  margin: 0 40px;
+  // border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @include container;
+  // margin: 0 40px;
+
+  &__search {
+    margin-left: $header-inner-margin;
+    padding: 0 10px;
+  }
 }
 
 .wrapper {
-  @include container;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    /* Set the distance from the top where the shadow starts */
+    left: 0;
+    width: 100%;
+    height: 1px;
+    /* Set the height of the shadow */
+    background-color: transparent;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    /* Adjust values as needed */
+  }
 }

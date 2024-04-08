@@ -1,17 +1,18 @@
 @import "@/utils/mixins.scss";
 @import "@/utils/vars.scss";
 
-.tl2 {
+.wrapper {
   @include container;
-  // border: 1px solid black;
+}
 
+.tl2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin: 0 $header-inner-margin;
 
   &__text_links {
-    margin-left: $header-inner-margin;
     display: flex;
 
     &__link {
@@ -41,7 +42,7 @@
 }
 
 .currency_picker__wrapper {
-  margin-right: $header-inner-margin;
+   
 }
 
 .currency_picker {

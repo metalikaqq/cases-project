@@ -1,0 +1,70 @@
+@import "@/utils/mixins.scss";
+@import "@/utils/vars.scss";
+
+.banner {
+  max-height: 650px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &__video {
+    height: 100%;
+
+    &::before {
+      content: "BETTER TOURING";
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      top: 20%;
+      z-index: 10;
+      color: $white;
+      color: $white;
+      font-size: 80px;
+      font-weight: 700;
+      letter-spacing: 0%;
+      text-transform: uppercase;
+      box-shadow: 1px black;
+    }
+
+    &::after {
+      content: "THINK OUTSIDE THE BOX";
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      top: 30%;
+      // transform: translateY(50%);
+      z-index: 2;
+
+      color: $white;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 31px;
+      letter-spacing: 1px;
+    }
+  }
+
+  // &__title {
+  //   color: $white;
+  //   font-size: 80px;
+  //   font-weight: 700;
+  //   line-height: 80px;
+  //   letter-spacing: 0%;
+  //   text-transform: uppercase;
+  // }
+
+  // &__text {
+  //   color: $white;
+  //   font-family: Inter;
+  //   font-size: 18px;
+  //   font-weight: 400;
+  //   line-height: 31px;
+  //   letter-spacing: 1px;
+  //   text-align: center;
+  // }
+
+  // &__text_block {
+  //   position: absolute;
+  //   right: 50%;
+  //   left: 50%;
+  // }
+}
