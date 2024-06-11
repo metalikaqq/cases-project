@@ -1,36 +1,34 @@
 @import "../../utils/vars.scss";
 @import "../../utils/mixins.scss";
 
-.main {
-  display: flex;
-  flex-direction: column;
-}
+$desktop: 1024px;
+$tablet: 768px;
+$mobile: 450px;
 
 .selection_cases {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Default for tablets */
   grid-gap: 17px;
-  width: 100%;
-  // height: 100%;
-  flex-shrink: 1; /* Установка flex-shrink для элементов в гриде */
+  width: calc(100% - 40px); /* Ensure 20px padding on each side */
+  margin: 0 auto; /* Center the grid */
+  padding: 20px;
 
-
-  @include responsive(desktop-md) {
+  @media (min-width: $desktop) {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 22px;
   }
 
-  &__item {
-    // width: 338.5px;
-    // height: 338.5px;
-    // border: 1px solid #ccc;
-    // padding: 10px;
+  @media (max-width: $tablet) and (min-width: $mobile) {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablet */
+    grid-gap: 15px;
+  }
 
+  &__item {
     display: flex;
     flex-direction: column;
     gap: 10px;
     text-align: center;
-    transition: transform 0.3s ease; /* Add transition */
+    transition: transform 0.3s ease;
 
     &__text {
       color: rgb(17, 17, 17);
@@ -40,21 +38,30 @@
       letter-spacing: 4px;
       text-align: center;
       text-transform: uppercase;
+
+      @media (max-width: $mobile) {
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
 
     &__image {
       width: 100%;
-      height: 100%;
-      transition: transform 0.6s ease-in-out; /* Add transition for smooth animation */
+      height: auto;
+      transition: transform 0.6s ease-in-out;
 
       &:hover {
-        transform: scale(1.04); /* Zoom in the image on hover */
+        transform: scale(1.04);
+      }
+
+      @media (max-width: $mobile) {
+        transform: scale(1); /* Remove hover effect on mobile */
       }
     }
   }
 
   .image__container {
-    overflow: hidden; /* Hide overflowing part of the image */
-    transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
   }
 }

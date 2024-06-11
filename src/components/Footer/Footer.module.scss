@@ -15,8 +15,9 @@
 
   @include responsive(desktop-md) {
     flex-direction: row;
-    justify-content: space-between;
-    gap: 30px;
+    // justify-content: space-between;
+    justify-content: flex-start;
+    gap: 60px;
   }
 
   &__wrapper {
@@ -27,10 +28,11 @@
   }
 
   &__logo {
+
     @include responsive(desktop-md) {
       width: 178.5px;
       height: 80px;
-      margin-left: 40px;
+      margin-left: 10%;
     }
   }
 

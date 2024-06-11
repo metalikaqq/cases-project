@@ -6,11 +6,15 @@ import HeaderTopLine1 from "@/components/Header/components/HeaderTopLine1";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PresentationalBanner from "@/components/PresentationalBanner";
+import MainPageTitle from "@/components/Main/components/MainPageTitle";
 
 // Create a variable to store the text position
 const firstBlockPosition = TextPosition.Left; // or TextPosition.Left
 const secondBlockPositiom = TextPosition.Right;
 const thirdBlockPosition = TextPosition.Left;
+
+const titleText = "The Tour Family"
+const subTitleText = 'Whether it`s a stadium, arena or club tour, Fiasco`s diverse range of road cases and shock racks have got you covered. Each piece is designed to perfectly pack and stack with the rest.'
 
 export default function Home() {
   return (
@@ -22,15 +26,10 @@ export default function Home() {
       </div>
 
       <main className={s.main}>
-        <div>
-          <h1 className={s.title}>The Tour Family</h1>
-
-          <span className={s.sub_title}>
-            Whether it&#39;s a stadium, arena or club tour, Fiasco&#39;s diverse
-            range of road cases and shock racks have <br /> got you covered. Each
-            piece is designed to perfectly pack and stack with the rest.
-          </span>
-        </div>
+        <MainPageTitle
+          titleText={titleText}
+          subTitleText={subTitleText}
+        />
 
         <SelectionCases />
 
