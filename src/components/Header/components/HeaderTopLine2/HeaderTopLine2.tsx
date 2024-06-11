@@ -20,7 +20,7 @@ export default function HeaderTopLine2(props: HeaderTopLine2Props) {
         <div className={s.tl2__text_links}>
           <Link
             className={s.tl2__text_links__link}
-            href={"google.com"}
+            href={"/contact"}
           >
             Contact
           </Link>

@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.input {
+  // width: 900px;
+  width: fit-content;
+}
+
+.colum {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.contacts {
+  // width: 800px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.title {
+  margin-bottom: 18px;
+  font-size: 15px;
+}
