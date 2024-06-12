@@ -4,9 +4,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  // margin-bottom: 1.5rem;
   position: relative;
-  // width: 100%;
 }
 
 .input {
@@ -15,7 +13,6 @@
   border-radius: 4px;
   font-size: 16px;
   transition: all 0.3s ease;
-  // width: 100%;
   background-color: #fff;
   &::placeholder {
     color: #aaa;
