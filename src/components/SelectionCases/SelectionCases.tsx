@@ -1,21 +1,11 @@
-import Image from "next/image";
+"use client";
+
 import s from "./SelectionCases.module.scss";
-import caseImage from "@/assets/image/road_cases_collection_1_360x.webp";
 import SelectionCasesItem from "../SelectionCasesItem";
 
-export type SelectionCasesProps = {
-  // props go here
-};
-
-export default function SelectionCases(props: SelectionCasesProps) {
+export default function SelectionCases() {
   return (
     <div className={s.selection_cases}>
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
       <SelectionCasesItem />
       <SelectionCasesItem />
     </div>

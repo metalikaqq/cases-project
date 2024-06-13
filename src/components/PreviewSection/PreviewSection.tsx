@@ -2,6 +2,7 @@ import Image from "next/image";
 import s from "./PreviewSection.module.scss";
 import deliveryImage from "@/assets/image/Case_loading_1080x.webp";
 import classNames from "classnames";
+import AnimationPreview from "./AnimationPreview";
 
 export enum TextPosition {
   Left = 'left',
@@ -27,11 +28,9 @@ export default function PreviewSection({ textPosition }: PreviewSectionProps) {
         </span>
         <button className={s.preview_section__button}>better touring</button>
       </div>
-      <Image
-        src={deliveryImage}
-        alt={"deliveryImage"}
-        className={classNames(s.preview_section__image, imageSideClass)}
-      />
+      <div className={classNames(s.preview_section__image, imageSideClass)}>
+        <AnimationPreview />
+      </div>
     </div>
   );
 }

@@ -13,6 +13,7 @@ import Header from "@/components/Header";
 import PresentationalBanner from "@/components/PresentationalBanner";
 import MainPageTitle from "@/components/Main/components/MainPageTitle";
 import Footer from "@/components/Footer";
+import RoadCases from "@/components/RoadCases";
 
 function page() {
   const titleText = `Fiasco road cases stack perfectly like Tetris blocks!`;
@@ -53,7 +54,7 @@ function page() {
 
         {/* <MainPageTitle titleText={MainTitle} /> */}
 
-        <SelectionCases />
+        <RoadCases />
       </main>
 
       <Footer />

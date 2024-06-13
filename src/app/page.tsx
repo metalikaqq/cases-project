@@ -10,7 +10,7 @@ import MainPageTitle from "@/components/Main/components/MainPageTitle";
 
 // Create a variable to store the text position
 const firstBlockPosition = TextPosition.Left; // or TextPosition.Left
-const secondBlockPositiom = TextPosition.Right;
+const secondBlockPosition = TextPosition.Right;
 const thirdBlockPosition = TextPosition.Left;
 
 const titleText = "The Tour Family"
@@ -34,7 +34,7 @@ export default function Home() {
         <SelectionCases />
 
         <PreviewSection textPosition={firstBlockPosition} />
-        <PreviewSection textPosition={secondBlockPositiom} />
+        <PreviewSection textPosition={secondBlockPosition} />
         <PreviewSection textPosition={thirdBlockPosition} />
       </main>
 

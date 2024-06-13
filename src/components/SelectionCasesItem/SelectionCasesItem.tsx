@@ -1,27 +1,30 @@
+"use client"
+
 import Image from 'next/image';
-import s from './SelectionCases.module.scss'
-import caseImage from '@/assets/image/road_cases_collection_1_360x.webp'
+import s from './SelectionCasesItem.module.scss';
+import caseImage from '@/assets/image/road_cases_collection_1_360x.webp';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 
 export type SelectionCasesItemProps = {
   // props go here
 };
 
 export default function SelectionCasesItem(props: SelectionCasesItemProps) {
-  return (
-    <>
-      <div className={s.case}>
-        <div className={s.image__container}>
-          <Image
-            src={caseImage}
-            alt="Road Cases"
-            // width={360}
-            // height={360}
-            className={s.case__image}
-          />
-        </div>
+  const [imageRef, isImageVisible] = useIntersectionObserver();
 
-        <span className={s.case__text}>ROAD CASES</span>
+  return (
+    <div className={s.case}>
+      <div
+        ref={imageRef}
+        className={`${s.image__container} ${isImageVisible ? s.fadeIn : ''}`}
+      >
+        <Image
+          src={caseImage}
+          alt="Road Cases"
+          className={s.case__image}
+        />
       </div>
-    </>
+      <span className={s.case__text}>ROAD CASES</span>
+    </div>
   );
 }

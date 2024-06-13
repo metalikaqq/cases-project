@@ -137,6 +137,19 @@ export default function Page() {
               />
             </div>
           </div>
+
+          <div className={s.colum_wrapper}>
+            <div className={s.title}>Product</div>
+            <div className={s.input}>
+              <EmailCustomInput
+                type={InputType.Text}
+                text="example@example.com"
+                value={form.email}
+                onChange={handleChange("email")}
+                error={errors.email}
+              />
+            </div>
+          </div>
         </div>
 
         <div className={s.send_massage}>

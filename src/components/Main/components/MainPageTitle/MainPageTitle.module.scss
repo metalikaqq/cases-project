@@ -6,6 +6,9 @@
   flex-direction: column;
   gap: 1.4rem;
   max-width: 900px;
+  opacity: 0; /* Скрываем элемент по умолчанию */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Переход для анимации */
+  transform: translateY(20px); /* Начальная позиция для анимации */
 }
 
 .title {
@@ -28,7 +31,10 @@
   line-height: 30px;
   letter-spacing: 1px;
   text-align: center;
-  // align-self: center;
-  text-align: center;
-  display: inline-block; /* или display: inline-flex; */
+  display: inline-block;
+}
+
+.fadeIn {
+  opacity: 1; /* Показываем элемент */
+  transform: translateY(0); /* Конечная позиция */
 }
