@@ -1,5 +1,5 @@
-@import "../utils/mixins.scss";
-@import "../utils/vars.scss";
+@import "../../utils/mixins.scss";
+@import "../../utils/vars.scss";
 
 .app {
   // max-width: 1500px;
@@ -7,7 +7,6 @@
 }
 
 .main {
-  
   margin: 20px 0;
   width: 100%;
   display: flex;

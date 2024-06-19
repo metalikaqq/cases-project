@@ -9,6 +9,7 @@ export type MainPageTitleProps = {
 };
 
 export default function MainPageTitle({ titleText, subTitleText }: MainPageTitleProps) {
+
   const [elementRef, isVisible] = useIntersectionObserver();
 
   return (

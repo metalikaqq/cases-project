@@ -6,6 +6,7 @@ import arrowDown from "@/assets/svg/arrow-down-black.svg";
 import Link from "next/link";
 import ToggleableContent from "@/UI/ToggleableContent";
 import CustomInput from "@/UI/CustomInput";
+import LanguagePicker from "@/UI/LanguagePicker";
 
 export type FooterProps = {
   // props go here
@@ -56,7 +57,7 @@ export default function Footer(props: FooterProps) {
           <span className={s.footer__contact_us__text}>Stay in the loop</span>
 
           <span className={s.footer__description}>
-            We send out occasional emails about  new Fiasco products <br /> and
+            We send out occasional emails about new Fiasco products <br /> and
             offers.
           </span>
 
@@ -65,7 +66,7 @@ export default function Footer(props: FooterProps) {
           </div>
         </div>
 
-        <div className={s.currency_picker__wrapper}>
+        {/* <div className={s.currency_picker__wrapper}>
           <button className={s.currency_picker}>
             <Image
               className={s.currency_picker__circle_ico}
@@ -79,26 +80,14 @@ export default function Footer(props: FooterProps) {
               <Image src={arrowDown} alt="drop-down-opener-arrow" />
             </div>
           </button>
-        </div>
+        </div> */}
 
         <div className={s.free_space}></div>
       </div>
 
-      <div className={s.currency_picker__desktop__wrapper}>
-          <button className={s.currency_picker__desktop}>
-            <Image
-              className={s.currency_picker__desktop__circle_ico}
-              src={ukraineFlagIco}
-              alt="icon-of-selected-currency"
-            />
-
-            <p className={s.currency_picker__desktop__text}>Ukrainian (UAH ₴)</p>
-
-            <div className={s.currency_picker__desktop__open_arrow}>
-              <Image src={arrowDown} alt="drop-down-opener-arrow" />
-            </div>
-          </button>
-        </div>
+      <div className={s.language_picker}>
+        <LanguagePicker direction="up" />
+      </div>
     </footer>
   );
 }

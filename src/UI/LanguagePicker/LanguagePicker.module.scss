@@ -1,0 +1,184 @@
+// @import '../../utils/mixins.scss';
+// @import '../../utils/vars.scss';
+
+// .currency_picker__wrapper {
+//   position: relative;
+//   display: inline-flex;
+//   align-items: center;
+// }
+
+// .currency_picker {
+//   display: flex;
+//   align-items: center;
+
+//   &__circle_ico {
+//     border-radius: 50%;
+//     width: 22px;
+//     height: 22px;
+//     margin-right: 10px;
+//   }
+
+//   &__text {
+//     color: $black;
+//     font-size: 10.83px;
+//     font-weight: 400;
+//     letter-spacing: 0.35px;
+//     text-align: center;
+//   }
+// }
+
+// .currency_picker__select {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   opacity: 0;
+//   cursor: pointer;
+// }
+
+// .currency_picker__select::-ms-expand {
+//   display: none; /* Hide the default dropdown arrow in Internet Explorer */
+// }
+
+// .currency_picker__select-container {
+//   position: relative;
+// }
+
+// .currency_picker__select {
+//   appearance: none; /* Remove default dropdown arrow */
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   background: transparent; /* Make the select transparent */
+// }
+
+// .currency_picker__select:focus + .currency_picker__select-overlay {
+//   display: block;
+// }
+
+// .currency_picker__select-overlay {
+//   display: none;
+//   position: absolute;
+//   top: 100%;
+//   left: 0;
+//   right: 0;
+//   background-color: $white;
+//   border: 1px solid $gray-light;
+//   border-radius: 4px;
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+//   z-index: 1000;
+//   padding: 10px 0;
+//   max-height: 200px; /* Optional: add a max height */
+//   overflow-y: auto; /* Optional: add scroll if content overflows */
+// }
+
+// .currency_picker__select-overlay option {
+//   display: block;
+//   padding: 10px 20px;
+//   background-color: $white;
+//   color: $black;
+//   font-size: 10.83px;
+//   font-weight: 400;
+//   letter-spacing: 0.35px;
+//   cursor: pointer;
+//   transition: background-color 0.3s, color 0.3s;
+// }
+
+// .currency_picker__select-overlay option:hover {
+//   background-color: $gray-light;
+// }
+
+// .currency_picker__select-overlay option:checked {
+//   background-color: $gray-dark;
+//   color: $white;
+// }
+
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
+
+.currency_picker__wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.currency_picker {
+  display: flex;
+  align-items: center;
+
+  &__circle_ico {
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+  }
+
+  &__text {
+    color: $black;
+    font-size: 10.83px;
+    font-weight: 400;
+    letter-spacing: 0.35px;
+    text-align: center;
+  }
+
+  &__arrow {
+    width: 10px;
+    height: 10px;
+    margin-left: 8px;
+    transition: transform 0.3s;
+  }
+
+  &__arrow.open {
+    transform: rotate(180deg);
+  }
+}
+
+.currency_picker__select {
+  display: none;
+}
+
+.currency_picker__select_overlay {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: $white;
+  border: 1px solid $gray-light;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;  /* Вимикає горизонтальну прокрутку */
+  width: max-content;
+}
+
+.currency_picker__select_overlay.up {
+  bottom: 100%; /* Позиціонує випадаючий список над кнопкою */
+}
+
+.currency_picker__select_overlay.down {
+  top: 100%; /* Позиціонує випадаючий список під кнопкою */
+}
+
+.currency_picker__option {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: $white;
+  color: $black;
+  font-size: 10.83px;
+  font-weight: 400;
+  letter-spacing: 0.35px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;  /* Забезпечує, що текст не буде переноситись на новий рядок */
+  overflow: hidden;  /* Вимикає переповнення текстом */
+  text-overflow: ellipsis;  /* Додає три крапки, якщо текст занадто довгий */
+  width: 83px;
+}
+
+.currency_picker__option:hover {
+  background-color: $gray-light;
+}

@@ -1,0 +1,39 @@
+{
+  "HeaderNav": {
+    "RoadCases": "Road Cases",
+    "Sound": "Sound",
+    "PolyProof": "PolyProof",
+    "MoreInfo": "MoreInfo"
+  },
+  "HeaderTopLine1": {
+    "Text": "TRUCK-PACK CASES READY TO SHIP FROM UZHHOROD"
+  },
+  "HeaderTopLine2": {
+    "Contacts": "Contacts",
+    "AboutUs": "About Us",
+    "LanguagePicker": "English"
+  },
+  "MainPageTitle": {
+    "Title": "THE TOUR FAMILY",
+    "SubTitle": "Whether its a stadium, arena or club tour, Fiascos diverse range of road cases and shock racks have got you covered. Each piece is designed to perfectly pack and stack with the rest."
+  },
+  "ContactPage": {
+    "Name": "Name",
+    "FirstName": "FirstName",
+    "FirstNameCannotBeBlank": "First Name cannot be blank.",
+    "LastNameCannotBeBlank": "Last Name cannot be blank.",
+    "PhoneNumberCannotBeBlank": "Phone Number cannot be blank.",
+    "EmailCannotBeBlank": "Email cannot be blank.",
+    "MessageCannotBeBlank": "Message cannot be blank.",
+    "RequestQuote": "Request a quote:",
+    "PleaseEnterValidPhoneNumber": "Please enter a valid phone number.",
+    "ExampleEmail": "example@example.com",
+    "ExampleProduct": "example@example.com",
+    "SendMessage": "Send a message",
+    "TypeHere": "Type here ...",
+    "Submit": "Submit",
+    "PhoneNumber": "Phone Number",
+    "Email": "Email",
+    "Product": "Product"
+  }
+}

@@ -1,4 +1,4 @@
-@import "../../utils/mixins.scss";
+@import "../../../utils/mixins.scss";
 
 .wrapper {
   display: flex;
@@ -45,7 +45,7 @@
   box-shadow: 0 4px 4px rgba(87, 100, 126, 0.21);
 
   @include responsive(desktop-md) {
-    padding: 40px;
+    padding: 20px;
   }
 
   &__title {

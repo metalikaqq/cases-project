@@ -4,8 +4,11 @@ import React, { useState } from "react";
 import EmailCustomInput from "@/UI/EmailCustomInput";
 import s from "./page.module.scss";
 import { InputType } from "@/UI/EmailCustomInput/EmailCustomInput";
+import { useTranslations } from "next-intl";
 
 export default function Page() {
+  const t = useTranslations("ContactPage");
+
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -21,17 +24,18 @@ export default function Page() {
     message: "",
   });
 
-  const handleChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setForm((prevForm) => ({
-      ...prevForm,
-      [field]: value,
-    }));
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [field]: "",
-    }));
-  };
+  const handleChange =
+    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { value } = e.target;
+      setForm((prevForm) => ({
+        ...prevForm,
+        [field]: value,
+      }));
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [field]: "",
+      }));
+    };
 
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
@@ -50,23 +54,23 @@ export default function Page() {
     const newErrors = { ...errors };
 
     if (!form.firstName) {
-      newErrors.firstName = "First Name cannot be blank.";
+      newErrors.firstName = t("FirstNameCannotBeBlank");
       isValid = false;
     }
     if (!form.lastName) {
-      newErrors.lastName = "Last Name cannot be blank.";
+      newErrors.lastName = t("LastNameCannotBeBlank");
       isValid = false;
     }
     if (!form.phoneNumber) {
-      newErrors.phoneNumber = "Phone Number cannot be blank.";
+      newErrors.phoneNumber = t("PhoneNumberCannotBeBlank");
       isValid = false;
     }
     if (!form.email) {
-      newErrors.email = "Email cannot be blank.";
+      newErrors.email = t("EmailCannotBeBlank");
       isValid = false;
     }
     if (!form.message) {
-      newErrors.message = "Message cannot be blank.";
+      newErrors.message = t("MessageCannotBeBlank");
       isValid = false;
     }
 
@@ -85,16 +89,16 @@ export default function Page() {
   return (
     <div className={s.wrapper}>
       <form className={s.email_request} onSubmit={handleSubmit}>
-        <h1 className={s.email_request__title}>Request a quote:</h1>
+        <h1 className={s.email_request__title}>{t("RequestQuote")}</h1>
 
         <div className={s.contacts}>
           <div className={s.colum_wrapper}>
-            <div className={s.title}>Name</div>
+            <div className={s.title}>{t("Name")}</div>
             <div className={s.colum}>
               <div className={s.input}>
                 <EmailCustomInput
                   type={InputType.Text}
-                  text="First Name"
+                  text={t("FirstName")}
                   value={form.firstName}
                   onChange={handleChange("firstName")}
                   error={errors.firstName}
@@ -103,7 +107,7 @@ export default function Page() {
               <div className={s.input}>
                 <EmailCustomInput
                   type={InputType.Text}
-                  text="Last Name"
+                  text={t("LastName")}
                   value={form.lastName}
                   onChange={handleChange("lastName")}
                   error={errors.lastName}
@@ -113,11 +117,11 @@ export default function Page() {
           </div>
 
           <div className={s.colum_wrapper}>
-            <div className={s.title}>Phone Number</div>
+            <div className={s.title}>{t("PhoneNumber")}</div>
             <div className={s.input}>
               <EmailCustomInput
                 type={InputType.PhoneNumber}
-                text="Please enter a valid phone number."
+                text={t("PleaseEnterValidPhoneNumber")}
                 value={form.phoneNumber}
                 onChange={handleChange("phoneNumber")}
                 error={errors.phoneNumber}
@@ -126,37 +130,36 @@ export default function Page() {
           </div>
 
           <div className={s.colum_wrapper}>
-            <div className={s.title}>Email</div>
-            <div className={s.input}>
-              <EmailCustomInput
-                type={InputType.Email}
-                text="example@example.com"
-                value={form.email}
-                onChange={handleChange("email")}
-                error={errors.email}
-              />
-            </div>
-          </div>
+            <div className={s.title}>{t("Email")}</div>
+            <div className={s.colum}>
+              <div className={s.input}>
+                <EmailCustomInput
+                  type={InputType.Email}
+                  text={t("ExampleEmail")}
+                  value={form.email}
+                  onChange={handleChange("email")}
+                  error={errors.email}
+                />
+              </div>
 
-          <div className={s.colum_wrapper}>
-            <div className={s.title}>Product</div>
-            <div className={s.input}>
-              <EmailCustomInput
-                type={InputType.Text}
-                text="example@example.com"
-                value={form.email}
-                onChange={handleChange("email")}
-                error={errors.email}
-              />
+              <div className={s.input}>
+                <EmailCustomInput
+                  type={InputType.Email}
+                  text={t("ExampleEmail")}
+                  value={form.email}
+                  onChange={handleChange("email")}
+                  error={errors.email}
+                />
+              </div>
             </div>
           </div>
         </div>
 
         <div className={s.send_massage}>
-          <span className={s.text}>Send a message</span>
+          <span className={s.text}>{t("SendMessage")}</span>
           <textarea
             className={`${s.textarea} ${errors.message ? s.textareaError : ""}`}
-            placeholder="Type here ..."
+            placeholder={t("TypeHere")}
             name="message"
             id="message-input"
             value={form.message}
@@ -166,7 +169,7 @@ export default function Page() {
         </div>
 
         <button type="submit" className={s.submit_button}>
-          Submit
+          {t("Submit")}
         </button>
       </form>
     </div>

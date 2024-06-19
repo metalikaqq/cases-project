@@ -1,35 +1,32 @@
-import s from "./HeaderTopLine2.module.scss"
-import Link from "next/link";
+import s from "./HeaderTopLine2.module.scss";
 import Image from "next/image";
 
 import instaIcon from "@/assets/svg/insta-ico.svg";
 import fbIcon from "@/assets/svg/fb-ico.svg";
 import ytIcon from "@/assets/svg/yt-ico.svg";
-import ukraineFlagIco from "@/assets/svg/ukraine-flag-ico.svg"
-import arrowDown from "@/assets/svg/arrow-down-black.svg"
+import ukraineFlagIco from "@/assets/svg/ukraine-flag-ico.svg";
+import arrowDown from "@/assets/svg/arrow-down-black.svg";
+import { useTranslations } from "next-intl";
+import LanguagePicker from "@/UI/LanguagePicker";
+import { Link } from "@/navigation";
 
 export type HeaderTopLine2Props = {
   // props go here
 };
 
-
 export default function HeaderTopLine2(props: HeaderTopLine2Props) {
+  const t = useTranslations("HeaderTopLine2");
+
   return (
     <div className={s.wrapper}>
       <div className={s.tl2}>
         <div className={s.tl2__text_links}>
-          <Link
-            className={s.tl2__text_links__link}
-            href={"/contact"}
-          >
-            Contact
+          <Link className={s.tl2__text_links__link} href={"/contact"}>
+            {t("Contacts")}
           </Link>
 
-          <Link
-            className={s.tl2__text_links__link}
-            href={"google.com"}
-          >
-            About Us
+          <Link className={s.tl2__text_links__link} href={"/about-us"}>
+            {t("AboutUs")}
           </Link>
         </div>
 
@@ -54,7 +51,7 @@ export default function HeaderTopLine2(props: HeaderTopLine2Props) {
             />
           </div>
 
-          <div className={s.currency_picker__wrapper}>
+          {/* <div className={s.currency_picker__wrapper}>
             <button
               className={s.currency_picker}
             >
@@ -75,7 +72,9 @@ export default function HeaderTopLine2(props: HeaderTopLine2Props) {
                 />
               </div>
             </button>
-          </div>
+          </div> */}
+
+          <LanguagePicker />
         </div>
       </div>
     </div>

@@ -2,13 +2,6 @@
 import s from "../page.module.scss";
 import PreviewSection from "@/components/PreviewSection";
 import { TextPosition } from "@/components/PreviewSection/PreviewSection";
-import Image from "next/image";
-// import PositiveSideBlock from "@/components/PositiveSideBlock";
-import carSVG from "@/assets/svg/car-ico.svg";
-import paperSVG from "@/assets/svg/paper-ico.svg";
-import shieldSVG from "@/assets/svg/shield-ico.svg";
-import reuseSVG from "@/assets/svg/reuse-ico.svg";
-import SelectionCases from "@/components/SelectionCases";
 import Header from "@/components/Header";
 import PresentationalBanner from "@/components/PresentationalBanner";
 import MainPageTitle from "@/components/Main/components/MainPageTitle";
@@ -35,7 +28,7 @@ function page() {
       <Header />
 
       <div className={s.presentation_wrapper}>
-        <PresentationalBanner />
+        {/* <PresentationalBanner /> */}
       </div>
       
       <main className={s.main}>

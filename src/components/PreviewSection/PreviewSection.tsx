@@ -3,19 +3,26 @@ import s from "./PreviewSection.module.scss";
 import deliveryImage from "@/assets/image/Case_loading_1080x.webp";
 import classNames from "classnames";
 import AnimationPreview from "./AnimationPreview";
+import BlueButton from "@/UI/BlueButton";
 
 export enum TextPosition {
-  Left = 'left',
-  Right = 'right'
+  Left = "left",
+  Right = "right",
 }
 
 export type PreviewSectionProps = {
   textPosition: TextPosition;
-}
+};
 
 export default function PreviewSection({ textPosition }: PreviewSectionProps) {
-  const textSideClass = textPosition === TextPosition.Left ? s.preview_section__main__text__order__left : s.preview_section__main__text__order__right;
-  const imageSideClass = textPosition === TextPosition.Left ? s.preview_section__image__order__left : s.preview_section__image__order__right;
+  const textSideClass =
+    textPosition === TextPosition.Left
+      ? s.preview_section__main__text__order__left
+      : s.preview_section__main__text__order__right;
+  const imageSideClass =
+    textPosition === TextPosition.Left
+      ? s.preview_section__image__order__left
+      : s.preview_section__image__order__right;
 
   return (
     <div className={s.preview_section}>
@@ -27,6 +34,8 @@ export default function PreviewSection({ textPosition }: PreviewSectionProps) {
           hours <br /> on your load outs.
         </span>
         <button className={s.preview_section__button}>better touring</button>
+
+        {/* <BlueButton text="better touring" /> */}
       </div>
       <div className={classNames(s.preview_section__image, imageSideClass)}>
         <AnimationPreview />

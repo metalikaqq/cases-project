@@ -1,0 +1,41 @@
+{
+  "HeaderNav": {
+    "RoadCases": "Дорожні кейси",
+    "Sound": "Звук",
+    "PolyProof": "Поліграфічні докази",
+    "MoreInfo": "Більше інформації"
+  },
+  "HeaderTopLine1": {
+    "Text": "КОМПЛЕКТАЦІЯ ФУР ГОТОВА ДО ВІДПРАВКИ З УЖГОРОДА"
+  },
+  "HeaderTopLine2": {
+    "Contacts": "Контакти",
+    "AboutUs": "Про нас",
+    "LanguagePicker": "Українська"
+  },
+  "MainPageTitle": {
+    "Title": "СІМ'Я ТУРІВ",
+    "SubTitle": "Незалежно від того, чи це стадіон, арена або клубний тур, різноманітний асортимент дорожніх кейсів і амортизаційних стелажів Fiasco завжди поруч. Кожен елемент спроектований для ідеального упакування та складання з іншими."
+  },
+  "ContactPage": {
+    "Name": "Ім'я та Прізвище",
+    "FirstName": "Ім'я",
+    "LastName": "Прізвище",
+    "FirstNameCannotBeBlank": "Ім'я не може бути порожнім.",
+    "LastNameCannotBeBlank": "Прізвище не може бути порожнім.",
+    "PhoneNumberCannotBeBlank": "Номер телефону не може бути порожнім.",
+    "EmailCannotBeBlank": "Email не може бути порожнім.",
+    "MessageCannotBeBlank": "Повідомлення не може бути порожнім.",
+    "RequestQuote": "Запит на пропозицію:",
+    "PleaseEnterValidPhoneNumber": "введіть дійсний номер телефону.",
+    "ExampleEmail": "приклад@example.com",
+    "ExampleProduct": "приклад@example.com",
+    "SendMessage": "Надіслати повідомлення",
+    "TypeHere": "Напишіть тут ...",
+    "Submit": "Відправити",
+    "PhoneNumber": "Номер телефону",
+    "Email": "Email",
+    "Product": "Продукт"
+  }
+  
+}

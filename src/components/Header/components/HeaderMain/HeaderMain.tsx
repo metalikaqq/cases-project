@@ -4,6 +4,7 @@ import Image from "next/image";
 import bannerLogo from "@/assets/svg/banner-logo-main.svg";
 import searchIcon from "@/assets/svg/search-black.svg";
 import burgerIcon from "@/assets/svg/burger-button-ico.svg"
+import { Link } from "@/navigation";
 
 export type HeaderMainProps = {
   // props go here
@@ -20,13 +21,13 @@ export default function HeaderMain(props: HeaderMainProps) {
           />
         </button>
 
-        <div className={s.header_main__banner}>
+        <Link href={'/'} className={s.header_main__banner}>
           <Image
             className={s.header_main__banner__image}
             src={bannerLogo}
             alt="site-logo"
           />
-        </div>
+        </Link>
 
         <div className={s.header_main__burger}>
           <Image
