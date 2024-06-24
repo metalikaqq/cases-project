@@ -20,6 +20,7 @@
   "ContactPage": {
     "Name": "Name",
     "FirstName": "FirstName",
+    "LastName": "LastName",
     "FirstNameCannotBeBlank": "First Name cannot be blank.",
     "LastNameCannotBeBlank": "Last Name cannot be blank.",
     "PhoneNumberCannotBeBlank": "Phone Number cannot be blank.",

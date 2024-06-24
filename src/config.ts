@@ -5,10 +5,10 @@ export const locales = ['en', 'ukr'] as const;
 
 export const pathnames: Pathnames<typeof locales> = {
   '/': '/',
-  '/pathnames': {
-    en: '/road-cases',
-    ukr: '/дорожні-кейси'
-  }
+  // '/pathnames': {
+  //   en: '/road-cases',
+  //   ukr: '/дорожні-кейси'
+  // }
 };
 
 export const localePrefix: LocalePrefix<typeof locales> = 'always';

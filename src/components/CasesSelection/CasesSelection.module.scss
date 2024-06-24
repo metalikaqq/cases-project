@@ -1,0 +1,68 @@
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
+
+$desktop: 1024px;
+$tablet: 768px;
+$mobile: 450px;
+
+.selection_cases {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Default for tablets */
+  grid-gap: 17px;
+  width: calc(100% - 40px); /* Ensure 20px padding on each side */
+  margin: 0 auto; /* Center the grid */
+  padding: 20px;
+
+  @media (min-width: $desktop) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 22px;
+    width: calc(100% - 40px)
+  }
+
+  @media (max-width: $tablet) and (min-width: $mobile) {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablet */
+    grid-gap: 15px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+
+    &__text {
+      color: rgb(17, 17, 17);
+      font-size: 17.34px;
+      font-weight: 400;
+      line-height: 25px;
+      letter-spacing: 4px;
+      text-align: center;
+      text-transform: uppercase;
+
+      @media (max-width: $mobile) {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    &__image {
+      width: 100%;
+      height: auto;
+      transition: transform 0.6s ease-in-out;
+
+      &:hover {
+        transform: scale(1.04);
+      }
+
+      @media (max-width: $mobile) {
+        transform: scale(1); /* Remove hover effect on mobile */
+      }
+    }
+  }
+
+  .image__container {
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+}

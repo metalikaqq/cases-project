@@ -1,0 +1,52 @@
+@import "@/utils/mixins.scss";
+@import "@/utils/vars.scss";
+
+.nav__item {
+  position: relative;
+  display: inline-block;
+}
+
+.nav__link {
+  color: $black;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  padding: 8px 15px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none; /* Prevent interaction when not visible */
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto; /* Enable interaction when visible */
+}
+
+.dropdown__item {
+  cursor: pointer;
+  width: max-content;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 1px;
+  color: $black;
+  text-decoration: none;
+  display: block;
+}

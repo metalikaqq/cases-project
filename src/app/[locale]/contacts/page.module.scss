@@ -1,0 +1,170 @@
+@import '../../../utils/vars.scss';
+@import '../../../utils/mixins.scss';
+
+.page__wrapper {
+  // height: 100%;
+  display: flex;
+  flex-direction: column;
+  // height: 100vh;
+}
+
+.about_us {
+  margin-top: 75px;
+  flex-grow: 1; // Заставляет содержимое занимать оставшееся пространство
+  overflow: auto; // Позволяет прокручивать содержимое, если оно больше высоты обертки
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.title {
+  color: rgb(17, 17, 17);
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: rgb(17, 17, 17);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.43px;
+  }
+}
+
+.contact_info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 0;
+  // width: 30%;
+  padding: 30px;
+  margin: 30px;
+  background-color: #fff;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none; /* убирает подчеркивание у ссылки */
+    width: 100%;
+    position:relative ;
+  }
+}
+
+.google_map {
+  width: 100%;
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+  background: $blue-button-color;
+  width: 188px;
+  align-items: center;
+  padding: 12px 21px;
+  color: $white;
+  font-size: 10.87px;
+  font-weight: 700;
+  line-height: 18.46px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: color 0.3s;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 150%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0)
+    );
+    animation: none;
+    transition: opacity 0.3s;
+  }
+
+  &:hover:before {
+    animation: shimmer 1s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; // Match this with your page background color
+}
+
+.bouncingDots {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px;
+
+  & > div {
+    width: 16px;
+    height: 16px;
+    background-color: #09f;
+    border-radius: 50%;
+    animation: bounce 0.6s infinite alternate;
+  }
+
+  & > div:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  & > div:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+}
+
+@keyframes bounce {
+  to {
+    transform: translateY(-100%);
+    opacity: 0.7;
+  }
+}

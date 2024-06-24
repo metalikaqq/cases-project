@@ -1,32 +1,31 @@
 import { useTranslations } from "next-intl";
 import s from "./HeaderNav.module.scss";
 import { Link } from "@/navigation";
-// import Link from "next/link";
+import NavLinkWithDropdown from "@/UI/NavLinkWithDropdown";
 
 export type HeaderNavProps = {
   // props go here
 };
+
 export default function HeaderNav(props: HeaderNavProps) {
   const t = useTranslations("HeaderNav");
+
+  const items = [
+    "RoadCases 23X24",
+    "RoadCases1 & Chill",
+    "Road",
+    "RoadCases 55X22",
+  ];
 
   return (
     <div className={s.wrapper}>
       <nav className={s.nav}>
-        <Link href="/road-cases" className={s.nav__link}>
-          {t("RoadCases")}
-        </Link>
+        <NavLinkWithDropdown linkName={t("RoadCases")} items={items} />
 
-        <Link href={"google.com"} className={s.nav__link}>
-          {t("Sound")}
-        </Link>
+        <NavLinkWithDropdown linkName={t("AcousticSystems")} items={items} />
 
-        <Link href={"google.com"} className={s.nav__link}>
-          {t("PolyProof")}
-        </Link>
-
-        <Link href={"google.com"} className={s.nav__link}>
-          {t("MoreInfo")}
-        </Link>
+        <NavLinkWithDropdown linkName={t("Lodgment")} items={items} />
+        <NavLinkWithDropdown linkName={t("MoreInfo")} items={items} />
       </nav>
     </div>
   );

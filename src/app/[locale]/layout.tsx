@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import s from './page.module.scss';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,9 +29,13 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <div className={s.app}>
+            <Header />
+            {children}
+            <Footer />
+          </div>
         </NextIntlClientProvider>
-      </body> 
+      </body>
     </html>
   );
 }

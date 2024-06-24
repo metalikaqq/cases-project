@@ -1,5 +1,5 @@
-import SelectionCasesItem from '../SelectionCasesItem';
-import s from './RoadCases.module.scss'
+import SelectionCasesItem from "../MainSelection/components/MainSelectionItem";
+import s from "./RoadCases.module.scss";
 
 export type RoadCasesProps = {
   // props go here

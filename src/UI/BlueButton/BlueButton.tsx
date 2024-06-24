@@ -3,12 +3,12 @@ import s from './BlueButton.module.scss';
 
 export type BlueButtonProps = {
   text: string;
-  // onClick: () => void;
+  onClick: () => void;
 };
 
-export default function BlueButton({ text }: BlueButtonProps) {
+export default function BlueButton({ text, onClick }: BlueButtonProps) {
   return (
-    <button className={s.button}>
+    <button className={s.button} onClick={onClick}>
       {text}
     </button>
   );

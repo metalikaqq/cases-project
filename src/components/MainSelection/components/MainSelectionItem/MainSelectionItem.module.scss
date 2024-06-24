@@ -1,16 +1,17 @@
-@import '../../utils/mixins.scss';
-@import '../../utils/vars.scss';
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
 
 .case {
   display: flex;
   flex-direction: column;
   gap: 10px;
   text-align: center;
-  background-color: #f9f9f9; /* Add background color */
-  padding: 20px; /* Add padding */
+  // background-color: #f9f9f9; /* Add background color */
+  // padding: 20px; /* Add padding */
   // border-radius: 10px; /* Add border radius */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
   transition: transform 0.3s ease-in-out;
+  padding-bottom: 10px;
 
   &:hover {
     transform: scale(1.02); /* Slightly scale up on hover */

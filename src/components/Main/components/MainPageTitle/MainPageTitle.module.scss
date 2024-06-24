@@ -9,6 +9,7 @@
   opacity: 0; /* Скрываем элемент по умолчанию */
   transition: opacity 1s ease-out, transform 1s ease-out; /* Переход для анимации */
   transform: translateY(20px); /* Начальная позиция для анимации */
+  padding: 0 20px;
 }
 
 .title {

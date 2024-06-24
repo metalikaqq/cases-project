@@ -4,6 +4,7 @@ import deliveryImage from "@/assets/image/Case_loading_1080x.webp";
 import classNames from "classnames";
 import AnimationPreview from "./AnimationPreview";
 import BlueButton from "@/UI/BlueButton";
+import { useTranslations } from "next-intl";
 
 export enum TextPosition {
   Left = "left",
@@ -12,9 +13,19 @@ export enum TextPosition {
 
 export type PreviewSectionProps = {
   textPosition: TextPosition;
+  TitleText: string;
+  Description: string;
+  More: string;
 };
 
-export default function PreviewSection({ textPosition }: PreviewSectionProps) {
+export default function PreviewSection({
+  textPosition,
+  TitleText,
+  Description,
+  More
+}: PreviewSectionProps) {
+  const t = useTranslations("PreviewSection");
+
   const textSideClass =
     textPosition === TextPosition.Left
       ? s.preview_section__main__text__order__left
@@ -27,15 +38,9 @@ export default function PreviewSection({ textPosition }: PreviewSectionProps) {
   return (
     <div className={s.preview_section}>
       <div className={classNames(s.preview_section__main__text, textSideClass)}>
-        <h1 className={s.preview_section__title}>Faster & Smarter</h1>
-        <span className={s.preview_section__subtitle}>
-          Fiasco road cases are an ingenious transit storage system. Each case{" "}
-          <br /> is meticulously designed to fit perfectly with any other. Save
-          hours <br /> on your load outs.
-        </span>
-        <button className={s.preview_section__button}>better touring</button>
-
-        {/* <BlueButton text="better touring" /> */}
+        <h1 className={s.preview_section__title}>{TitleText}</h1>
+        <span className={s.preview_section__subtitle}>{Description}</span>
+        <button className={s.preview_section__button}>{More}</button>
       </div>
       <div className={classNames(s.preview_section__image, imageSideClass)}>
         <AnimationPreview />

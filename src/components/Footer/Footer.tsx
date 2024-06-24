@@ -3,10 +3,10 @@ import s from "./Footer.module.scss";
 import logo from "@/assets/image/Fiasco_BLACK_140x.png";
 import ukraineFlagIco from "@/assets/svg/ukraine-flag-ico.svg";
 import arrowDown from "@/assets/svg/arrow-down-black.svg";
-import Link from "next/link";
 import ToggleableContent from "@/UI/ToggleableContent";
 import CustomInput from "@/UI/CustomInput";
 import LanguagePicker from "@/UI/LanguagePicker";
+import { Link } from "@/navigation";
 
 export type FooterProps = {
   // props go here
@@ -27,23 +27,15 @@ export default function Footer(props: FooterProps) {
 
         <ul className={s.footer__list}>
           <li className={s.footer__item}>
-            <Link href={"/home"}>Search</Link>
+            <Link href={"/about-uss"}>About Us</Link>
           </li>
 
           <li className={s.footer__item}>
-            <Link href={"/home"}>About Us</Link>
+            <Link href={"/contacts"}>Contact</Link>
           </li>
 
           <li className={s.footer__item}>
-            <Link href={"/home"}>Contact</Link>
-          </li>
-
-          <li className={s.footer__item}>
-            <Link href={"/home"}>Payment Portal</Link>
-          </li>
-
-          <li className={s.footer__item}>
-            <Link href={"/home"}>Visit Fiasco Cases NZ</Link>
+            <Link href={"/"}>Visit Fiasco Cases NZ</Link>
           </li>
         </ul>
 
