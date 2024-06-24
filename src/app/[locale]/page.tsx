@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import PresentationalBanner from "@/components/PresentationalBanner";
 import MainPageTitle from "@/components/Main/components/MainPageTitle";
 import { useTranslations } from "next-intl";
+import { Suspense } from "react";
 
 // Create a variable to store the text position
 const firstBlockPosition = TextPosition.Left; // or TextPosition.Left

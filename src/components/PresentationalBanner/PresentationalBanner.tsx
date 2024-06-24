@@ -1,4 +1,4 @@
-"use-client"
+import { Suspense } from "react";
 import s from "./PresentationalBanner.module.scss";
 import Video from "next-video";
 
@@ -9,17 +9,19 @@ export type PresentationalBannerProps = {
 export default function PresentationalBanner(props: PresentationalBannerProps) {
   return (
     <div className={s.banner}>
-      <Video
-        className={s.banner__video}
-        src={"https://cdn.shopify.com/videos/c/o/v/dfd1e8109128471ca0357cdfac7260e7.mp4"}
-        controls={false}
-        autoPlay
-        loop
-        muted
-        style={{
-          zIndex: -1
-        }}
-      />
+      <Suspense fallback={<p>Loading video...</p>}>
+        <Video
+          className={s.banner__video}
+          preload="auto"
+          src={"none"}
+          controls={false}
+          autoPlay
+          loop
+          muted
+          style={{
+            zIndex: -1,
+          }}
+        /></Suspense>
     </div>
   );
 }
