@@ -7,11 +7,22 @@ $mobile: 450px;
 
 .selection_cases {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Default for tablets */
-  grid-gap: 17px;
+  // grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: 1fr; 
+  grid-gap: 13px;
   width: calc(100% - 40px); /* Ensure 20px padding on each side */
   margin: 0 auto; /* Center the grid */
   padding: 20px;
+  
+  // @media (max-width: $tablet) and (min-width: $mobile) {
+  //   grid-template-columns: 1fr; /* 2 columns for tablet */
+  //   grid-gap: 15px;
+  // }
+
+  @media (min-width: 550px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 14px;
+  }
 
   @media (min-width: $desktop) {
     grid-template-columns: repeat(4, 1fr);
@@ -19,10 +30,6 @@ $mobile: 450px;
     width: calc(100% - 40px)
   }
 
-  @media (max-width: $tablet) and (min-width: $mobile) {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablet */
-    grid-gap: 15px;
-  }
 
   &__item {
     display: flex;

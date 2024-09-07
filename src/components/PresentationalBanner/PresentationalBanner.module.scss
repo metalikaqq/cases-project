@@ -2,13 +2,16 @@
 @import "@/utils/vars.scss";
 
 .banner {
-  max-height: 650px;
+  max-height: 650px;  // Залишаємо фіксовану максимальну висоту для банера
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 100%;  // Контейнер займає всю ширину
 
   &__video {
-    height: 100%;
+    width: 100%;  // Встановлюємо відео на всю ширину
+    height: auto;  // Автоматична висота для збереження пропорцій
+    object-fit: cover;  // Відео заповнює контейнер і не пливе
+    position: relative;  // Зберігаємо відносне позиціонування для елементів
 
     &::before {
       content: "BETTER TOURING";
@@ -18,12 +21,9 @@
       transform: translate(-50%, -50%);
       z-index: 10;
       color: $white;
-      color: $white;
       font-size: 28px;
       font-weight: 700;
-      letter-spacing: 0%;
       text-transform: uppercase;
-      box-shadow: 1px black;
       white-space: nowrap;
 
       @include responsive(mobile) {
@@ -35,11 +35,9 @@
       }
 
       @include responsive(desktop-md) {
-        // top: 35%;
         font-size: 64px;
       }
 
-      
       @include responsive(desktop-lg) {
         top: 30%;
         font-size: 80px;
@@ -56,9 +54,7 @@
       left: 50%;
       top: 60%;
       transform: translate(-50%, -50%);
-      display: flex;
       z-index: 2;
-
       color: $white;
       font-size: 8px;
       font-weight: 400;
@@ -71,11 +67,9 @@
 
       @include responsive(tablet) {
         font-size: 12px;
-        // top: 50%;
       }
 
       @include responsive(desktop-md) {
-        // top: 45%;
         font-size: 16px;
       }
 
@@ -89,31 +83,6 @@
       }
     }
   }
-
-  // &__title {
-  //   color: $white;
-  //   font-size: 80px;
-  //   font-weight: 700;
-  //   line-height: 80px;
-  //   letter-spacing: 0%;
-  //   text-transform: uppercase;
-  // }
-
-  // &__text {
-  //   color: $white;
-  //   font-family: Inter;
-  //   font-size: 18px;
-  //   font-weight: 400;
-  //   line-height: 31px;
-  //   letter-spacing: 1px;
-  //   text-align: center;
-  // }
-
-  // &__text_block {
-  //   position: absolute;
-  //   right: 50%;
-  //   left: 50%;
-  // }
 }
 
 .suspense {

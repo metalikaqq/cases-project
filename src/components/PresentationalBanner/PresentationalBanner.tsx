@@ -4,7 +4,6 @@ import { Suspense, useEffect, useState } from "react";
 import s from "./PresentationalBanner.module.scss";
 
 export type PresentationalBannerProps = {
-  // props go here
 };
 
 export default function PresentationalBanner(props: PresentationalBannerProps) {
@@ -12,6 +11,22 @@ export default function PresentationalBanner(props: PresentationalBannerProps) {
 
   useEffect(() => {
     setIsClient(true);
+
+    const video = document.querySelector('video');
+
+    const handleUserInteraction = () => {
+      if (video && video.paused) {
+        video.play();
+      }
+    };
+
+    document.addEventListener('touchstart', handleUserInteraction);
+    document.addEventListener('click', handleUserInteraction);
+
+    return () => {
+      document.removeEventListener('touchstart', handleUserInteraction);
+      document.removeEventListener('click', handleUserInteraction);
+    };
   }, []);
 
   const videoSrc =
@@ -28,6 +43,7 @@ export default function PresentationalBanner(props: PresentationalBannerProps) {
             autoPlay
             loop
             muted
+            playsInline
             style={{
               zIndex: -1,
             }}
