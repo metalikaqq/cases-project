@@ -7,7 +7,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import s from './page.module.scss';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap"
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",

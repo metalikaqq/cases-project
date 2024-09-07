@@ -7,14 +7,14 @@ export type RoadCasesProps = {
 export default function RoadCases(props: RoadCasesProps) {
   return (
     <div className={s.selection_cases}>
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
-      <SelectionCasesItem />
+      <SelectionCasesItem linkHref={""} imageSrc={""} imageAlt={""} text={""} />
+      <SelectionCasesItem linkHref={""} imageSrc={""} imageAlt={""} text={""} />
+      <SelectionCasesItem linkHref={""} imageSrc={""} imageAlt={""} text={""} />
+      <SelectionCasesItem linkHref={""} imageSrc={""} imageAlt={""} text={""} />
+      <SelectionCasesItem linkHref={""} imageSrc={""} imageAlt={""} text={""} />
+      <SelectionCasesItem linkHref={""} imageSrc={""} imageAlt={""} text={""} />
+      <SelectionCasesItem linkHref={""} imageSrc={""} imageAlt={""} text={""} />
+      <SelectionCasesItem linkHref={""} imageSrc={""} imageAlt={""} text={""} />
     </div>
   );
 }

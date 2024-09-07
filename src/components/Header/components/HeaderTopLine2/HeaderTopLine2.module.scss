@@ -7,7 +7,11 @@
 
 .tl2 {
   margin: 0 $header-inner-margin;
-  display: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // display: none;
 
   @include responsive(desktop-lg) {
     display: flex;
@@ -46,7 +50,6 @@
 }
 
 .currency_picker__wrapper {
-   
 }
 
 .currency_picker {

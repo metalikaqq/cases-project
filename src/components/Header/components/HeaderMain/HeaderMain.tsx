@@ -14,12 +14,12 @@ export default function HeaderMain(props: HeaderMainProps) {
   return (
     <div className={s.wrapper}>
       <div className={s.header_main}>
-        <button className={s.header_main__search}>
+        {/* <button className={s.header_main__search}>
           <Image
             src={searchIcon}
             alt="search-icon"
           />
-        </button>
+        </button> */}
 
         <Link href={'/'} className={s.header_main__banner}>
           <Image
@@ -29,12 +29,12 @@ export default function HeaderMain(props: HeaderMainProps) {
           />
         </Link>
 
-        <div className={s.header_main__burger}>
+        {/* <div className={s.header_main__burger}>
           <Image
             src={burgerIcon}
             alt="burger-menu"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

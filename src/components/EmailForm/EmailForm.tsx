@@ -7,7 +7,7 @@ import EmailCustomInput from '@/UI/EmailCustomInput';
 import { InputType } from '@/UI/EmailCustomInput/EmailCustomInput';
 
 export type EmailFormProps = {
-  // props go here
+  selectedValue: string
 };
 
 export default function EmailForm(props: EmailFormProps) {
@@ -148,13 +148,7 @@ export default function EmailForm(props: EmailFormProps) {
               </div>
 
               <div className={s.input}>
-                <EmailCustomInput
-                  type={InputType.Email}
-                  text={t("ExampleEmail")}
-                  value={form.email}
-                  onChange={handleChange("email")}
-                  error={errors.email}
-                />
+                <input className={s.selected_item} value={props.selectedValue} type="text" />
               </div>
             </div>
           </div>

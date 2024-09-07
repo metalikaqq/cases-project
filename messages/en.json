@@ -1,40 +1,82 @@
 {
   "HeaderNav": {
-    "RoadCases": "Road Cases",
-    "Sound": "Sound",
-    "PolyProof": "PolyProof",
-    "MoreInfo": "MoreInfo"
+    "RoadCases": "Cases",
+    "AcousticSystems": "Acoustic Systems",
+    "Lodgment": "Lodgment",
+    "MoreInfo": "More Info"
   },
   "HeaderTopLine1": {
-    "Text": "TRUCK-PACK CASES READY TO SHIP FROM UZHHOROD"
+    "Text": "TRUCK LOADS READY FOR SHIPPING FROM UZHGOROD"
   },
   "HeaderTopLine2": {
     "Contacts": "Contacts",
     "AboutUs": "About Us",
-    "LanguagePicker": "English"
+    "LanguagePicker": "Ukrainian"
   },
   "MainPageTitle": {
-    "Title": "THE TOUR FAMILY",
-    "SubTitle": "Whether its a stadium, arena or club tour, Fiascos diverse range of road cases and shock racks have got you covered. Each piece is designed to perfectly pack and stack with the rest."
+    "Title": "A Road Tested by Time",
+    "SubTitle": "Whether it’s a stadium, arena, or club tour, Fiasco’s diverse range of road cases and cushioning racks is always there. Each item is designed for perfect packing and stacking with others."
   },
   "ContactPage": {
-    "Name": "Name",
-    "FirstName": "FirstName",
-    "LastName": "LastName",
-    "FirstNameCannotBeBlank": "First Name cannot be blank.",
-    "LastNameCannotBeBlank": "Last Name cannot be blank.",
-    "PhoneNumberCannotBeBlank": "Phone Number cannot be blank.",
+    "Name": "First and Last Name",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "FirstNameCannotBeBlank": "First name cannot be blank.",
+    "LastNameCannotBeBlank": "Last name cannot be blank.",
+    "PhoneNumberCannotBeBlank": "Phone number cannot be blank.",
     "EmailCannotBeBlank": "Email cannot be blank.",
     "MessageCannotBeBlank": "Message cannot be blank.",
-    "RequestQuote": "Request a quote:",
+    "RequestQuote": "Request for Quote:",
     "PleaseEnterValidPhoneNumber": "Please enter a valid phone number.",
     "ExampleEmail": "example@example.com",
     "ExampleProduct": "example@example.com",
-    "SendMessage": "Send a message",
+    "SendMessage": "Send Message",
     "TypeHere": "Type here ...",
     "Submit": "Submit",
     "PhoneNumber": "Phone Number",
     "Email": "Email",
     "Product": "Product"
+  },
+  "PreviewSection": {
+    "1Title": "Own Production",
+    "1Description": "Thanks to the conveyor principle, the speed of fulfilling orders for designing and manufacturing custom products has significantly increased.",
+    "1Section": "working principles",
+    "2Title": "Built to Last",
+    "2Description": "Only high-quality materials and components are used. The product is designed for long-term operation in harsh conditions such as bad weather, impacts, and falls.",
+    "2Section": "development quality",
+    "3Title": "Knowledge and Experience",
+    "3Description": "Before starting production, we spent 20 years on tours, which gave us an understanding of what the end result should be.",
+    "3Section": "high qualification"
+  },
+  "MainSelection": {
+    "Cases": "Cases",
+    "A/C": "A/C"
+  },
+  "ProductPage": {
+    "ProductTitle": "24 X 30 WORKSTATION",
+    "ProductDescription1": "The cornerstone of the Fiasco family",
+    "ProductDescription2": "Our whole range is based on this footprint (which is why everything fits oh-so-nicely). The compact size makes handling a cinch.",
+    "ProductDescription3": "A perfect fit in any transport, 24 x 30 Cases are optimized for 96\" & 90\" Truck Packology:",
+    "ProductListItem1": "Pack 4 side-by-side in 96\" box trucks and semi-trailers",
+    "ProductListItem2": "Pack 3 end-to-end in shipping containers and 90\" box-trucks",
+    "ProductDescription4": "(Re)configure your case inventory with any combination of:",
+    "ProductListItem3": "Dividers & trays",
+    "NestedListItem1": "On the shelf whenever you need them but sold separately.",
+    "ProductListItem4": "Custom inserts",
+    "NestedListItem2": "Custom designed and made for your item. We have done hundreds of these over the years so we may well have just what you need already. Ask your Customer Project Manager for more info.",
+    "ProductListItem5": "Empty",
+    "NestedListItem3": "Cases come lined with foam ready for dividers or inserts that can be added now or in the future.",
+    "DownloadLinkText": "Download Product Spec Sheet",
+    "ContactUsButton": "CONTACT US FOR A QUOTE",
+    "SpecificationsButton": "Specifications",
+    "ShippingInfoButton": "Shipping Information",
+    "ShareLinkText": "Share",
+    "PinLinkText": "Pin it"
+  },
+  "ContactsPage":  {
+    "title": "READY TO PUT EVERYTHING IN ITS RIGHT PLACE?",
+    "workshop": "OUR WORKSHOP",
+    "text": "Picking up a Case? Head around back to the loading dock!",
+    "direction": "Picking up a Case? Head around back to the loading dock!"
   }
 }

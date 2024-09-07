@@ -4,15 +4,8 @@ import { TextPosition } from "@/components/PreviewSection/PreviewSection";
 import MainPageTitle from "@/components/Main/components/MainPageTitle";
 import { useTranslations } from "next-intl";
 import MainSelection from "@/components/MainSelection";
+import PresentationalBanner from "@/components/PresentationalBanner";
 
-// Create a variable to store the text position
-const firstBlockPosition = TextPosition.Left; // or TextPosition.Left
-const secondBlockPosition = TextPosition.Right;
-const thirdBlockPosition = TextPosition.Left;
-
-const TitleText = "The Tour Family";
-const SubTitleText =
-  "Whether it`s a stadium, arena or club tour, Fiasco`s diverse range of road cases and shock racks have got you covered. Each piece is designed to perfectly pack and stack with the rest.";
 
 export default function Home() {
   const t = useTranslations("MainPageTitle");
@@ -21,7 +14,7 @@ export default function Home() {
   return (
     <div>
       <div className={s.presentation_wrapper}>
-        {/* <PresentationalBanner /> */}
+        <PresentationalBanner />
       </div>
 
       <main className={s.main}>

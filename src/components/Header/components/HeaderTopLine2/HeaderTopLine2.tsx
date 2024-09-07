@@ -25,9 +25,9 @@ export default function HeaderTopLine2(props: HeaderTopLine2Props) {
             {t("Contacts")}
           </Link>
 
-          <Link className={s.tl2__text_links__link} href={"/about-us"}>
+          {/* <Link className={s.tl2__text_links__link} href={"/about-us"}>
             {t("AboutUs")}
-          </Link>
+          </Link> */}
         </div>
 
         <div className={s.tl2__right_block}>

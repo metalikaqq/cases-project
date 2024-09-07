@@ -2,12 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import mapImage from "@/assets/image/Screenshot 2024-06-19 205322.png";
 import s from './page.module.scss'
+import { useTranslations } from "next-intl";
 
 function Page() {
+  const t = useTranslations("ContactsPage");
+
+
   return (
     <div className={s.about_us}>
       <div className={s.text}>
-        <h1 className={s.title}>READY TO PUT EVERYTHING IN ITS RIGHT PLACE?</h1>
+        <h1 className={s.title}>{t("title")}</h1>
 
         <div className={s.text__info}>
           <p className={s.text__phone}>323 528 2430</p>
@@ -24,7 +28,7 @@ function Page() {
         </Link>
 
         <div className={s.contact_info}>
-          <h1>OUR WORKSHOP</h1>
+          <h1>{t("workshow")}</h1>
 
           <div className={s.contact_info__text}>
             <span>Fiasco HQ</span>
@@ -32,7 +36,7 @@ function Page() {
             <span>California, 90503</span>
           </div>
 
-          <span>Picking up a Case? Head around back to the loading dock!</span>
+          <span>{t("text")}</span>
           <span>Call: 323 528 2430</span>
           <span>Email: sales@fiascocases.com</span>
 
@@ -40,7 +44,7 @@ function Page() {
             className={s.button}
             href="https://maps.app.goo.gl/rG9XkgoGKKvBizWi7"
           >
-            get direction
+            {t("direction")}
           </Link>
         </div>
       </div>

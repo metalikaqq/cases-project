@@ -1,3 +1,4 @@
+// MainSelectionItem.tsx
 "use client";
 
 import Image, { StaticImageData } from "next/image";
@@ -7,7 +8,7 @@ import { Link } from "@/navigation";
 
 export type MainSelectionItemProps = {
   linkHref: string;
-  imageSrc: StaticImageData; // or string if you are using external URLs
+  imageSrc: StaticImageData | string; // or string if you are using external URLs
   imageAlt: string;
   text: string;
 };
@@ -19,9 +20,6 @@ export default function MainSelectionItem({
   text,
 }: MainSelectionItemProps) {
   const [imageRef, isImageVisible] = useIntersectionObserver();
-
-  // Add console logs for debugging
-  console.log("linkHref:", linkHref);
 
   return (
     <Link className={s.case} href={linkHref}>
