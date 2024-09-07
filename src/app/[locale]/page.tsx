@@ -5,7 +5,7 @@ import MainPageTitle from "@/components/Main/components/MainPageTitle";
 import { useTranslations } from "next-intl";
 import MainSelection from "@/components/MainSelection";
 import PresentationalBanner from "@/components/PresentationalBanner";
-
+import { Suspense } from "react";
 
 export default function Home() {
   const t = useTranslations("MainPageTitle");
@@ -14,7 +14,9 @@ export default function Home() {
   return (
     <div>
       <div className={s.presentation_wrapper}>
-        <PresentationalBanner />
+        <Suspense fallback={<p>Loading video...</p>}>
+          <PresentationalBanner />
+        </Suspense>
       </div>
 
       <main className={s.main}>

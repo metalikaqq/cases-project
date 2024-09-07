@@ -51,29 +51,6 @@ export default function HeaderTopLine2(props: HeaderTopLine2Props) {
             />
           </div>
 
-          {/* <div className={s.currency_picker__wrapper}>
-            <button
-              className={s.currency_picker}
-            >
-              <Image
-                className={s.currency_picker__circle_ico}
-                src={ukraineFlagIco}
-                alt="icon-of-selected-currency"
-              />
-
-              <p className={s.currency_picker__text}>
-                Ukrainian (UAH ₴)
-              </p>
-
-              <div className={s.currency_picker__open_arrow}>
-                <Image
-                  src={arrowDown}
-                  alt="drop-down-opener-arrow"
-                />
-              </div>
-            </button>
-          </div> */}
-
           <LanguagePicker />
         </div>
       </div>

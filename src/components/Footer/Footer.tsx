@@ -7,16 +7,14 @@ import ToggleableContent from "@/UI/ToggleableContent";
 import CustomInput from "@/UI/CustomInput";
 import LanguagePicker from "@/UI/LanguagePicker";
 import { Link } from "@/navigation";
+import { useTranslations } from "next-intl";
 
 export type FooterProps = {
   // props go here
 };
 
 export default function Footer(props: FooterProps) {
-  const handleToggleClick = () => {
-    // Handle the click event here
-    console.log("Toggleable content clicked!");
-  };
+  const t = useTranslations("Footer");
 
   return (
     <footer className={s.footer__wrapper}>
@@ -27,15 +25,15 @@ export default function Footer(props: FooterProps) {
 
         <ul className={s.footer__list}>
           <li className={s.footer__item}>
-            <Link href={"/about-uss"}>About Us</Link>
+            <Link href={"/about-uss"}>{t("AboutUs")}</Link>
           </li>
 
           <li className={s.footer__item}>
-            <Link href={"/contacts"}>Contact</Link>
+            <Link href={"/contacts"}>{t("Contacts")}</Link>
           </li>
 
           <li className={s.footer__item}>
-            <Link href={"/"}>Visit Fiasco Cases NZ</Link>
+            <Link href={"/"}>{t("Visit")}</Link>
           </li>
         </ul>
 
@@ -46,16 +44,15 @@ export default function Footer(props: FooterProps) {
             <ToggleableContent />
           </div>
 
-          <span className={s.footer__contact_us__text}>Stay in the loop</span>
+          <span className={s.footer__contact_us__text}>{t("StayInTheLoop")}</span>
 
           <span className={s.footer__description}>
-            We send out occasional emails about new Fiasco products <br /> and
-            offers.
+            {t("Greetings")}
           </span>
 
-          <div className={s.custom__input}>
+          {/* <div className={s.custom__input}>
             <CustomInput />
-          </div>
+          </div> */}
         </div>
 
         {/* <div className={s.currency_picker__wrapper}>

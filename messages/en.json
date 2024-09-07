@@ -78,5 +78,12 @@
     "workshop": "OUR WORKSHOP",
     "text": "Picking up a Case? Head around back to the loading dock!",
     "direction": "Picking up a Case? Head around back to the loading dock!"
+  },
+  "Footer": {
+    "Visit": "Visit Fiasco Cases NZ",
+    "StayInTheLoop": "Stay in the loop",
+    "Greetings": "Always welcome new customers",
+    "Contacts": "Contacts",
+    "AboutUs": "About Us"
   }
 }

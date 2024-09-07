@@ -14,7 +14,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    
   }
 
   &__text {
@@ -55,5 +54,21 @@
     &__input {
       border: solid 1px $gray-border-color;
     }
+  }
+}
+
+.tl2 {
+  &__right_block {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 5px;
+    cursor: pointer;
   }
 }
