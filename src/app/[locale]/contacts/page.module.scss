@@ -1,5 +1,5 @@
-@import '../../../utils/vars.scss';
-@import '../../../utils/mixins.scss';
+@import "../../../utils/vars.scss";
+@import "../../../utils/mixins.scss";
 
 .page__wrapper {
   // height: 100%;
@@ -14,9 +14,9 @@
   overflow: auto; // Позволяет прокручивать содержимое, если оно больше высоты обертки
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 40px;
+  gap: 60px;
 }
 
 .title {
@@ -61,12 +61,18 @@
   margin: 30px;
   background-color: #fff;
 
+  @media (max-width: 720px) {
+    left: auto;
+  }
+
+  &__title {
+  }
+
   &__text {
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
-
 
   &__container {
     display: flex;
@@ -74,12 +80,19 @@
     align-items: center;
     text-decoration: none; /* убирает подчеркивание у ссылки */
     width: 100%;
-    position:relative ;
+    position: relative;
   }
 }
 
 .google_map {
   width: 100%;
+  object-fit: cover; // Забезпечує обтинання зображення, щоб воно заповнило контейнер
+  object-position: center; // Відображає центральну частину зображення
+  border-radius: 8px;
+
+  // @media (max-width: 768px) {
+  //   height: 300px; // Зменшуємо висоту на менших екранах
+  // }
 }
 
 .button {
@@ -89,13 +102,14 @@
   width: 188px;
   align-items: center;
   padding: 12px 21px;
-  color: $white;
-  font-size: 10.87px;
-  font-weight: 700;
-  line-height: 18.46px;
-  text-align: center;
+
+  font-size: 12.01px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 4.08px;
   text-transform: uppercase;
-  transition: color 0.3s;
+  color: #fff;
+  text-align: center;
 
   &:before {
     content: "";

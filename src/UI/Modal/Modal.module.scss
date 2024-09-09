@@ -8,7 +8,24 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  max-height: 90vh;  // Максимальна висота вікна
+  overflow-y: auto;  // Додає прокрутку, якщо контент перевищує висоту
 }
+
+// .modal {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   background: white;
+//   padding: 20px;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   z-index: 1000;
+//   width: 90%;
+
+// }
+
 
 .overlay {
   position: fixed;

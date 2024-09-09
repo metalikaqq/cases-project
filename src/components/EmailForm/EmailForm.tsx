@@ -82,14 +82,33 @@ export default function EmailForm(props: EmailFormProps) {
     return isValid;
   };
 
+  const formatPhoneNumberForSubmit = (countryCode: string, phoneNumber: string) => {
+    const cleaned = phoneNumber.replace(/\D/g, ""); // Видаляємо всі символи, крім цифр
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      return `(${countryCode}) ${match[1]} ${match[2]} ${match[3]}`;
+    }
+    return phoneNumber;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      // handle form submission
-      console.log("Form submitted:", form);
+      // Форматування номера телефону перед сабмітом
+      const formattedPhoneNumber = formatPhoneNumberForSubmit(
+        "+380", // Замість цього значення можна використовувати selectedCountry зі стану
+        form.phoneNumber
+      );
+
+      const formattedForm = {
+        ...form,
+        phoneNumber: formattedPhoneNumber,
+      };
+
+      // Збереження або відправка форми
+      console.log("Form submitted:", formattedForm);
     }
   };
-
 
   return (
     <div className={s.wrapper}>
@@ -174,4 +193,5 @@ export default function EmailForm(props: EmailFormProps) {
     </div>
   );
 }
+
 

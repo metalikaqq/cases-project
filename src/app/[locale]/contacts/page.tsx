@@ -28,7 +28,7 @@ function Page() {
         </Link>
 
         <div className={s.contact_info}>
-          <h1>{t("workshow")}</h1>
+          <h1 className={s.contact_info__title}>{t("workshop")}</h1>
 
           <div className={s.contact_info__text}>
             <span>Fiasco HQ</span>
