@@ -6,10 +6,7 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-// const inter = Inter({ subsets: ["latin"] });
-// className={inter.className}
-
-
+// this is my commment
 export default async function RootLayout({
   children,
 }: Readonly<RootLayoutProps>) {
