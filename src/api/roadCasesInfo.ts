@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { RoadCase } from "@/models/api"; // Підключіть ваш тип RoadCase, якщо він у вас є
+import { RoadCase } from "@/models/api";
 import mainImage_1item from "@/assets/image/product.webp";
 import thumbnail1_1item from "@/assets/image/thumbnail1.webp";
 import thumbnail2_1item from "@/assets/image/thumbnail2.webp";
@@ -14,7 +14,7 @@ const useRoadCasesInfo = () => {
 
   const roadCasesInfo: { [key: string]: RoadCase } = {
     case1: {
-      title: t("ProductTitle"),
+      title: t("ProductTitle1"),
       ProductDescription1: t("ProductDescription1"),
       ProductDescription2: t("ProductDescription2"),
       ProductDescription3: t("ProductDescription3"),

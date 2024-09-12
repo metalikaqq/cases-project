@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useTranslations } from 'next-intl';
-import s from './EmailForm.module.scss';
-import { useState } from 'react';
-import EmailCustomInput from '@/UI/EmailCustomInput';
-import { InputType } from '@/UI/EmailCustomInput/EmailCustomInput';
+import { useTranslations } from "next-intl";
+import s from "./EmailForm.module.scss";
+import { useState } from "react";
+import EmailCustomInput from "@/UI/EmailCustomInput";
+import { InputType } from "@/UI/EmailCustomInput/EmailCustomInput";
 
 export type EmailFormProps = {
-  selectedValue: string
+  selectedValue: string;
 };
 
 export default function EmailForm(props: EmailFormProps) {
@@ -82,8 +82,11 @@ export default function EmailForm(props: EmailFormProps) {
     return isValid;
   };
 
-  const formatPhoneNumberForSubmit = (countryCode: string, phoneNumber: string) => {
-    const cleaned = phoneNumber.replace(/\D/g, ""); // Видаляємо всі символи, крім цифр
+  const formatPhoneNumberForSubmit = (
+    countryCode: string,
+    phoneNumber: string
+  ) => {
+    const cleaned = phoneNumber.replace(/\D/g, "");
     const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
     if (match) {
       return `(${countryCode}) ${match[1]} ${match[2]} ${match[3]}`;
@@ -94,9 +97,8 @@ export default function EmailForm(props: EmailFormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      // Форматування номера телефону перед сабмітом
       const formattedPhoneNumber = formatPhoneNumberForSubmit(
-        "+380", // Замість цього значення можна використовувати selectedCountry зі стану
+        "+380",
         form.phoneNumber
       );
 
@@ -105,7 +107,6 @@ export default function EmailForm(props: EmailFormProps) {
         phoneNumber: formattedPhoneNumber,
       };
 
-      // Збереження або відправка форми
       console.log("Form submitted:", formattedForm);
     }
   };
@@ -167,7 +168,11 @@ export default function EmailForm(props: EmailFormProps) {
               </div>
 
               <div className={s.input}>
-                <input className={s.selected_item} value={props.selectedValue} type="text" />
+                <input
+                  className={s.selected_item}
+                  value={props.selectedValue}
+                  type="text"
+                />
               </div>
             </div>
           </div>
@@ -193,5 +198,3 @@ export default function EmailForm(props: EmailFormProps) {
     </div>
   );
 }
-
-
