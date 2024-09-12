@@ -7,6 +7,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import s from './page.module.scss';
 
+// add new commit
+
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap"
