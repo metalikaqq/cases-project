@@ -39,7 +39,7 @@ const useRoadCasesInfo = () => {
       ],
     },
     case2: {
-      title: "55 X 60 РОБОЧА СТАНЦІЯ",
+      title: t("ProductTitle1"),
       ProductDescription1: t("ProductDescription1"),
       ProductDescription2: t("ProductDescription2"),
       ProductDescription3: t("ProductDescription3"),
@@ -55,7 +55,7 @@ const useRoadCasesInfo = () => {
       DownloadLinkText: t("DownloadLinkText"),
       ContactUsButton: t("ContactUsButton"),
       images: [
-        { src: mainImage_2item, alt: "Main Image Case 1" },
+        { src: mainImage_1item, alt: "Main Image Case 1" },
         { src: thumbnail1_1item, alt: "Thumbnail 1 Case 1" },
         { src: thumbnail2_1item, alt: "Thumbnail 2 Case 1" },
         { src: thumbnail3_1item, alt: "Thumbnail 3 Case 1" },
@@ -64,7 +64,7 @@ const useRoadCasesInfo = () => {
       ],
     },
     case3: {
-      title: t("ProductTitle"),
+      title: t("ProductTitle1"),
       ProductDescription1: t("ProductDescription1"),
       ProductDescription2: t("ProductDescription2"),
       ProductDescription3: t("ProductDescription3"),
@@ -89,7 +89,7 @@ const useRoadCasesInfo = () => {
       ],
     },
     case4: {
-      title: t("ProductTitle"),
+      title: t("ProductTitle1"),
       ProductDescription1: t("ProductDescription1"),
       ProductDescription2: t("ProductDescription2"),
       ProductDescription3: t("ProductDescription3"),
@@ -114,7 +114,7 @@ const useRoadCasesInfo = () => {
       ],
     },
     case5: {
-      title: t("ProductTitle"),
+      title: t("ProductTitle1"),
       ProductDescription1: t("ProductDescription1"),
       ProductDescription2: t("ProductDescription2"),
       ProductDescription3: t("ProductDescription3"),
@@ -139,7 +139,7 @@ const useRoadCasesInfo = () => {
       ],
     },
     case6: {
-      title: t("ProductTitle"),
+      title: t("ProductTitle1"),
       ProductDescription1: t("ProductDescription1"),
       ProductDescription2: t("ProductDescription2"),
       ProductDescription3: t("ProductDescription3"),
@@ -164,7 +164,7 @@ const useRoadCasesInfo = () => {
       ],
     },
     case7: {
-      title: t("ProductTitle"),
+      title: t("ProductTitle1"),
       ProductDescription1: t("ProductDescription1"),
       ProductDescription2: t("ProductDescription2"),
       ProductDescription3: t("ProductDescription3"),
@@ -189,7 +189,7 @@ const useRoadCasesInfo = () => {
       ],
     },
     case8: {
-      title: t("ProductTitle"),
+      title: t("ProductTitle1"),
       ProductDescription1: t("ProductDescription1"),
       ProductDescription2: t("ProductDescription2"),
       ProductDescription3: t("ProductDescription3"),
@@ -213,6 +213,7 @@ const useRoadCasesInfo = () => {
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
     },
+
   };
 
   return roadCasesInfo;

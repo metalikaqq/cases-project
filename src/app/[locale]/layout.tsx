@@ -9,7 +9,6 @@ import s from './page.module.scss';
 
 // add new commit
 
-
 const inter = Inter({
   subsets: ["latin"],
   display: "swap"

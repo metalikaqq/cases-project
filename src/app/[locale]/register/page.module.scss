@@ -1,0 +1,156 @@
+.loginContainer {
+  max-width: 400px;
+  margin: 5% auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #7a7a7a;
+  transition: color 0.3s ease;
+}
+
+.closeButton:hover {
+  color: #ff5252;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: #666666;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #333333;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flexStart {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+}
+
+.rememberMe {
+  font-size: 0.875rem;
+  color: #666666;
+}
+
+.forgotPassword {
+  font-size: 0.875rem;
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgotPassword:hover {
+  color: #2563eb;
+}
+
+.submitButton {
+  width: 100%;
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #2563eb;
+}
+
+.registerText {
+  font-size: 0.875rem;
+  color: #666666;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.signUpLink {
+  color: #3b82f6;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.signUpLink:hover {
+  color: #2563eb;
+}
+
+/* Error handling styles */
+.errorMessage {
+  color: #ff5252;
+  background-color: #ffe6e6;
+  border: 1px solid #ff5252;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
