@@ -1,0 +1,179 @@
+@import "@/utils/mixins.scss";
+@import "@/utils/vars.scss";
+
+.productScroll {
+  max-height: none;
+  overflow-y: visible;
+  background-color: transparent;
+  padding: 20px;
+  flex: 2;
+
+  @include responsive(desktop-md) {
+    width: 40%;
+    max-height: 100vh;
+    overflow-y: auto;
+    background-color: #fff;
+    @include hide-scrollbar;
+  }
+}
+
+.productContent {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.productTitle {
+  font-size: 20px;
+  font-weight: bold;
+
+  @include responsive(desktop-md) {
+    color: rgb(17, 17, 17);
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+  }
+}
+
+.divider {
+  background-color: gray;
+  width: 100%;
+  height: 1px;
+}
+
+.productDescription {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.productParagraph {
+  margin-bottom: 10px;
+}
+
+.productList {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0 0 10px 20px;
+
+  &Item {
+    margin-bottom: 5px;
+  }
+}
+
+.nestedList {
+  list-style: circle;
+  padding-left: 20px;
+  margin: 0 0 10px 20px;
+
+  &Item {
+    margin-bottom: 5px;
+  }
+}
+
+.productButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+
+  @include responsive(desktop-md) {
+    gap: 20px;
+  }
+}
+
+.link {
+  background-color: transparent;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.accordion {
+  border: none;
+  background: none;
+  text-align: left;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    font-size: 14px;
+  }
+}
+
+.pageWrapper {
+  @include container;
+}
+
+.button__blue {
+  position: relative;
+  overflow: hidden;
+  background: $blue-button-color;
+  width: fit-content;
+  align-items: center;
+  padding: 12px 21px;
+  color: $white;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18.46px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: color 0.3s;
+
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21.3px;
+  letter-spacing: 4.5px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 150%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0)
+    );
+    animation: none;
+    transition: opacity 0.3s;
+  }
+
+  &:hover:before {
+    animation: shimmer 1s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.image {
+  width: 100%;
+  height: 520px;
+}

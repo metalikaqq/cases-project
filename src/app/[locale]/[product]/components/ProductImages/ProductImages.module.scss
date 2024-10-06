@@ -1,0 +1,57 @@
+@import "@/utils/mixins.scss";
+@import "@/utils/vars.scss";
+
+.product_images {
+  gap: 10px;
+
+  @include responsive(desktop-md) {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 50px;
+  }
+}
+
+.thumbnails {
+  gap: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  height: auto;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .thumbnail {
+    width: 90px;
+    flex-shrink: 0;
+    cursor: pointer;
+    user-select: none;
+    // margin: auto;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  @include responsive(desktop-md) {
+    // max-height: 120px;
+  }
+}
+
+.main_image {
+  display: flex;
+  margin-bottom: 10px;
+  height: auto;
+
+  @include responsive(desktop-md) {
+    margin-bottom: 20px;
+  }
+
+  &__inner {
+    object-fit: cover;
+  }
+}

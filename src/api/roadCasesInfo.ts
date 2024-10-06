@@ -7,7 +7,7 @@ import thumbnail3_1item from "@/assets/image/thumbnail3.webp";
 import thumbnail4_1item from "@/assets/image/thumbnail4.webp";
 import thumbnail5_1item from "@/assets/image/thumbnail5.webp";
 
-import mainImage_2item from "@/assets/image/road_cases_collection_1_360x.webp";
+import mainImage_2item from "@/assets/image/product.webp";
 
 const useRoadCasesInfo = () => {
   const t = useTranslations("ProductPage");
@@ -36,6 +36,8 @@ const useRoadCasesInfo = () => {
         { src: thumbnail3_1item, alt: "Thumbnail 3 Case 1" },
         { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
     },
     case2: {
@@ -59,6 +61,8 @@ const useRoadCasesInfo = () => {
         { src: thumbnail1_1item, alt: "Thumbnail 1 Case 1" },
         { src: thumbnail2_1item, alt: "Thumbnail 2 Case 1" },
         { src: thumbnail3_1item, alt: "Thumbnail 3 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
         { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
@@ -86,6 +90,8 @@ const useRoadCasesInfo = () => {
         { src: thumbnail3_1item, alt: "Thumbnail 3 Case 1" },
         { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
     },
     case4: {
@@ -109,6 +115,8 @@ const useRoadCasesInfo = () => {
         { src: thumbnail1_1item, alt: "Thumbnail 1 Case 1" },
         { src: thumbnail2_1item, alt: "Thumbnail 2 Case 1" },
         { src: thumbnail3_1item, alt: "Thumbnail 3 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
         { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
@@ -136,6 +144,8 @@ const useRoadCasesInfo = () => {
         { src: thumbnail3_1item, alt: "Thumbnail 3 Case 1" },
         { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
     },
     case6: {
@@ -159,6 +169,8 @@ const useRoadCasesInfo = () => {
         { src: thumbnail1_1item, alt: "Thumbnail 1 Case 1" },
         { src: thumbnail2_1item, alt: "Thumbnail 2 Case 1" },
         { src: thumbnail3_1item, alt: "Thumbnail 3 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
         { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
@@ -186,6 +198,8 @@ const useRoadCasesInfo = () => {
         { src: thumbnail3_1item, alt: "Thumbnail 3 Case 1" },
         { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
     },
     case8: {
@@ -209,6 +223,8 @@ const useRoadCasesInfo = () => {
         { src: thumbnail1_1item, alt: "Thumbnail 1 Case 1" },
         { src: thumbnail2_1item, alt: "Thumbnail 2 Case 1" },
         { src: thumbnail3_1item, alt: "Thumbnail 3 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
         { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
