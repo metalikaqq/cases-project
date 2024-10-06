@@ -38,6 +38,10 @@ const useRoadCasesInfo = () => {
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
         { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
         { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
+        { src: thumbnail4_1item, alt: "Thumbnail 4 Case 1" },
+        { src: thumbnail5_1item, alt: "Thumbnail 5 Case 1" },
       ],
     },
     case2: {
