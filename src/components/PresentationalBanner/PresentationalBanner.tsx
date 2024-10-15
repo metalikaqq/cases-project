@@ -1,46 +1,53 @@
-// "use client";
-
-import { Suspense, useEffect, useState } from "react";
 import s from "./PresentationalBanner.module.scss";
+import Image from "next/image";
+import bannerImage from "@/assets/image/about_us_title.jpeg"
 
-export type PresentationalBannerProps = {
+export enum BannerPage {
+  Main,
+  About
 };
 
-export default function PresentationalBanner(props: PresentationalBannerProps) {
-  // const [isClient, setIsClient] = useState(false);
+export type PresentationalBannerProps = {
+  page: BannerPage;
+};
 
-  // useEffect(() => {
-  //   setIsClient(true);
-
-  //   const video = document.querySelector('video');
-
-  //   const handleUserInteraction = () => {
-  //     if (video && video.paused) {
-  //       video.play();
-  //     }
-  //   };
-  // }, []);
-
-  const videoSrc =
-    "https://cdn.shopify.com/videos/c/o/v/dfd1e8109128471ca0357cdfac7260e7.mp4";
+export default function PresentationalBanner({ page }: PresentationalBannerProps) {
+  const videoSrc = "https://cdn.shopify.com/videos/c/o/v/dfd1e8109128471ca0357cdfac7260e7.mp4";
 
   return (
     <div className={s.banner}>
-        {
-          <video
-            className={s.banner__video}
-            preload="auto"
-            src={videoSrc}
-            controls={false}
-            autoPlay={true}
-            loop
-            muted
-            playsInline
-            style={{
-              zIndex: -1,
-            }}
-          />
-        }
+      <>
+        {page === BannerPage.Main && (
+          <>
+            <video
+              className={s.banner__styles}
+              preload="auto"
+              src={videoSrc}
+              controls={false}
+              autoPlay={true}
+              loop
+              muted
+              playsInline
+              style={{
+                zIndex: -1,
+              }}
+            />
+          </>
+        )}
+
+        {page === BannerPage.About && (
+          <>
+            <Image
+              src={bannerImage}
+              alt={"bannerImage"}
+              className={s.banner__styles}
+              style={{
+                zIndex: -1,
+              }}
+            />
+          </>
+        )}
+      </>
     </div>
   );
 }

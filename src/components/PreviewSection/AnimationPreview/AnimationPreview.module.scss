@@ -1,52 +1,11 @@
+@import "@/utils/mixins.scss";
+@import "@/utils/vars.scss";
+
 .image__container {
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
 }
 
-.preview_section__image {
-  max-width: 700px;
-  height: auto;
-  width: 100%;
-  flex-shrink: 0;
-
-  @media (max-width: 950px) {
-    max-width: 500px;
-  }
-
-  @media (max-width: 950px) {
-    max-width: 100%;
-    order: 1;
-  }
-
-  &__order__left {
-    order: 2;
-
-    @media (max-width: 950px) {
-      order: 1;
-    }
-  }
-
-  &__order__right {
-    order: 1;
-
-    @media (max-width: 950px) {
-      order: 1;
-    }
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .fadeIn {
-  opacity: 1;
-  animation: fadeIn 1s forwards;
+  @include fadeIn(1.5s, 50px);
 }

@@ -73,7 +73,7 @@
     "ShareLinkText": "Share",
     "PinLinkText": "Pin it"
   },
-  "ContactsPage":  {
+  "ContactsPage": {
     "title": "READY TO PUT EVERYTHING IN ITS RIGHT PLACE?",
     "workshop": "OUR WORKSHOP",
     "text": "Picking up a Case? Head around back to the loading dock!",
@@ -85,5 +85,10 @@
     "Greetings": "Always welcome new customers",
     "Contacts": "Contacts",
     "AboutUs": "About Us"
+  },
+  "AboutUs": {
+    "1Title": "The show must go on (in an orderly fashion).",
+    "1Section": "working principles",    
+    "1Description": "These boys love rock n' roll—but they want it to be organised. When Matt and Joe began their careers touring, they soon discovered a problem. They found that the sophisticated equipment used to create event magic (lighting, sound and staging gear) was often transported and stored in a not-so-sophisticated way. Old cardboard boxes stacked higgledy-piggledy. Lighting gear strewn about willy-nilly. Power cords tangled up all helter-skelter. And when road cases were"
   }
 }

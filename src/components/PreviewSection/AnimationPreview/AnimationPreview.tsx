@@ -1,12 +1,12 @@
 "use client";
 import s from './AnimationPreview.module.scss';
+import previewSection from '../PreviewSection.module.scss';
 import Image from "next/image";
 
 import deliveryImage from "@/assets/image/Case_loading_1080x.webp";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
 export type AnimationPreviewProps = {
-  // props go here
 };
 export default function AnimationPreview(props: AnimationPreviewProps) {
   const [imageRef, isImageVisible] = useIntersectionObserver();
@@ -20,7 +20,10 @@ export default function AnimationPreview(props: AnimationPreviewProps) {
       <Image
         src={deliveryImage}
         alt={"deliveryImage"}
-        className={s.preview_section__image} // Add any specific image class if needed
+        style={{
+          width: "100%"
+        }}
+        className={`${previewSection.preview_section__image}`}
       />
     </div>
   );

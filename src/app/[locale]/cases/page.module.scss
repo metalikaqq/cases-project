@@ -15,13 +15,7 @@
   justify-content: flex-end;
   gap: 75px;
 
-
   @include container;
-
-  
-  @include responsive(desktop-md) {
-    // padding: 0 30px;
-  }
 }
 
 .presentation_wrapper {

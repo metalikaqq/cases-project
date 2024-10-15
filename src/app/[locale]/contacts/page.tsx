@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import mapImage from "@/assets/image/Screenshot 2024-06-19 205322.png";
+import mapImage from "@/assets/image/map2.jpg";
 import s from './page.module.scss'
 import { useTranslations } from "next-intl";
 
@@ -48,7 +48,6 @@ function Page() {
           </Link>
         </div>
       </div>
-      {/* </Link> */}
     </div>
   );
 }

@@ -5,16 +5,20 @@
   max-height: 650px;  // Залишаємо фіксовану максимальну висоту для банера
   overflow: hidden;
   position: relative;
-  width: 100%;  // Контейнер займає всю ширину
+  width: 100%;
 
-  &__video {
-    width: 100%;  // Встановлюємо відео на всю ширину
-    height: auto;  // Автоматична висота для збереження пропорцій
-    object-fit: cover;  // Відео заповнює контейнер і не пливе
-    position: relative;  // Зберігаємо відносне позиціонування для елементів
+  &__title {
+    font-size: 50px;
+  }
+
+  &__styles {
+    width: 100%;
+    height: auto; 
+    object-fit: cover;  
+    position: relative;
 
     &::before {
-      content: "BETTER TOURING";
+      content: "BETTER TOURING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
       position: absolute;
       left: 50%;
       top: 50%;
@@ -83,9 +87,4 @@
       }
     }
   }
-}
-
-.suspense {
-  z-index: 100;
-  color: red;
 }

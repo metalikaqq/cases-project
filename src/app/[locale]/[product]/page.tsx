@@ -12,9 +12,7 @@ export default function Page({ params }: any) {
 
   return (
     <div className={s.product}>
-      {/* <div className={s.product__img_wrapper}> */}
       <ProductImages product={params.product} />
-      {/* </div> */}
       <ProductScroll product={params.product} />
     </div>
   );

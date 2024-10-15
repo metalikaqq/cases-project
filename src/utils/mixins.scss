@@ -47,3 +47,50 @@ $mobile: 390px;
   margin-left: auto;
   max-width: 1500px;
 }
+
+@mixin shimmer($duration: 2s) {
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  animation: shimmer $duration linear infinite;
+}
+
+@mixin fadeIn($duration: 1.5s, $distance: 20px) {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY($distance);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  opacity: 0;
+  animation: fadeIn $duration ease-out forwards;
+}
+
+// animations usage
+
+// .shimmer-effect {
+//   @include shimmer(2s); // You can adjust the duration
+// }
+
+// .fadeIn {
+//   @include fadeIn(1.5s, 20px); // You can customize the duration and distance
+// }

@@ -1,30 +1,51 @@
-import createMiddleware from "next-intl/middleware";
-import { locales } from "./config";
+import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from 'next/server';
 
-export default createMiddleware({
-  // A list of all locales that are supported
+const locales = ['ua', 'en'];
+const defaultLocale = 'en';
+
+// Helper function to extract locale and return the path without the locale
+const extractLocaleFromPath = (path: string) => {
+  const segments = path.split('/');
+  const locale = segments.length > 1 && locales.includes(segments[1]) ? segments[1] : null;
+
+  // Remove the locale from the path if it exists
+  const pathWithoutLocale = locale ? `/${segments.slice(2).join('/')}` : path;
+
+  return { locale, pathWithoutLocale };
+};
+
+// Create the next-intl middleware
+const i18nMiddleware = createMiddleware({
   locales,
-
-  // Used when no locale matches
-  defaultLocale: "en",
+  defaultLocale,
 });
+
+export default function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Extract locale and path without locale
+  const { locale, pathWithoutLocale } = extractLocaleFromPath(pathname);
+
+  // If no locale is found in the path, redirect to the default locale
+  if (!locale) {
+    return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, request.url));
+  }
+
+  // Apply the next-intl middleware
+  const response = i18nMiddleware(request);
+
+  // Set custom headers with the extracted locale and path without locale
+  response.headers.set('X-Locale', locale);
+  response.headers.set('X-Path-Without-Locale', pathWithoutLocale || '/');  // Default to '/' if empty
+
+  // Optionally set a custom header with the default locale
+  response.headers.set('x-your-custom-locale', defaultLocale);
+
+  return response;
+}
 
 export const config = {
   // Match only internationalized pathnames
-  // matcher: ['/((?!api|account|_next|.*\\..*).*)'],
-  // matcher: ['/', '/(ukr|en)/:path*']
-
-  matcher: [
-    // // Enable a redirect to a matching locale at the root
-    '/',
-
-    // // Set a cookie to remember the previous locale for
-    // // all requests that have a locale prefix
-    '/(ukr|en)/:path*',
-
-    // // Enable redirects that add missing locales
-    // // (e.g. `/pathnames` -> `/en/pathnames`)
-    // '/((?!_next|_vercel|.*\\..*).*)'
-    // "/((?!api|_next/static|_next/image|favicon.ico|apple-touch-icon.png|favicon.svg|images/books|icons|manifest).*)",
-  ],
+  matcher: ['/', '/(ua|en)/:path*'],
 };

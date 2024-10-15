@@ -2,7 +2,6 @@
 @import "../../utils/vars.scss";
 
 .app {
-  // max-width: 1500px;
   width: 100%;
 }
 
@@ -13,14 +12,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 75px;
-
+  gap: 30px;
 
   @include container;
 
-  
   @include responsive(desktop-md) {
-    // padding: 0 30px;
+    gap: 60px;
   }
 }
 
@@ -61,20 +58,20 @@
   background-color: #f0f0f0;
 }
 
-.loader {
-  width: 40px;
-  height: 40px;
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-top: 4px solid #000;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
+// .loader {
+//   width: 40px;
+//   height: 40px;
+//   border: 4px solid rgba(0, 0, 0, 0.1);
+//   border-top: 4px solid #000;
+//   border-radius: 50%;
+//   animation: spin 1s linear infinite;
+// }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+// @keyframes spin {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
