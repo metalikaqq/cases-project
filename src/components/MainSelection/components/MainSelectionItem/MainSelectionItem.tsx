@@ -1,10 +1,10 @@
 // MainSelectionItem.tsx
-"use client";
+'use client';
 
-import Image, { StaticImageData } from "next/image";
-import s from "./MainSelectionItem.module.scss";
-import useIntersectionObserver from "@/hooks/useIntersectionObserver";
-import { Link } from "@/navigation";
+import Image, { StaticImageData } from 'next/image';
+import s from './MainSelectionItem.module.scss';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import { Link } from '@/navigation';
 
 export type MainSelectionItemProps = {
   linkHref: string;
@@ -25,7 +25,7 @@ export default function MainSelectionItem({
     <Link className={s.case} href={linkHref}>
       <div
         ref={imageRef}
-        className={`${s.image__container} ${isImageVisible ? s.fadeIn : ""}`}
+        className={`${s.image__container} ${isImageVisible ? s.fadeIn : ''}`}
       >
         <Image src={imageSrc} alt={imageAlt} className={s.case__image} />
       </div>

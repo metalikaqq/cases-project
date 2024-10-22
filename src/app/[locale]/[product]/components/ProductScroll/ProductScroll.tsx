@@ -1,14 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import s from "./ProductScroll.module.scss";
-import useRoadCasesInfo from "@/api/roadCasesInfo";
-import { slugify } from "@/utils/slugify";
-import Modal from "@/UI/Modal";
-import EmailForm from "@/components/EmailForm";
+import { useState } from 'react';
+import s from './ProductScroll.module.scss';
+import useRoadCasesInfo from '@/api/roadCasesInfo';
+import { slugify } from '@/utils/slugify';
+import Modal from '@/UI/Modal';
+import EmailForm from '@/components/EmailForm';
 
-export type ProductScrollProps = {
-};
+export type ProductScrollProps = {};
 
 export default function ProductScroll(params: any) {
   const roadCasesInfo = useRoadCasesInfo();

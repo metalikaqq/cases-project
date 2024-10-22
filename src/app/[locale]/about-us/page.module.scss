@@ -1,5 +1,5 @@
-@import "@/utils/mixins.scss";
-@import "@/utils/vars.scss";
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
 
 .about_us {
   margin: 20px 0;
@@ -18,10 +18,9 @@
 
     &__image {
       width: 100%;
-      height: auto; 
-      object-fit: cover;  
+      height: auto;
+      object-fit: cover;
     }
-
 
     // @include responsive(tablet) {
     //   max-height: 300px;

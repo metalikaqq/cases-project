@@ -1,8 +1,8 @@
-@import "@/utils/mixins.scss";
-@import "@/utils/vars.scss";
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
 
 .banner {
-  max-height: 650px;  // Залишаємо фіксовану максимальну висоту для банера
+  max-height: 650px; // Залишаємо фіксовану максимальну висоту для банера
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -13,12 +13,12 @@
 
   &__styles {
     width: 100%;
-    height: auto; 
-    object-fit: cover;  
+    height: auto;
+    object-fit: cover;
     position: relative;
 
     &::before {
-      content: "BETTER TOURING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+      content: 'BETTER TOURING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
       position: absolute;
       left: 50%;
       top: 50%;
@@ -53,7 +53,7 @@
     }
 
     &::after {
-      content: "THINK OUTSIDE THE BOX";
+      content: 'THINK OUTSIDE THE BOX';
       position: absolute;
       left: 50%;
       top: 60%;

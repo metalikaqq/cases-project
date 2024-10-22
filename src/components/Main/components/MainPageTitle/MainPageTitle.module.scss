@@ -1,5 +1,5 @@
-@import "../../../../utils/mixins.scss";
-@import "../../../../utils/vars.scss";
+@import '../../../../utils/mixins.scss';
+@import '../../../../utils/vars.scss';
 
 .container {
   display: flex;
@@ -7,7 +7,9 @@
   gap: 1.4rem;
   max-width: 900px;
   opacity: 0; /* Скрываем элемент по умолчанию */
-  transition: opacity 1s ease-out, transform 1s ease-out; /* Переход для анимации */
+  transition:
+    opacity 1s ease-out,
+    transform 1s ease-out; /* Переход для анимации */
   transform: translateY(20px); /* Начальная позиция для анимации */
   padding: 0 20px;
 }
@@ -26,7 +28,6 @@
     font-size: 30px;
 
     line-height: 40px;
-
   }
 }
 

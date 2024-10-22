@@ -150,7 +150,7 @@
   z-index: 1000;
   max-height: 200px;
   overflow-y: auto;
-  overflow-x: hidden;  /* Вимикає горизонтальну прокрутку */
+  overflow-x: hidden; /* Вимикає горизонтальну прокрутку */
   width: max-content;
 }
 
@@ -172,10 +172,12 @@
   font-weight: 400;
   letter-spacing: 0.35px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  white-space: nowrap;  /* Забезпечує, що текст не буде переноситись на новий рядок */
-  overflow: hidden;  /* Вимикає переповнення текстом */
-  text-overflow: ellipsis;  /* Додає три крапки, якщо текст занадто довгий */
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+  white-space: nowrap; /* Забезпечує, що текст не буде переноситись на новий рядок */
+  overflow: hidden; /* Вимикає переповнення текстом */
+  text-overflow: ellipsis; /* Додає три крапки, якщо текст занадто довгий */
   width: 83px;
 }
 

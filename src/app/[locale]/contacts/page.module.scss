@@ -1,5 +1,5 @@
-@import "../../../utils/vars.scss";
-@import "../../../utils/mixins.scss";
+@import '../../../utils/vars.scss';
+@import '../../../utils/mixins.scss';
 
 .page__wrapper {
   // height: 100%;
@@ -112,7 +112,7 @@
   text-align: center;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: -50%;
     left: -100%;

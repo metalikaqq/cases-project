@@ -1,14 +1,14 @@
-"use client";
-import s from "./CustomInput.module.scss";
-import { useState } from "react";
+'use client';
+import s from './CustomInput.module.scss';
+import { useState } from 'react';
 
 export type CustomInputProps = {
   // props go here
 };
 
 export default function CustomInput(props: CustomInputProps) {
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -18,7 +18,7 @@ export default function CustomInput(props: CustomInputProps) {
     if (!value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
       setError("Email can't be blank.");
     } else {
-      setError("");
+      setError('');
     }
   };
 

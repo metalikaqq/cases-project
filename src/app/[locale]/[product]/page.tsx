@@ -1,9 +1,9 @@
-"use client"
+'use client';
 
-import s from "./page.module.scss";
+import s from './page.module.scss';
 
-import ProductScroll from "./components/ProductScroll/ProductScroll";
-import ProductImages from "./components/ProductImages/ProductImages";
+import ProductScroll from './components/ProductScroll/ProductScroll';
+import ProductImages from './components/ProductImages/ProductImages';
 
 export default function Page({ params }: any) {
   if (!params.product) {

@@ -1,5 +1,5 @@
-@import "@/utils/mixins.scss";
-@import "@/utils/vars.scss";
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
 
 .nav__item {
   position: relative;
@@ -28,7 +28,9 @@
   margin: 0;
   opacity: 0;
   transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   pointer-events: none; /* Prevent interaction when not visible */
   min-width: 255px;
 }

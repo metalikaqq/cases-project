@@ -1,9 +1,19 @@
 $default-black-font: rgb(17, 17, 17);
 $white: white;
 $black: black;
-$blue-button-color: rgb(47, 111, 190); // Placeholder for your button's background color
-$hover-color: lighten($blue-button-color, 20%); // Adjust the percentage as needed
-$hover-background-color: darken($blue-button-color, 10%); // Adjust the percentage as needed
+$blue-button-color: rgb(
+  47,
+  111,
+  190
+); // Placeholder for your button's background color
+$hover-color: lighten(
+  $blue-button-color,
+  20%
+); // Adjust the percentage as needed
+$hover-background-color: darken(
+  $blue-button-color,
+  10%
+); // Adjust the percentage as needed
 
 $gray-border-color: rgba(0, 0, 0, 0.12);
 $opacity: 0.12;

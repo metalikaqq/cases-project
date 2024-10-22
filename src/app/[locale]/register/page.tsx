@@ -1,26 +1,26 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
 import s from './page.module.scss';
 
 const RegisterForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   const validatePassword = (password: string) => {
     if (password.length < 6) {
-      return "Password must be at least 6 characters long.";
+      return 'Password must be at least 6 characters long.';
     }
 
     const uniqueChars = new Set(password).size;
     if (uniqueChars < 3) {
-      return "Password must contain at least 3 different characters.";
+      return 'Password must contain at least 3 different characters.';
     }
 
-    return ""; // No error
+    return ''; // No error
   };
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -33,11 +33,11 @@ const RegisterForm = () => {
     }
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match!");
+      setError('Passwords do not match!');
       return;
     }
 
-    setError(""); // Clear errors if everything is valid
+    setError(''); // Clear errors if everything is valid
     console.log(email, password);
   };
 
@@ -83,7 +83,7 @@ const RegisterForm = () => {
               Password
             </label>
             <input
-              type={showPass ? "text" : "password"}
+              type={showPass ? 'text' : 'password'}
               name="password"
               id="password"
               value={password}
@@ -98,7 +98,7 @@ const RegisterForm = () => {
               Confirm Password
             </label>
             <input
-              type={showPass ? "text" : "password"}
+              type={showPass ? 'text' : 'password'}
               name="confirmPassword"
               id="confirmPassword"
               value={confirmPassword}
@@ -108,8 +108,8 @@ const RegisterForm = () => {
               required
             />
           </div>
-          {error && <p className={s.errorMessage}>{error}</p>} {/* Display error message */}
-
+          {error && <p className={s.errorMessage}>{error}</p>}{' '}
+          {/* Display error message */}
           <div className={s.flexContainer}>
             <div className={s.flexStart}>
               <input
@@ -124,13 +124,11 @@ const RegisterForm = () => {
               </label>
             </div>
           </div>
-
           <button type="submit" className={s.submitButton}>
             Sign up
           </button>
-
           <p className={s.registerText}>
-            Have an account?{" "}
+            Have an account?{' '}
             <Link href="/auth/login" className={s.signUpLink}>
               Sign in
             </Link>

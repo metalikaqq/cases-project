@@ -1,0 +1,5 @@
+# Ignore build folder
+.next
+out
+node_modules
+public

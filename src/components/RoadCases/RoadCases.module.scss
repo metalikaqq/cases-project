@@ -16,7 +16,7 @@ $mobile: 450px;
   @media (min-width: $desktop) {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 22px;
-    width: calc(100% - 40px)
+    width: calc(100% - 40px);
   }
 
   @media (max-width: $tablet) and (min-width: $mobile) {

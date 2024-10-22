@@ -1,8 +1,8 @@
-@import "@/utils/mixins.scss";
-@import "@/utils/vars.scss";
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
 
 .wrapper {
-  @include container
+  @include container;
 }
 
 .nav {

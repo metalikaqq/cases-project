@@ -2,7 +2,7 @@
 $desktop-xl: 1920px;
 $desktop-lg: 1440px;
 $desktop-md: 1024px;
-$tablet:768px;
+$tablet: 768px;
 $mobile: 390px;
 
 // Mixins
@@ -35,10 +35,10 @@ $mobile: 390px;
   &::-webkit-scrollbar {
     display: none;
   }
-  
+
   // Hide scrollbar for IE, Edge and Firefox
-  -ms-overflow-style: none;  // IE and Edge
-  scrollbar-width: none;  // Firefox
+  -ms-overflow-style: none; // IE and Edge
+  scrollbar-width: none; // Firefox
 }
 
 @mixin container {

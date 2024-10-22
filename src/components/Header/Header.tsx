@@ -1,8 +1,8 @@
-import s from "./Header.module.scss";
-import HeaderMain from "./components/HeaderMain";
-import HeaderNav from "./components/HeaderNav";
-import HeaderTopLine1 from "./components/HeaderTopLine1";
-import HeaderTopLine2 from "./components/HeaderTopLine2";
+import s from './Header.module.scss';
+import HeaderMain from './components/HeaderMain';
+import HeaderNav from './components/HeaderNav';
+import HeaderTopLine1 from './components/HeaderTopLine1';
+import HeaderTopLine2 from './components/HeaderTopLine2';
 
 export type HeaderProps = {
   // props go here

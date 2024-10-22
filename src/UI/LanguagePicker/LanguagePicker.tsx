@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { ChangeEvent, useState, useTransition } from "react";
-import s from "./LanguagePicker.module.scss";
-import { useRouter } from "next/navigation";
-import { useLocale } from "next-intl";
-import ukraineFlagIco from "@/assets/svg/ukraine-flag-ico.svg";
-import usaFlagIco from "@/assets/svg/english-flag-ico.svg";
-import arrowDown from "@/assets/svg/arrow-down-black.svg";
-import Image from "next/image";
+import { ChangeEvent, useState, useTransition } from 'react';
+import s from './LanguagePicker.module.scss';
+import { useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
+import ukraineFlagIco from '@/assets/svg/ukraine-flag-ico.svg';
+import usaFlagIco from '@/assets/svg/english-flag-ico.svg';
+import arrowDown from '@/assets/svg/arrow-down-black.svg';
+import Image from 'next/image';
 
-export default function LanguagePicker({ direction = "down" }) {
+export default function LanguagePicker({ direction = 'down' }) {
   const router = useRouter();
   const localActive = useLocale();
   const [isPending, startTransition] = useTransition();
@@ -26,9 +26,9 @@ export default function LanguagePicker({ direction = "down" }) {
 
   const getFlagIcon = (locale: string) => {
     switch (locale) {
-      case "ukr":
+      case 'ukr':
         return ukraineFlagIco;
-      case "en":
+      case 'en':
       default:
         return usaFlagIco;
     }
@@ -47,10 +47,10 @@ export default function LanguagePicker({ direction = "down" }) {
           alt="icon-of-selected-language"
         />
         <p className={s.currency_picker__text}>
-          {selectedLocale === "ukr" ? "Ukrainian" : "English"}
+          {selectedLocale === 'ukr' ? 'Ukrainian' : 'English'}
         </p>
         <Image
-          className={`${s.currency_picker__arrow} ${isDropdownOpen ? s.open : ""}`}
+          className={`${s.currency_picker__arrow} ${isDropdownOpen ? s.open : ''}`}
           src={arrowDown}
           alt="dropdown arrow"
         />
@@ -58,12 +58,12 @@ export default function LanguagePicker({ direction = "down" }) {
       {isDropdownOpen && (
         <div
           className={`${s.currency_picker__select_overlay} ${
-            direction === "up" ? s.up : s.down
+            direction === 'up' ? s.up : s.down
           }`}
         >
           <div
             className={s.currency_picker__option}
-            onClick={() => onSelectChange("en")}
+            onClick={() => onSelectChange('en')}
           >
             <Image
               className={s.currency_picker__circle_ico}
@@ -74,7 +74,7 @@ export default function LanguagePicker({ direction = "down" }) {
           </div>
           <div
             className={s.currency_picker__option}
-            onClick={() => onSelectChange("ukr")}
+            onClick={() => onSelectChange('ukr')}
           >
             <Image
               className={s.currency_picker__circle_ico}

@@ -1,5 +1,5 @@
-@import "../../utils/vars.scss";
-@import "../../utils/mixins.scss";
+@import '../../utils/vars.scss';
+@import '../../utils/mixins.scss';
 
 .footer {
   margin-top: 40px;
@@ -13,7 +13,6 @@
   flex-direction: column;
   gap: 15px;
   padding-bottom: 1px;
-
 
   @include responsive(desktop-md) {
     flex-direction: row;
@@ -31,7 +30,6 @@
   }
 
   &__logo {
-
     @include responsive(desktop-md) {
       width: 178.5px;
       height: 80px;
@@ -287,6 +285,5 @@
 }
 
 .language_picker {
-
   padding-bottom: 0.9375rem;
 }

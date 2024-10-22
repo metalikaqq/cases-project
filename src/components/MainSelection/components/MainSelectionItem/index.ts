@@ -1,1 +1,1 @@
-export { default } from "./MainSelectionItem";
+export { default } from './MainSelectionItem';

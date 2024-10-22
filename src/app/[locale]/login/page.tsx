@@ -1,14 +1,14 @@
-"use client";
-import React, { useState } from "react";
-import Link from "next/link";
+'use client';
+import React, { useState } from 'react';
+import Link from 'next/link';
 import s from './page.module.scss';
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     console.log(email, password);
   };
@@ -55,7 +55,7 @@ const LoginForm = () => {
               Password
             </label>
             <input
-              type={showPass ? "text" : "password"}
+              type={showPass ? 'text' : 'password'}
               name="password"
               id="password"
               value={password}
@@ -63,7 +63,7 @@ const LoginForm = () => {
               placeholder="••••••••"
               className={s.input}
               required
-              autoComplete='true'
+              autoComplete="true"
             />
           </div>
           <div className={s.flexContainer}>
@@ -89,8 +89,8 @@ const LoginForm = () => {
           </button>
 
           <p className={s.registerText}>
-            Don’t have an account?{" "}
-            <Link href={"register"} className={s.signUpLink}>
+            Don’t have an account?{' '}
+            <Link href={'register'} className={s.signUpLink}>
               Sign up
             </Link>
           </p>

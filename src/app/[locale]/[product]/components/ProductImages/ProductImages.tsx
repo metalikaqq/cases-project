@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import s from "./ProductImages.module.scss"
-import useRoadCasesInfo from "@/api/roadCasesInfo";
-import { useDraggableScroll } from "@/hooks/useDraggableScroll";
-import { slugify } from "@/utils/slugify";
-import { Key, useRef, useState } from "react";
-import Image from "next/image";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import s from './ProductImages.module.scss';
+import useRoadCasesInfo from '@/api/roadCasesInfo';
+import { useDraggableScroll } from '@/hooks/useDraggableScroll';
+import { slugify } from '@/utils/slugify';
+import { Key, useRef, useState } from 'react';
+import Image from 'next/image';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 export type ProductImagesProps = {
   // props go here
@@ -21,7 +21,9 @@ export default function ProductImages(params: any) {
 
   const productInfo = caseKey ? roadCasesInfo[caseKey] : null;
 
-  const [currentImage, setCurrentImage] = useState(productInfo ? productInfo.images[0] : null);
+  const [currentImage, setCurrentImage] = useState(
+    productInfo ? productInfo.images[0] : null
+  );
 
   const scrollRef = useDraggableScroll();
 
@@ -42,8 +44,12 @@ export default function ProductImages(params: any) {
         )}
       </div>
 
-        <div className={s.thumbnails} ref={scrollRef}>
-          {productInfo.images.map((image: { src: string | StaticImport; alt: string; }, index: Key | null | undefined) => (
+      <div className={s.thumbnails} ref={scrollRef}>
+        {productInfo.images.map(
+          (
+            image: { src: string | StaticImport; alt: string },
+            index: Key | null | undefined
+          ) => (
             <div
               key={index}
               className={s.thumbnail}
@@ -56,8 +62,9 @@ export default function ProductImages(params: any) {
                 className={s.image}
               />
             </div>
-          ))}
-        </div>
+          )
+        )}
+      </div>
     </div>
   );
 }

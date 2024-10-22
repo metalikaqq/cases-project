@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import s from "./NavLinkWithDropdown.module.scss";
-import { useState } from "react";
-import { slugify } from "@/utils/slugify";
-import { Link } from "@/navigation";
+import s from './NavLinkWithDropdown.module.scss';
+import { useState } from 'react';
+import { slugify } from '@/utils/slugify';
+import { Link } from '@/navigation';
 
 export type NavLinkWithDropdownProps = {
   linkName: string;
@@ -30,7 +30,7 @@ export default function NavLinkWithDropdown({
       <Link href="/cases">
         <p className={s.nav__link}>{linkName}</p>
       </Link>
-      <ul className={`${s.dropdown} ${isHovered ? s.visible : ""}`}>
+      <ul className={`${s.dropdown} ${isHovered ? s.visible : ''}`}>
         {items.map((item, index) => {
           const formattedTitle = slugify(item);
           const itemName = names ? names[index] : item; // Вибираємо відповідну назву зі списку names

@@ -8,7 +8,12 @@ export type ModalProps = {
   children: React.ReactNode;
 };
 
-export default function Modal({ isOpen, onClose, title, children }: ModalProps) {
+export default function Modal({
+  isOpen,
+  onClose,
+  title,
+  children,
+}: ModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -21,11 +26,8 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
             &times;
           </button>
         </div>
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       </div>
     </>
   );
 }
-

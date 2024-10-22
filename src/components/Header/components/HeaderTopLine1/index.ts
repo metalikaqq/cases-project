@@ -1,1 +1,1 @@
-export { default } from "./HeaderTopLine1";
+export { default } from './HeaderTopLine1';

@@ -1,5 +1,5 @@
-@import "@/utils/mixins.scss";
-@import "@/utils/vars.scss";
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
 
 .header_main {
   display: flex;
@@ -13,7 +13,6 @@
   }
 
   &__banner {
-
     &__image {
       width: 140px;
       height: 63px;
@@ -34,7 +33,7 @@
 
     @include responsive(desktop-md) {
       visibility: hidden;
-      background-color: black
+      background-color: black;
     }
   }
 }

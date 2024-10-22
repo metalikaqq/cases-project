@@ -1,5 +1,5 @@
-@import "@/utils/mixins.scss";
-@import "@/utils/vars.scss";
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
 
 .productScroll {
   max-height: none;
@@ -140,7 +140,7 @@
   text-transform: uppercase;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: -50%;
     left: -100%;

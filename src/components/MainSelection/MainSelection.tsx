@@ -1,24 +1,24 @@
-import { useTranslations } from "next-intl";
-import s from "./MainSelection.module.scss";
-import MainSelectionItem from "./components/MainSelectionItem";
-import caseImage from "@/assets/image/thumbnail1.webp";
+import { useTranslations } from 'next-intl';
+import s from './MainSelection.module.scss';
+import MainSelectionItem from './components/MainSelectionItem';
+import caseImage from '@/assets/image/thumbnail1.webp';
 
 export default function MainSelection() {
-  const t = useTranslations("MainSelection");
+  const t = useTranslations('MainSelection');
 
   return (
     <div className={s.selection_cases}>
       <MainSelectionItem
         linkHref="/cases"
         imageSrc={caseImage}
-        imageAlt={t("Cases")}
-        text={t("Cases")}
+        imageAlt={t('Cases')}
+        text={t('Cases')}
       />
       <MainSelectionItem
         linkHref="/cases"
         imageSrc={caseImage}
-        imageAlt={t("A/C")}
-        text={t("A/C")}
+        imageAlt={t('A/C')}
+        text={t('A/C')}
       />
     </div>
   );

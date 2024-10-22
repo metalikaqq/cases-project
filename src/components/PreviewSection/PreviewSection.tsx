@@ -1,11 +1,11 @@
-import s from "./PreviewSection.module.scss";
-import classNames from "classnames";
-import AnimationPreview from "./AnimationPreview";
-import { useTranslations } from "next-intl";
+import s from './PreviewSection.module.scss';
+import classNames from 'classnames';
+import AnimationPreview from './AnimationPreview';
+import { useTranslations } from 'next-intl';
 
 export enum TextPosition {
-  Left = "left",
-  Right = "right",
+  Left = 'left',
+  Right = 'right',
 }
 
 export type PreviewSectionProps = {
@@ -25,7 +25,7 @@ export default function PreviewSection({
   onButtonClick,
   disableButton = false,
 }: PreviewSectionProps) {
-  const t = useTranslations("PreviewSection");
+  const t = useTranslations('PreviewSection');
 
   const textSideClass =
     textPosition === TextPosition.Left
@@ -39,23 +39,11 @@ export default function PreviewSection({
   return (
     <section className={s.preview_section}>
       <div className={classNames(s.preview_section__main_text, textSideClass)}>
-        <h1
-          className={s.preview_section__name}
-        >
-          OUR STORY:
-        </h1>
+        <h1 className={s.preview_section__name}>OUR STORY:</h1>
 
-        <h1
-          className={s.preview_section__title}
-        >
-          {TitleText}
-        </h1>
+        <h1 className={s.preview_section__title}>{TitleText}</h1>
 
-        <p
-          className={s.preview_section__subtitle}
-        >
-          {Description}
-        </p>
+        <p className={s.preview_section__subtitle}>{Description}</p>
 
         {!disableButton && (
           <button

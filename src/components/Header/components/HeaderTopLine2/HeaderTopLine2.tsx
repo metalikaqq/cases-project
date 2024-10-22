@@ -1,28 +1,28 @@
-import s from "./HeaderTopLine2.module.scss";
-import Image from "next/image";
+import s from './HeaderTopLine2.module.scss';
+import Image from 'next/image';
 
-import instaIcon from "@/assets/svg/insta-ico.svg";
-import fbIcon from "@/assets/svg/fb-ico.svg";
-import ytIcon from "@/assets/svg/yt-ico.svg";
-import ukraineFlagIco from "@/assets/svg/ukraine-flag-ico.svg";
-import arrowDown from "@/assets/svg/arrow-down-black.svg";
-import { useTranslations } from "next-intl";
-import LanguagePicker from "@/UI/LanguagePicker";
-import { Link } from "@/navigation";
+import instaIcon from '@/assets/svg/insta-ico.svg';
+import fbIcon from '@/assets/svg/fb-ico.svg';
+import ytIcon from '@/assets/svg/yt-ico.svg';
+import ukraineFlagIco from '@/assets/svg/ukraine-flag-ico.svg';
+import arrowDown from '@/assets/svg/arrow-down-black.svg';
+import { useTranslations } from 'next-intl';
+import LanguagePicker from '@/UI/LanguagePicker';
+import { Link } from '@/navigation';
 
 export type HeaderTopLine2Props = {
   // props go here
 };
 
 export default function HeaderTopLine2(props: HeaderTopLine2Props) {
-  const t = useTranslations("HeaderTopLine2");
+  const t = useTranslations('HeaderTopLine2');
 
   return (
     <div className={s.wrapper}>
       <div className={s.tl2}>
         <div className={s.tl2__text_links}>
-          <Link className={s.tl2__text_links__link} href={"/contacts"}>
-            {t("Contacts")}
+          <Link className={s.tl2__text_links__link} href={'/contacts'}>
+            {t('Contacts')}
           </Link>
 
           {/* <Link className={s.tl2__text_links__link} href={"/about-us"}>

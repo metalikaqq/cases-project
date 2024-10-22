@@ -1,5 +1,5 @@
-@import "../../utils/mixins.scss";
-@import "../../utils/vars.scss";
+@import '../../utils/mixins.scss';
+@import '../../utils/vars.scss';
 
 .preview_section {
   display: flex;
@@ -132,18 +132,20 @@
     transition: color 0.3s;
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: -50%;
       left: -100%;
       width: 150%;
       height: 200%;
-      background: linear-gradient(to right,
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 0.3),
-          rgba(255, 255, 255, 0));
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+      );
       transition: opacity 0.3s;
-      @include shimmer(3s); 
+      @include shimmer(3s);
     }
   }
 }

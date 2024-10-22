@@ -1,4 +1,4 @@
-@import "../../utils/mixins.scss";
+@import '../../utils/mixins.scss';
 
 .wrapper {
   display: flex;
@@ -127,7 +127,9 @@
   font-size: 16px;
   border-radius: 5px;
   outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
   color: #00796b;
   font-weight: bold;
 
@@ -140,4 +142,3 @@
     color: #00796b;
   }
 }
-

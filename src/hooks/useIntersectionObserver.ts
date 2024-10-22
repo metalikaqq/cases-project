@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState, MutableRefObject } from "react";
+import { useEffect, useRef, useState, MutableRefObject } from 'react';
 
-const useIntersectionObserver = (): [MutableRefObject<HTMLDivElement | null>, boolean] => {
+const useIntersectionObserver = (): [
+  MutableRefObject<HTMLDivElement | null>,
+  boolean,
+] => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") {
+    if (typeof window === 'undefined') {
       return;
     }
 
