@@ -1,6 +1,7 @@
 import s from './PresentationalBanner.module.scss';
 import Image from 'next/image';
 import bannerImage from '@/assets/image/about_us_title.jpeg';
+import NextVideo from 'next-video';
 
 export enum BannerPage {
   Main,
@@ -22,7 +23,7 @@ export default function PresentationalBanner({
       <>
         {page === BannerPage.Main && (
           <>
-            <video
+            <NextVideo
               className={s.banner__styles}
               preload="auto"
               src={videoSrc}

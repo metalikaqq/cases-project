@@ -6,6 +6,7 @@ import { getMessages } from 'next-intl/server';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import s from './page.module.scss';
+import 'reset-css';
 import { headers } from 'next/headers';
 
 const inter = Inter({
@@ -48,7 +49,7 @@ export default async function RootLayout({
           <div className={s.app}>
             {checkHeaderNeed() && <Header />}
             {children}
-            <Footer />
+            {checkHeaderNeed() && <Footer />}
           </div>
         </NextIntlClientProvider>
       </body>

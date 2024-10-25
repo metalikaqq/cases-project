@@ -129,7 +129,7 @@ const RegisterForm = () => {
           </button>
           <p className={s.registerText}>
             Have an account?{' '}
-            <Link href="/auth/login" className={s.signUpLink}>
+            <Link href="/login" className={s.signUpLink}>
               Sign in
             </Link>
           </p>
