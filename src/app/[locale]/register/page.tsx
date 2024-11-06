@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import s from './page.module.scss';
+import { signUp } from '@/api/routes/auth';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ const RegisterForm = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const validatePassword = (password: string) => {
     if (password.length < 6) {
@@ -23,7 +25,7 @@ const RegisterForm = () => {
     return ''; // No error
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     const passwordError = validatePassword(password);
@@ -38,7 +40,14 @@ const RegisterForm = () => {
     }
 
     setError(''); // Clear errors if everything is valid
-    console.log(email, password);
+
+    try {
+      await signUp({ email, password });
+      setSuccess(true);
+      console.log('Registration successful');
+    } catch (error) {
+      setError('Registration failed. Please try again.');
+    }
   };
 
   return (
@@ -108,8 +117,8 @@ const RegisterForm = () => {
               required
             />
           </div>
-          {error && <p className={s.errorMessage}>{error}</p>}{' '}
-          {/* Display error message */}
+          {error && <p className={s.errorMessage}>{error}</p>} {/* Display error message */}
+          {success && <p className={s.successMessage}>Registration successful!</p>} {/* Display success message */}
           <div className={s.flexContainer}>
             <div className={s.flexStart}>
               <input
