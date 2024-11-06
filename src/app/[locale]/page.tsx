@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div>
       <div className={s.presentation_wrapper}>
-        {/* <PresentationalBanner page={BannerPage.Main} /> */}
+        <PresentationalBanner page={BannerPage.Main} />
       </div>
 
       <main className={s.main}>

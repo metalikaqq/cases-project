@@ -14,10 +14,12 @@ function Page() {
   const t = useTranslations('MainPageTitle');
   const t2 = useTranslations('PreviewSection');
 
+  const add = '123';
+
   return (
     <div>
       <div className={s.presentation_wrapper}>
-        <PresentationalBanner />
+        {/* <PresentationalBanner /> */}
       </div>
 
       <main className={s.main}>
