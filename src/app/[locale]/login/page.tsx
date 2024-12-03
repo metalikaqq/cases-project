@@ -20,23 +20,26 @@ const LoginForm = () => {
     setSuccess(false);
 
     try {
-      const response = await signIn({ email, password });
+        const response = await signIn({ email, password });
 
-      setError('');
+        setError('');
 
-      if (response.user) {
-        setSuccess(true);
-        console.log('Login successful');
+        if (response.user) {
+            setSuccess(true);
+            console.log('Login successful');
 
-        router.push('/');
-      } else {
-        setError('Login failed. Please check your credentials and try again.');
-      }
+            router.push('/');
+
+            setTimeout(() => {
+                window.location.reload(); // Перезавантаження сторінки через 1 секунду після перенаправлення
+            }, 500);
+        } else {
+            setError('Login failed. Please check your credentials and try again.');
+        }
     } catch (err) {
-      // Catch network or other unexpected errors here
-      setError('An unexpected error occurred. Please try again later.');
+        setError('An unexpected error occurred. Please try again later.');
     }
-  };
+};
 
   return (
     <div className={s.loginContainer}>

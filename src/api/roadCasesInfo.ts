@@ -40,9 +40,8 @@ const useRoadCasesInfo = () => {
           { src: thumbnail5_1item, alt: `Thumbnail 5 Case ${i + 1}` },
         ],
       },
-    })).reduce((acc, caseObj) => ({ ...acc, ...caseObj }), {})
+    })).reduce((acc, caseObj) => ({ ...acc, ...caseObj }), {}),
   };
-  
 
   return roadCasesInfo;
 };

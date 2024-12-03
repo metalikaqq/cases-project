@@ -25,6 +25,10 @@ export default function Footer(props: FooterProps) {
 
         <ul className={s.footer__list}>
           <li className={s.footer__item}>
+            <Link href={'/login'}>Login</Link>
+          </li>
+
+          <li className={s.footer__item}>
             <Link href={'/about-uss'}>{t('AboutUs')}</Link>
           </li>
 
