@@ -3,16 +3,19 @@
 
 .header_main {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   @include responsive(desktop-md) {
     flex-direction: row;
-    margin: 0 $header-inner-margin;
+    // margin: 0 $header-inner-margin;
   }
 
   &__banner {
+    margin: 0 auto;
+
     &__image {
       width: 140px;
       height: 63px;
@@ -34,6 +37,15 @@
     @include responsive(desktop-md) {
       visibility: hidden;
       background-color: black;
+    }
+  }
+
+  &__user {
+    margin-right: 40px;
+
+    &_icon {
+      width: 24px;
+      height: 24px;
     }
   }
 }

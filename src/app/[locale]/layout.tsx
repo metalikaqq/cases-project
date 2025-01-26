@@ -47,9 +47,11 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <div className={s.app}>
-            {checkHeaderNeed() && <Header />}
-            {children}
-            {checkHeaderNeed() && <Footer />}
+          <Header />
+            <div className={s.page__wrapper}>
+              {children}
+            </div>
+            <Footer />
           </div>
         </NextIntlClientProvider>
       </body>

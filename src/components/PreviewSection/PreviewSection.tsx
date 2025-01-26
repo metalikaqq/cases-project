@@ -2,6 +2,7 @@ import s from './PreviewSection.module.scss';
 import classNames from 'classnames';
 import AnimationPreview from './AnimationPreview';
 import { useTranslations } from 'next-intl';
+import { StaticImageData } from 'next/image';
 
 export enum TextPosition {
   Left = 'left',
@@ -10,20 +11,24 @@ export enum TextPosition {
 
 export type PreviewSectionProps = {
   textPosition: TextPosition;
-  TitleText: string;
-  Description: string;
-  More: string;
+  titleText: string;
+  description: string;
+  more?: string;
   onButtonClick?: () => void;
-  disableButton?: boolean;
+  imgSrc: StaticImageData;
+  blockQuote?: string;
+  imgScale?: number;
 };
 
 export default function PreviewSection({
   textPosition,
-  TitleText,
-  Description,
-  More,
+  titleText,
+  description,
+  more = "",
   onButtonClick,
-  disableButton = false,
+  imgSrc,
+  blockQuote = "",
+  imgScale = 1,
 }: PreviewSectionProps) {
   const t = useTranslations('PreviewSection');
 
@@ -31,34 +36,32 @@ export default function PreviewSection({
     textPosition === TextPosition.Left
       ? s.preview_section__main_text__order_left
       : s.preview_section__main_text__order_right;
-  const imageSideClass =
-    textPosition === TextPosition.Left
-      ? s.preview_section__image__order_left
-      : s.preview_section__image__order_right;
 
   return (
     <section className={s.preview_section}>
       <div className={classNames(s.preview_section__main_text, textSideClass)}>
-        <h1 className={s.preview_section__name}>OUR STORY:</h1>
+      {blockQuote && <h2 className={s.preview_section__section_quote}>{blockQuote}</h2>}
 
-        <h1 className={s.preview_section__title}>{TitleText}</h1>
+        <h1 className={s.preview_section__title}>{titleText}</h1>
 
-        <p className={s.preview_section__subtitle}>{Description}</p>
+        <p className={s.preview_section__subtitle}>{description}</p>
 
-        {!disableButton && (
+        {more !== "" && (
           <button
             className={s.preview_section__button}
             onClick={onButtonClick}
-            aria-label={More}
+            aria-label={more}
           >
-            {More}
+            {more}
           </button>
         )}
       </div>
 
-      <div className={classNames(s.preview_section__image, imageSideClass)}>
-        <AnimationPreview />
-      </div>
+        <AnimationPreview
+          imgSrc={imgSrc}
+          textPosition={textPosition}
+          imgScale={imgScale}
+        />
     </section>
   );
 }

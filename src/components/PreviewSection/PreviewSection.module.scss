@@ -3,13 +3,14 @@
 
 .preview_section {
   display: flex;
-  gap: 20px;
+  gap: 60px;
   align-items: center;
   flex-wrap: wrap;
-
+  justify-content: space-between;
   padding: 0 20px;
   flex-direction: column;
   text-align: center;
+
 
   @include responsive(tablet) {
     padding: 0 40px;
@@ -26,13 +27,15 @@
   }
 
   &__image {
+    width: 100%;
     height: auto;
     flex-shrink: 0;
-    width: 100%;
+    display: flex;
     @include fadeIn(1.5s, 20px);
 
     @include responsive(tablet) {
-      width: 55%;
+      width: unset;
+      flex: 1;
     }
 
     &__order_left {
@@ -50,6 +53,16 @@
         order: 2;
       }
     }
+
+    &__img {
+      width: 100%;
+      object-fit: cover;
+      height: auto;
+    }
+  }
+
+  &__section_quote {
+    text-transform: uppercase;
   }
 
   &__main_text {
@@ -101,18 +114,20 @@
 
   &__subtitle {
     color: $default-black-font;
-    font-size: 16px;
-    font-weight: 300;
+    font-size: 13px;
+    font-weight: 400;
     line-height: 24px;
+    letter-spacing: 0.4px;
+    text-align: left;
 
     @include responsive(tablet) {
-      font-size: 18px;
-      line-height: 18px;
+      font-size: 15px;
+      line-height: 24px;
     }
 
     @include responsive(desktop-md) {
-      font-size: 20px;
-      line-height: 20px;
+      font-size: 17px;
+      line-height: 28px;
     }
   }
 
@@ -138,12 +153,10 @@
       left: -100%;
       width: 150%;
       height: 200%;
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0)
-      );
+      background: linear-gradient(to right,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0));
       transition: opacity 0.3s;
       @include shimmer(3s);
     }

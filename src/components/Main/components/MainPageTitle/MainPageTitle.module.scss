@@ -6,11 +6,11 @@
   flex-direction: column;
   gap: 1.4rem;
   max-width: 900px;
-  opacity: 0; /* Скрываем элемент по умолчанию */
+  opacity: 0;
   transition:
-    opacity 1s ease-out,
-    transform 1s ease-out; /* Переход для анимации */
-  transform: translateY(20px); /* Начальная позиция для анимации */
+  opacity 1s ease-out,
+  transform 1s ease-out;
+  transform: translateY(20px);
   padding: 0 20px;
 }
 

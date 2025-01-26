@@ -5,6 +5,8 @@ $desktop-md: 1024px;
 $tablet: 768px;
 $mobile: 390px;
 
+$banner-max-height: 800px;
+
 // Mixins
 @mixin responsive($breakpoint) {
   @if $breakpoint == desktop-xl {
@@ -46,6 +48,21 @@ $mobile: 390px;
   margin-right: auto;
   margin-left: auto;
   max-width: 1500px;
+}
+
+@mixin bannerWrapper {
+  height: auto;
+  margin-bottom: 75px;
+  max-height: 650px;
+  overflow: hidden;
+
+  // @include responsive(tablet) {
+  //   max-height: 400px;
+  // }
+
+  // @include responsive(desktop-md) {
+  //   max-height: 650px;
+  // }
 }
 
 @mixin shimmer($duration: 2s) {

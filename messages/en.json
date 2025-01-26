@@ -11,6 +11,8 @@
   "HeaderTopLine2": {
     "Contacts": "Contacts",
     "AboutUs": "About Us",
+    "SignIn": "SignIn",
+    "Register": "Register",
     "LanguagePicker": "Ukrainian"
   },
   "MainPageTitle": {
@@ -87,8 +89,40 @@
     "AboutUs": "About Us"
   },
   "AboutUs": {
+    "BannerName": "ABOUT US:",
+    "BannerTitle": "EVERYTHING IN ITS RIGHT PLACE",
+    "BannerSubtitle": "We design and build road cases for the entertainment industry. Our cases are heavy-duty, long-lasting, space-efficient",
     "1Title": "The show must go on (in an orderly fashion).",
-    "1Section": "working principles",
-    "1Description": "These boys love rock n' roll—but they want it to be organised. When Matt and Joe began their careers touring, they soon discovered a problem. They found that the sophisticated equipment used to create event magic (lighting, sound and staging gear) was often transported and stored in a not-so-sophisticated way. Old cardboard boxes stacked higgledy-piggledy. Lighting gear strewn about willy-nilly. Power cords tangled up all helter-skelter. And when road cases were"
+    "1BlockQuote": "OUR TALE:",
+    "2BlockQuote": "OUR TRAITS:",
+    "1Description": "These boys love rock n' roll—but they want it to be organised. When Matt and Joe began their careers touring, they soon discovered a problem. They found that the sophisticated equipment used to create event magic (lighting, sound and staging gear) was often transported and stored in a not-so-sophisticated way. Old cardboard boxes stacked higgledy-piggledy. Lighting gear strewn about willy-nilly. Power cords tangled up all helter-skelter. And when road cases were used they were sometimes a bit rubbish—flimsy, short-lived boxes that didn't stack together properly. So they founded Fiasco with a vision of making road cases that weren't, well, crap. Determined to put an end to inefficiency and chaos, the pair set about designing their dream road cases for racks and pushup drapes that are heavy-duty, long-lasting, space-efficient and totally kick-ass.",
+    "OurTeam": "Our Team",
+    "WeGet": "We get touring.",
+    "1TeamName": "Audrey Trujillo",
+    "1TeamDescription": "Audrey loves playing golf in her spare time, which is probably why she’s such a sharpshooter when it comes to helping you score the best deal. With a background in Technical Sales, Project Management, Sales Admin, and Operations, there’s nothing you can’t swing at her - seriously though, she’s even owned her own meal prep company! Her passion for her role stems from her love of attending concerts and events, but mostly, it’s the satisfaction that comes from supporting those behind the scenes - the ones who bring these events to life. Beyond the stage, she can be spotted in her latest sneakers, camping, spending time with family, and exploring the great outdoors. Audrey is based in our Los Angeles office.",
+    "1TeamTitle": "Customer Project Manager:",
+    "2TeamName": "Rudy Flores",
+    "2TeamDescription": "With a remarkable 20-year symphony of experience in Sales and Customer Service, Rudy has graced the stages of both manufacturing, including working with Pelican Products, and the fast-paced pharmaceutical industry. His favorite encore? Guiding independent business owners on their journey to growth. In his role as Project Manager, he's a master conductor, ensuring that each project strikes the perfect chord—every single time. Be it orchestrating timelines, collaborating with clients to define their unique needs, or harmonizing with the project team to bring every customer's vision to life. Off-stage, his life revolves around creating cherished moments with his family, spreading good vibes, tuning into his community, and playing in his local church's band. Rudy is based in our Los Angeles office.",
+    "2TeamTitle": "Customer Project Manager:",
+    "3TeamName": "Robert Lara",
+    "3TeamDescription": "Robert can tell you he is a geek in five languages, including Portuguese, Mandarin, and Tagalog. It would be six if he counted Mayan, but Robert says he only speaks that 'a bit'. With a double major in Electrical Engineering and Computer Science from CSLUB, Robert has been in the Manufacturing of high-tech equipment and the telecommunications industries for over twenty years. When he’s not geeking out on cultures of the world, high-tech equipment, or history Robert loves hanging out with his daughter either hiking or at his old MMA gym.",
+    "3TeamTitle": "Customer Project Manager:",
+    "BottomBannerTitle": "So that's us. Now it's your turn.",
+    "BottomBannerSubtitle": "GET IN TOUCH AND INTRODUCE YOURSELF"
+  },
+  "CasesPage": {
+    "BannerTitle": "ROAD CASES",
+    "BannerSubtitle": "DESIGNED FOR BETTER TOURING",
+    "1SectionTitle": "Road cases stack perfectly like Tetris blocks!",
+    "1SectionDescription": "Fiasco road cases are an ingenious transit storage system. Each case is meticulously designed to fit perfectly with any other. Save hours on your load in & outs.",
+    "1BlockQuote": "Stack in 90in & 96in Trucks",
+    "1BlockTitle": "LESS TRUCKS, FASTER LOADS",
+    "1BlockDescription": "Stop puzzling your truck packs together for hours on end. Our customers constantly tell us they save time on every truck pack they do with Fiasco Cases. Our job is to remember that you don't just have one road case. You have dozens of road cases with different items inside. It's our responsibility to figure out how to build you a road case that fits with its brothers and sisters in your trucks. If we do our job your truck packs will be faster and full. You can then focus on making the next event awesome.",
+    "2BlockQuote": "LIFE CYCLE OF YOUR NEXT CASE",
+    "2BlockTitle": "THE WORLD'S MOST VERSATILE ROAD CASES",
+    "2BlockDescription": "What will this case be used for? Next Week? In five years? By Design, Fiasco Cases are multipurpose and designed to be transformed in less than a minute between... - Inserts for high-value lights, motors, speakers or screens. - Divide with adjustable long way and cross way dividers. - Used as an empty utility case. One case - so many uses on tour!",
+    "3BlockQuote": "We don't mess around or make you pay for standard features",
+    "3BlockTitle": "INDUSTRY LEADING QUALITY ON EVERY CASE",
+    "3BlockDescription": "We don't mess around or make you pay for standard features. Our cases are built to last. We use the best materials and components. We design our cases to be used in harsh conditions. We know that your gear is expensive and you need it to work every time. We design our cases to protect your gear. We design our cases to be used by roadies. We design our cases to be used"
   }
 }

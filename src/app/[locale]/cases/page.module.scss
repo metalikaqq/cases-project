@@ -1,25 +1,33 @@
 @import '@/utils/mixins.scss';
 @import '@/utils/vars.scss';
 
-.app {
-  // max-width: 1500px;
-  width: 100%;
-}
-
-.main {
-  margin: 20px 0;
+.cases_page {
+  @include container;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  gap: 75px;
 
-  @include container;
+  gap: $block-gap-mobile;
+
+  @include responsive(desktop-md) {
+    gap: $block-gap-desktop;
+  }
+
+  &__sections {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: $section-gap-mobile;
+
+    @include responsive(desktop-md) {
+      gap: $section-gap-desktop;
+    }
+  }
 }
 
 .presentation_wrapper {
-  margin-bottom: 75px;
+  @include bannerWrapper
 }
 
 .title {
@@ -31,8 +39,7 @@
   text-align: center;
   text-transform: uppercase;
 
-  @include responsive(desktop-md) {
-  }
+  @include responsive(desktop-md) {}
 }
 
 .sub_title {
@@ -44,5 +51,6 @@
   text-align: center;
   // align-self: center;
   text-align: center;
-  display: inline-block; /* или display: inline-flex; */
+  display: inline-block;
+  /* или display: inline-flex; */
 }

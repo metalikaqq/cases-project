@@ -27,8 +27,11 @@ export default function NavLinkWithDropdown({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link href="/cases">
-        <p className={s.nav__link}>{linkName}</p>
+      <Link
+        href="/cases"
+        className={`${s.nav__link} ${isHovered ? s.nav__link__text_visible : ''}`}
+      >
+        <p className={s.nav__link__text}>{linkName}</p>
       </Link>
       <ul className={`${s.dropdown} ${isHovered ? s.visible : ''}`}>
         {items.map((item, index) => {

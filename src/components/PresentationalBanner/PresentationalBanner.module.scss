@@ -2,88 +2,116 @@
 @import '@/utils/vars.scss';
 
 .banner {
-  max-height: 650px; // Залишаємо фіксовану максимальну висоту для банера
-  overflow: hidden;
   position: relative;
-  width: 100%;
+  width: auto;
+  height: auto;
 
-  &__title {
-    font-size: 50px;
+  background: rgba(0, 0, 0, 1);
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    // filter: blur(2px);
+    filter: grayscale(100%) brightness(40%);
+    z-index: -1;
+
+    @include fadeIn(1.5s, 20px);
   }
 
-  &__styles {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    position: relative;
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: #fff;
+    user-select: none;
 
-    &::before {
-      content: 'BETTER TOURING AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      color: $white;
-      font-size: 28px;
-      font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    @include responsive(desktop-lg) {
+      text-wrap: nowrap;
+    }
+
+    &__page_name {
+      font-size: 6px;
+      font-weight: 400;
+      letter-spacing: 5px;
+      text-align: center;
       text-transform: uppercase;
-      white-space: nowrap;
-
-      @include responsive(mobile) {
-        font-size: 32px;
-      }
 
       @include responsive(tablet) {
-        font-size: 48px;
-      }
+        font-size: 16px;
+        line-height: 26px;
 
-      @include responsive(desktop-md) {
-        font-size: 64px;
-      }
-
-      @include responsive(desktop-lg) {
-        top: 30%;
-        font-size: 80px;
-      }
-
-      @include responsive(desktop-xl) {
-        font-size: 128px;
+        @include fadeIn(1.5s, 20px);
       }
     }
 
-    &::after {
-      content: 'THINK OUTSIDE THE BOX';
-      position: absolute;
-      left: 50%;
-      top: 60%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
-      color: $white;
-      font-size: 8px;
-      font-weight: 400;
-      line-height: 31px;
-      letter-spacing: 1px;
-
-      @include responsive(mobile) {
-        font-size: 10px;
-      }
+    &__title {
+      font-weight: 700;
+      letter-spacing: 0%;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 30px;
+      margin-bottom: 40px;
+      @include fadeIn(1.5s, 20px);
 
       @include responsive(tablet) {
-        font-size: 12px;
+        font-size: 80px;
+        line-height: 80px;
+        margin-bottom: 20px;
       }
+    }
 
-      @include responsive(desktop-md) {
-        font-size: 16px;
-      }
+    &__subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.4px;
+      text-align: center;
+      @include fadeIn(1.5s, 20px);
 
-      @include responsive(desktop-lg) {
-        top: 40%;
+      @include responsive(tablet) {
         font-size: 18px;
+        line-height: 31px;
       }
+    }
 
-      @include responsive(desktop-xl) {
-        font-size: 28px;
+    &__subtitle_button {
+      background-color: #111111;
+      padding: 10px;
+      color: #fff;
+      cursor: pointer;
+
+      position: relative;
+
+      &__font {
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 18px;
+        letter-spacing: 4px;
+        text-align: center;
+        text-transform: uppercase;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -100%;
+          width: 150%;
+          height: 200%;
+          background: linear-gradient(to right,
+              rgba(255, 255, 255, 0),
+              rgba(255, 255, 255, 0.3),
+              rgba(255, 255, 255, 0));
+          transition: opacity 0.3s;
+          @include shimmer(3s);
+        }
+  
       }
     }
   }

@@ -2,16 +2,15 @@
 @import '../../../utils/mixins.scss';
 
 .page__wrapper {
-  // height: 100%;
+  @include container;
   display: flex;
   flex-direction: column;
-  // height: 100vh;
 }
 
 .about_us {
   margin-top: 75px;
-  flex-grow: 1; // Заставляет содержимое занимать оставшееся пространство
-  overflow: auto; // Позволяет прокручивать содержимое, если оно больше высоты обертки
+  flex-grow: 1;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -51,34 +50,47 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: absolute;
-  left: 30px;
-  top: 50%;
-  transform: translateY(-50%);
   margin-top: 0;
-  // width: 30%;
   padding: 30px;
   margin: 30px;
   background-color: #fff;
+  left: auto;
+  border: 1px solid #000;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  @media (max-width: 720px) {
-    left: auto;
+  transform: translate(0, -50%);
+  position: absolute;
+  left: 30px;
+  top: 40%;
+
+  @include responsive(desktop-md) {
+    transform: translate(0, -50%);
+    position: absolute;
+    left: 30px;
+    top: 50%;
   }
 
   &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: rgb(17, 17, 17);
   }
 
   &__text {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    color: rgb(17, 17, 17);
+    font-size: 18px;
+    font-weight: 400;
   }
 
   &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-decoration: none; /* убирает подчеркивание у ссылки */
+    text-decoration: none;
     width: 100%;
     position: relative;
   }
@@ -86,13 +98,10 @@
 
 .google_map {
   width: 100%;
-  // object-fit: contain; // Забезпечує обтинання зображення, щоб воно заповнило контейнер
-  object-position: center; // Відображає центральну частину зображення
+  height: 400px;
+  object-fit: cover;
   border-radius: 8px;
-
-  // @media (max-width: 768px) {
-  //   height: 300px; // Зменшуємо висоту на менших екранах
-  // }
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .button {
@@ -102,7 +111,6 @@
   width: 188px;
   align-items: center;
   padding: 12px 21px;
-
   font-size: 12.01px;
   font-weight: 400;
   line-height: 19px;
@@ -110,6 +118,14 @@
   text-transform: uppercase;
   color: #fff;
   text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: darken($blue-button-color, 10%);
+  }
 
   &:before {
     content: '';
@@ -118,12 +134,10 @@
     left: -100%;
     width: 150%;
     height: 200%;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0)
-    );
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0));
     animation: none;
     transition: opacity 0.3s;
   }
@@ -137,48 +151,12 @@
   0% {
     transform: translateX(-100%);
   }
+
   50% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(100%);
-  }
-}
-
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0; // Match this with your page background color
-}
-
-.bouncingDots {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80px;
-
-  & > div {
-    width: 16px;
-    height: 16px;
-    background-color: #09f;
-    border-radius: 50%;
-    animation: bounce 0.6s infinite alternate;
-  }
-
-  & > div:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  & > div:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-}
-
-@keyframes bounce {
-  to {
-    transform: translateY(-100%);
-    opacity: 0.7;
   }
 }

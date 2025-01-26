@@ -25,7 +25,6 @@ export default function ProductImages(params: any) {
     productInfo ? productInfo.images[0] : null
   );
 
-  const scrollRef = useDraggableScroll();
 
   if (!productInfo) {
     return <div>Product not found</div>;
@@ -44,7 +43,7 @@ export default function ProductImages(params: any) {
         )}
       </div>
 
-      <div className={s.thumbnails} ref={scrollRef}>
+      <div className={s.thumbnails}>
         {productInfo.images.map(
           (
             image: { src: string | StaticImport; alt: string },

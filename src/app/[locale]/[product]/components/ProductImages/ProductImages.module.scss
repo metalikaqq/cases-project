@@ -23,18 +23,12 @@
   scroll-behavior: smooth;
   height: auto;
 
-  &:active {
-    cursor: grabbing;
-  }
-
   .thumbnail {
     width: 90px;
     flex-shrink: 0;
     cursor: pointer;
     user-select: none;
-    // margin: auto;
     user-select: none;
-    pointer-events: none;
   }
 
   @include responsive(desktop-md) {

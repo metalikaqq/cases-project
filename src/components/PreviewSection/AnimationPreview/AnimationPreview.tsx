@@ -1,27 +1,39 @@
 'use client';
 import s from './AnimationPreview.module.scss';
 import previewSection from '../PreviewSection.module.scss';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
-import deliveryImage from '@/assets/image/Case_loading_1080x.webp';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import { TextPosition } from '../PreviewSection';
 
-export type AnimationPreviewProps = {};
-export default function AnimationPreview(props: AnimationPreviewProps) {
+export type AnimationPreviewProps = {
+  imgSrc: StaticImageData;
+  textPosition: TextPosition;
+  imgScale?: number;
+};
+
+export default function AnimationPreview({
+  imgSrc,
+  textPosition,
+  imgScale = 1,
+}: AnimationPreviewProps) {
   const [imageRef, isImageVisible] = useIntersectionObserver();
+
+const imageSideClass =
+  textPosition === TextPosition.Left
+    ? previewSection.preview_section__image__order_left
+    : previewSection.preview_section__image__order_right;
 
   return (
     <div
       ref={imageRef}
-      className={`${s.image__container} ${isImageVisible ? s.fadeIn : ''}`}
+      className={`${previewSection.preview_section__image} ${isImageVisible ? s.fadeIn : ''} ${imageSideClass}`}
     >
       <Image
-        src={deliveryImage}
+        src={imgSrc}
         alt={'deliveryImage'}
-        style={{
-          width: '100%',
-        }}
-        className={`${previewSection.preview_section__image}`}
+        className={`${previewSection.preview_section__image__img}`}
+        style={{ transform: `scale(${imgScale})`, }}
       />
     </div>
   );

@@ -12,7 +12,7 @@ import mainImage_2item from '@/assets/image/product.webp';
 const useRoadCasesInfo = () => {
   const t = useTranslations('ProductPage');
   const roadCasesInfo: { [key: string]: RoadCase } = {
-    ...Array.from({ length: 30 }, (_, i) => ({
+    ...Array.from({ length: 8 }, (_, i) => ({
       [`case${i + 1}`]: {
         title: t('ProductTitle1'),
         ProductDescription1: t('ProductDescription1'),

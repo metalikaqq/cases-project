@@ -10,7 +10,6 @@ import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
 
 export type FooterProps = {
-  // props go here
 };
 
 export default function Footer(props: FooterProps) {

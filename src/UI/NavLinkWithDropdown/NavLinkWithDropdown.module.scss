@@ -7,40 +7,72 @@
 }
 
 .nav__link {
-  color: $black;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-  letter-spacing: 1px;
-  text-decoration: none;
-  padding: 8px 15px;
+
+  &__text {
+    position: relative; /* Для коректної позиції псевдоелемента */
+    color: $black;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.4s ease;
+    margin: 8px 15px;
+
+    &_visible {
+      .nav__link__text::after {
+        width: 100%;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0; /* Розташування під текстом */
+      left: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 5px;
+      background-color: $black;
+      transition: width 0.4s ease; /* Плавна зміна ширини */
+    }
+
+    &:hover {
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .dropdown {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 14px;
   background-color: #fff;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
   list-style: none;
   padding: 0;
   margin: 0;
-  opacity: 0;
+  display: none;
   transform: translateY(-10px);
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
-  pointer-events: none; /* Prevent interaction when not visible */
+  pointer-events: none;
   min-width: 255px;
+  overflow: hidden;
+
+  &.visible {
+    display: block;
+    transform: translateY(0);
+    pointer-events: auto; /* Enable interaction when visible */
+  }
 }
 
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto; /* Enable interaction when visible */
-}
-
+/* Dropdown items styling */
 .dropdown__item {
   cursor: pointer;
   width: max-content;

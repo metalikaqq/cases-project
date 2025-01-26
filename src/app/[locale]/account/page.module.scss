@@ -1,6 +1,7 @@
 @import '@/utils/mixins.scss';
 
 .account {
+  @include container;
   height: 400px;
   display: flex;
   flex-direction: column;

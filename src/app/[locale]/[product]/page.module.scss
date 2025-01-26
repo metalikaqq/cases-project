@@ -6,6 +6,7 @@
   flex-direction: column;
   padding: 0;
   gap: 10px;
+  margin-bottom: 75px;
 
   @include responsive(desktop-md) {
     flex-direction: row;

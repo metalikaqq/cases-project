@@ -4,14 +4,11 @@ import Image from 'next/image';
 import instaIcon from '@/assets/svg/insta-ico.svg';
 import fbIcon from '@/assets/svg/fb-ico.svg';
 import ytIcon from '@/assets/svg/yt-ico.svg';
-import ukraineFlagIco from '@/assets/svg/ukraine-flag-ico.svg';
-import arrowDown from '@/assets/svg/arrow-down-black.svg';
 import { useTranslations } from 'next-intl';
 import LanguagePicker from '@/UI/LanguagePicker';
 import { Link } from '@/navigation';
 
 export type HeaderTopLine2Props = {
-  // props go here
 };
 
 export default function HeaderTopLine2(props: HeaderTopLine2Props) {
@@ -25,9 +22,9 @@ export default function HeaderTopLine2(props: HeaderTopLine2Props) {
             {t('Contacts')}
           </Link>
 
-          {/* <Link className={s.tl2__text_links__link} href={"/about-us"}>
+          <Link className={s.tl2__text_links__link} href={"/about-us"}>
             {t("AboutUs")}
-          </Link> */}
+          </Link>
         </div>
 
         <div className={s.tl2__right_block}>

@@ -1,57 +1,51 @@
 import s from './PresentationalBanner.module.scss';
-import Image from 'next/image';
-import bannerImage from '@/assets/image/about_us_title.jpeg';
-import NextVideo from 'next-video';
-
-export enum BannerPage {
-  Main,
-  About,
-}
+import Image, { StaticImageData } from 'next/image';
+import bannerImage from '@/assets/image/about-us-head-banner.jpg';
 
 export type PresentationalBannerProps = {
-  page: BannerPage;
+  imgSrc: StaticImageData;
+  pageName?: string;
+  title?: string;
+  subtitle?: string;
+  topIndent?: number; //default '50%'
+  subtitleAsButton?: boolean;
+  buttonLink?: string;
 };
 
 export default function PresentationalBanner({
-  page,
+  imgSrc,
+  pageName = "",
+  title,
+  subtitle,
+  topIndent = 50,
+  subtitleAsButton = false,
 }: PresentationalBannerProps) {
-  const videoSrc =
-    'https://cdn.shopify.com/videos/c/o/v/dfd1e8109128471ca0357cdfac7260e7.mp4';
 
   return (
     <div className={s.banner}>
-      <>
-        {page === BannerPage.Main && (
-          <>
-            <NextVideo
-              className={s.banner__styles}
-              preload="auto"
-              src={videoSrc}
-              controls={false}
-              autoPlay={true}
-              loop
-              muted
-              playsInline
-              style={{
-                zIndex: -1,
-              }}
-            />
-          </>
-        )}
+      <div className={s.banner__image_wrapper}>
+        <Image
+          src={imgSrc}
+          alt={'bannerImage'}
+          className={s.banner__image}
+        />
+      </div>
 
-        {page === BannerPage.About && (
-          <>
-            <Image
-              src={bannerImage}
-              alt={'bannerImage'}
-              className={s.banner__styles}
-              style={{
-                zIndex: -1,
-              }}
-            />
-          </>
+      <div
+        className={s.banner__text}
+        style={{ top: `${topIndent}%` }}
+      >
+        {pageName && <h2 className={s.banner__text__page_name}>{pageName}</h2>}
+        {title && <h1 className={s.banner__text__title}>{title}</h1>}
+        {subtitle && subtitleAsButton ? (
+          <button className={s.banner__text__subtitle_button}>
+            <p className={s.banner__text__subtitle_button__font}>{subtitle}</p>
+          </button>
+        ) : (
+          <p className={s.banner__text__subtitle}>{subtitle}</p>
         )}
-      </>
+      </div>
     </div>
   );
 }
+

@@ -5,16 +5,25 @@ import MainPageTitle from '@/components/Main/components/MainPageTitle';
 import { useTranslations } from 'next-intl';
 import MainSelection from '@/components/MainSelection';
 import PresentationalBanner from '@/components/PresentationalBanner';
-import { BannerPage } from '@/components/PresentationalBanner/PresentationalBanner';
+
+import casesLoadingImg from '@/assets/image/cases-loading-wide.jpeg';
+import caseDrillingImg from '@/assets/image/case-drilling.jpeg';
+import peopleGroupImg from '@/assets/image/people-group.jpeg';
+
+import mainBannerImg from '@/assets/image/main-head-banner.png';
 
 export default function Home() {
   const t = useTranslations('MainPageTitle');
   const t2 = useTranslations('PreviewSection');
 
   return (
-    <div>
+    <>
       <div className={s.presentation_wrapper}>
-        <PresentationalBanner page={BannerPage.Main} />
+        <PresentationalBanner
+          title="BETTER TOURING"
+          subtitle="THINK OUTSIDE THE BOX"
+          imgSrc={mainBannerImg}
+        />
       </div>
 
       <main className={s.main}>
@@ -22,25 +31,30 @@ export default function Home() {
 
         <MainSelection />
 
-        <PreviewSection
-          TitleText={t2('1Title')}
-          Description={t2('2Description')}
-          textPosition={TextPosition.Left}
-          More={t2('1Section')}
-        />
-        <PreviewSection
-          TitleText={t2('2Title')}
-          Description={t2('2Description')}
-          textPosition={TextPosition.Right}
-          More={t2('2Section')}
-        />
-        <PreviewSection
-          TitleText={t2('3Title')}
-          Description={t2('3Description')}
-          textPosition={TextPosition.Left}
-          More={t2('3Section')}
-        />
+        <div className={s.main__sections}>
+          <PreviewSection
+            titleText={t2('1Title')}
+            description={t2('2Description')}
+            textPosition={TextPosition.Left}
+            more={t2('1Section')}
+            imgSrc={casesLoadingImg}
+          />
+          <PreviewSection
+            titleText={t2('2Title')}
+            description={t2('2Description')}
+            textPosition={TextPosition.Right}
+            more={t2('2Section')}
+            imgSrc={caseDrillingImg}
+          />
+          <PreviewSection
+            titleText={t2('3Title')}
+            description={t2('3Description')}
+            textPosition={TextPosition.Left}
+            more={t2('3Section')}
+            imgSrc={peopleGroupImg}
+          />
+        </div>
       </main>
-    </div>
+    </>
   );
 }

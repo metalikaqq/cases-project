@@ -6,47 +6,56 @@ import { useTranslations } from 'next-intl';
 import CasesSelection from '@/components/CasesSelection';
 import PresentationalBanner from '@/components/PresentationalBanner';
 
+import casesWithMetricsImg from '@/assets/image/cases-with-metrics.jpg';
+import casesVarietyGif from '@/assets/image/cases-variety.gif';
+import caseDrillingImg from '@/assets/image/case-drilling.jpeg';
+
+import headBanner from '@/assets/image/about-us-head-banner.jpg';
+
 function Page() {
-  const firstBlockPosition = TextPosition.Left;
-  const secondBlockPosition = TextPosition.Right;
-  const thirdBlockPosition = TextPosition.Left;
-
-  const t = useTranslations('MainPageTitle');
-  const t2 = useTranslations('PreviewSection');
-
-  const add = '123';
+  const t = useTranslations('CasesPage');
 
   return (
-    <div>
+    <>
       <div className={s.presentation_wrapper}>
-        {/* <PresentationalBanner /> */}
+        <PresentationalBanner
+          imgSrc={headBanner}
+          title={t('BannerTitle')}
+          subtitle={t('BannerSubtitle')}
+        />
       </div>
 
-      <main className={s.main}>
-        <MainPageTitle titleText={t('Title')} subTitleText={t('SubTitle')} />
+      <div className={s.cases_page}>
+        <MainPageTitle titleText={t('1SectionTitle')} subTitleText={t('1SectionDescription')} />
 
-        <PreviewSection
-          TitleText={t2('1Title')}
-          Description={t2('2Description')}
-          textPosition={TextPosition.Left}
-          More={t2('1Section')}
-        />
-        <PreviewSection
-          TitleText={t2('2Title')}
-          Description={t2('2Description')}
-          textPosition={TextPosition.Right}
-          More={t2('2Section')}
-        />
-        <PreviewSection
-          TitleText={t2('3Title')}
-          Description={t2('3Description')}
-          textPosition={TextPosition.Left}
-          More={t2('3Section')}
-        />
+        <div className={s.cases_page__sections}>
+          <PreviewSection
+            blockQuote={t('1BlockQuote')}
+            imgSrc={casesWithMetricsImg}
+            titleText={t('1BlockTitle')}
+            description={t('1BlockDescription')}
+            textPosition={TextPosition.Left}
+          />
 
+          <PreviewSection
+            blockQuote={t('2BlockQuote')}
+            imgSrc={casesVarietyGif}
+            titleText={t('2BlockTitle')}
+            description={t('2BlockDescription')}
+            textPosition={TextPosition.Right}
+          />
+
+          <PreviewSection
+            blockQuote={t('3BlockQuote')}
+            imgSrc={caseDrillingImg}
+            titleText={t('3BlockTitle')}
+            description={t('3BlockDescription')}
+            textPosition={TextPosition.Left}
+          />
+        </div>
         <CasesSelection />
-      </main>
-    </div>
+      </div>
+    </>
   );
 }
 
