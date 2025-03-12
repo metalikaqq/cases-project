@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState, MutableRefObject } from 'react';
 
 const useIntersectionObserver = (): [

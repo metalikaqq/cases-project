@@ -1,93 +1,92 @@
-// // CasesSelection.tsx
-// import { slugify } from '@/utils/slugify';
-// import s from './CasesSelection.module.scss';
-// import useRoadCasesInfo from '@/api/roadCasesInfo';
-// import MainSelectionItem from '../MainSelection/components/MainSelectionItem';
+"use client";
 
-// export default function CasesSelection() {
-//   const roadCasesInfo = useRoadCasesInfo();
-
-//   return (
-//     <div className={s.selection_cases}>
-//       {Object.keys(roadCasesInfo).map((caseKey, id) => {
-//         const formattedTitle = slugify(roadCasesInfo[caseKey].title);
-//         const mainImage = roadCasesInfo[caseKey].images[0].src;
-//         return (
-//           <MainSelectionItem
-//             key={caseKey}
-//             linkHref={`/${formattedTitle}`}
-//             imageSrc={mainImage}
-//             imageAlt={roadCasesInfo[caseKey].images[0].alt}
-//             text={roadCasesInfo[caseKey].title}
-//           />
-//         );
-//       })}
-//     </div>
-//   );
-// }
-
-'use client';
-
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { slugify } from '@/utils/slugify';
 import s from './CasesSelection.module.scss';
-import useRoadCasesInfo from '@/api/roadCasesInfo';
 import MainSelectionItem from '../MainSelection/components/MainSelectionItem';
 
-export default function CasesSelection() {
-  const roadCasesInfo = useRoadCasesInfo();
-  const itemsPerPage = 10; // Number of cases to load each time
-  const [visibleItems, setVisibleItems] = useState(itemsPerPage);
-  const observerRef = useRef<HTMLDivElement | null>(null);
+interface Image {
+  id: string;
+  imageUrl: string;
+  isMain: boolean;
+  createdAt: string;
+  updatedAt: string;
+  productId: string;
+}
 
-  const allCases = Object.keys(roadCasesInfo);
-
-  const loadMoreItems = () => {
-    setVisibleItems((prev) => Math.min(prev + itemsPerPage, allCases.length));
+interface Product {
+  id: string;
+  name: string;
+  productNames: {
+    uk: string[];
+    en: string[];
   };
+  htmlContent: {
+    uk: string;
+    en: string;
+  };
+  images: Image[];
+  createdAt: string;
+}
+
+export default function CasesSelection() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [language, setLanguage] = useState<'en' | 'uk'>('en'); // Default language
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          loadMoreItems();
-        }
-      },
-      { threshold: 1 }
-    );
-
-    if (observerRef.current) {
-      observer.observe(observerRef.current);
+    // This code only runs on the client side
+    const currentRoute = window.location.pathname;
+    const pathLanguage = currentRoute.split('/')[1] as 'en' | 'uk';
+    if (pathLanguage === 'en' || pathLanguage === 'uk') {
+      setLanguage(pathLanguage);
     }
+  }, []);
 
-    return () => {
-      if (observerRef.current) {
-        observer.unobserve(observerRef.current);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/products');
+        if (!response.ok) {
+          throw new Error('Failed to fetch products');
+        }
+        const data = await response.json();
+        setProducts(data);
+      } catch (err) {
+        setError('Error fetching products. Please try again later.');
+        console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
+
+    fetchProducts();
   }, []);
+
+  if (loading) return <div className={s.loading}>Loading...</div>;
+  if (error) return <div className={s.error}>{error}</div>;
 
   return (
     <div className={s.selection_cases}>
-      {allCases.slice(0, visibleItems).map((caseKey, id) => {
-        const caseInfo = roadCasesInfo[caseKey];
-        const formattedTitle = slugify(caseInfo.title);
-        const mainImage = caseInfo.images[0].src;
+      {products.map((product) => {
+        // Get the product name in the current language
+        const productName = product.productNames[language]?.[0] || product.name;
+        // Get the main image (or the first image if no main image is found)
+        const mainImage = product.images.find(img => img.isMain)?.imageUrl || product.images[0]?.imageUrl;
+
         return (
           <MainSelectionItem
-            key={caseKey}
-            linkHref={`/${formattedTitle}`}
+            key={product.id}
+            linkHref={`/${slugify(productName)}/${product.id}`} // Include ID in the path
             imageSrc={mainImage}
-            imageAlt={caseInfo.images[0].alt}
-            text={caseInfo.title}
+            imageAlt={productName}
+            text={productName}
+            width={500}
+            height={300}
           />
         );
       })}
-      {visibleItems < allCases.length && (
-        <div ref={observerRef} className={s.loadingIndicator}>
-          Loading more cases...
-        </div>
-      )}
     </div>
   );
 }

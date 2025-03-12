@@ -64,28 +64,28 @@ export default function ProductScroll(params: any) {
           <ul className={s.productList}>
             <li className={s.productListItem}>
               <strong>{productInfo.ProductListItem3}</strong>
+              <ul className={s.nestedList}>
+                <li className={s.nestedListItem}>
+                  <span>{productInfo.NestedListItem1}</span>
+                </li>
+              </ul>
             </li>
-            <ul className={s.nestedList}>
-              <li className={s.nestedListItem}>
-                <span>{productInfo.NestedListItem1}</span>
-              </li>
-            </ul>
             <li className={s.productListItem}>
               <strong>{productInfo.ProductListItem4}</strong>
+              <ul className={s.nestedList}>
+                <li className={s.nestedListItem}>
+                  {productInfo.NestedListItem2}
+                </li>
+              </ul>
             </li>
-            <ul className={s.nestedList}>
-              <li className={s.nestedListItem}>
-                {productInfo.NestedListItem2}
-              </li>
-            </ul>
             <li className={s.productListItem}>
               <strong>{productInfo.ProductListItem5}</strong>
+              <ul className={s.nestedList}>
+                <li className={s.nestedListItem}>
+                  {productInfo.NestedListItem3}
+                </li>
+              </ul>
             </li>
-            <ul className={s.nestedList}>
-              <li className={s.nestedListItem}>
-                {productInfo.NestedListItem3}
-              </li>
-            </ul>
           </ul>
         </div>
       </div>

@@ -8,9 +8,11 @@ import { Link } from '@/navigation';
 
 export type MainSelectionItemProps = {
   linkHref: string;
-  imageSrc: StaticImageData | string; // or string if you are using external URLs
+  imageSrc: StaticImageData | string;
   imageAlt: string;
   text: string;
+  width?: number;
+  height?: number;
 };
 
 export default function MainSelectionItem({
@@ -18,6 +20,8 @@ export default function MainSelectionItem({
   imageSrc,
   imageAlt,
   text,
+  width = 500, // Default width
+  height = 300, // Default height
 }: MainSelectionItemProps) {
   const [imageRef, isImageVisible] = useIntersectionObserver();
 
@@ -27,7 +31,15 @@ export default function MainSelectionItem({
         ref={imageRef}
         className={`${s.image__container} ${isImageVisible ? s.fadeIn : ''}`}
       >
-        <Image src={imageSrc} alt={imageAlt} className={s.case__image} />
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          className={s.case__image}
+          width={width}
+          height={height}
+          priority={false}
+          loading="lazy"
+        />
       </div>
       <span className={s.case__text}>{text}</span>
     </Link>
