@@ -1,42 +1,40 @@
 'use client';
 
 import s from './ProductImages.module.scss';
-import useRoadCasesInfo from '@/api/roadCasesInfo';
-import { useDraggableScroll } from '@/hooks/useDraggableScroll';
-import { slugify } from '@/utils/slugify';
-import { Key, useRef, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
-export type ProductImagesProps = {
-  // props go here
-};
+interface Product {
+  name?: string;
+  images: { id: string; imageUrl: string; isMain?: boolean }[];
+}
 
-export default function ProductImages(params: any) {
-  const roadCasesInfo = useRoadCasesInfo();
+export default function ProductImages({ product }: { product: Product }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const caseKey = Object.keys(roadCasesInfo).find(
-    (key) => slugify(roadCasesInfo[key].title) === params.product
-  );
+  if (!product || !product.images || product.images.length === 0) {
+    return <div>Images not found</div>;
+  }
 
-  const productInfo = caseKey ? roadCasesInfo[caseKey] : null;
+  // Find the main image or default to the first image
+  const mainImageIndex = product.images.findIndex(img => img.isMain) || 0;
+  const sortedImages = [...product.images];
 
-  const [currentImage, setCurrentImage] = useState(
-    productInfo ? productInfo.images[0] : null
-  );
-
-
-  if (!productInfo) {
-    return <div>Product not found</div>;
+  // If we found a main image and it's not already first, move it to the front
+  if (mainImageIndex > 0) {
+    const mainImage = sortedImages.splice(mainImageIndex, 1)[0];
+    sortedImages.unshift(mainImage);
   }
 
   return (
     <div className={s.product_images}>
       <div className={s.main_image}>
-        {currentImage && (
+        {sortedImages[currentImageIndex] && (
           <Image
-            src={currentImage.src}
-            alt={currentImage.alt}
+            src={sortedImages[currentImageIndex].imageUrl}
+            alt={product.name || 'Product image'}
+            width={500}
+            height={500}
             layout="responsive"
             className={s.main_image__inner}
           />
@@ -44,25 +42,22 @@ export default function ProductImages(params: any) {
       </div>
 
       <div className={s.thumbnails}>
-        {productInfo.images.map(
-          (
-            image: { src: string | StaticImport; alt: string },
-            index: Key | null | undefined
-          ) => (
-            <div
-              key={index}
-              className={s.thumbnail}
-              onClick={() => setCurrentImage(image)}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                layout="responsive"
-                className={s.image}
-              />
-            </div>
-          )
-        )}
+        {sortedImages.map((image, index) => (
+          <div
+            key={image.id}
+            className={`${s.thumbnail} ${currentImageIndex === index ? s.active : ''}`}
+            onClick={() => setCurrentImageIndex(index)}
+          >
+            <Image
+              src={image.imageUrl}
+              alt={`${product.name || 'Product'} thumbnail ${index + 1}`}
+              width={100}
+              height={100}
+              layout="responsive"
+              className={s.image}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

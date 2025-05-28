@@ -9,8 +9,7 @@ import LanguagePicker from '@/UI/LanguagePicker';
 import { Link } from '@/navigation';
 import { useTranslations } from 'next-intl';
 
-export type FooterProps = {
-};
+export type FooterProps = {};
 
 export default function Footer(props: FooterProps) {
   const t = useTranslations('Footer');

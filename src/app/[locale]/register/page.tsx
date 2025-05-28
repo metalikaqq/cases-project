@@ -103,8 +103,12 @@ const RegisterForm = () => {
               />
             </div>
           </div>
-          {error && <p className={s.errorMessage}>{error}</p>} {/* Display error message */}
-          {success && <p className={s.successMessage}>Registration successful!</p>} {/* Display success message */}
+          {error && <p className={s.errorMessage}>{error}</p>}{' '}
+          {/* Display error message */}
+          {success && (
+            <p className={s.successMessage}>Registration successful!</p>
+          )}{' '}
+          {/* Display success message */}
           <div className={s.flexContainer}>
             <div className={s.flexStart}>
               <input

@@ -3,9 +3,14 @@ import UserCredentialsModel from '@/models/UserCredentialsModel';
 import UserDataModel from '@/models/UserDataModel';
 import axiosClient from '../axiosClient';
 
-export const signUp = async (userData: UserCredentialsModel): Promise<AxiosResponse<UserDataModel>> => {
+export const signUp = async (
+  userData: UserCredentialsModel
+): Promise<AxiosResponse<UserDataModel>> => {
   try {
-    const response = await axiosClient.post('/auth/register', userData);
+    const response = await axiosClient.post(
+      'http://localhost:3000/auth/register',
+      userData
+    );
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -19,7 +24,10 @@ export const signUp = async (userData: UserCredentialsModel): Promise<AxiosRespo
 
 export const signIn = async (credentials: UserCredentialsModel) => {
   try {
-    const response = await axiosClient.post('/auth/login', credentials);
+    const response = await axiosClient.post(
+      'http://localhost:3000/auth/login',
+      credentials
+    );
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

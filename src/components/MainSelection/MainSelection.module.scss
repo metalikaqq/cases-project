@@ -7,26 +7,62 @@ $mobile: 450px;
 
 .selection_cases {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Default for tablets */
+  grid-template-columns: repeat(2, 1fr);
+  /* Default for tablets */
   grid-gap: 17px;
-  width: calc(100% - 40px); /* Ensure 20px padding on each side */
-  margin: 0 auto; /* Center the grid */
+  width: calc(100% - 40px);
+  /* Ensure 20px padding on each side */
+  margin: 0 auto;
+  /* Center the grid */
   padding: 20px;
-  justify-content: center; /* Center items in grid */
+  justify-content: center;
+  /* Center items in grid */
 
   @media (min-width: $desktop) {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 22px;
-    width: calc(80% - 40px); /* Reduce width to make items more centered */
+    width: calc(80% - 40px);
+    /* Reduce width to make items more centered */
   }
 
   @media (max-width: $tablet) and (min-width: $mobile) {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablet */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns for tablet */
     grid-gap: 15px;
   }
 
   @media (max-width: $mobile) {
-    grid-template-columns: 1fr; /* 1 column for mobile */
+    grid-template-columns: 1fr;
+    /* 1 column for mobile */
     grid-gap: 10px;
   }
+}
+
+.loading_message,
+.error_message,
+.no_products_message {
+  grid-column: 1 / -1; // Span all columns
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.loading_message {
+  color: $primary-color;
+  background-color: rgba($primary-color, 0.1);
+  border: 1px solid rgba($primary-color, 0.2);
+}
+
+.error_message {
+  color: #dc3545;
+  background-color: rgba(#dc3545, 0.1);
+  border: 1px solid rgba(#dc3545, 0.2);
+}
+
+.no_products_message {
+  color: #6c757d;
+  background-color: rgba(#6c757d, 0.1);
+  border: 1px solid rgba(#6c757d, 0.2);
 }

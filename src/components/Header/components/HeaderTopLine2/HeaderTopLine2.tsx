@@ -8,8 +8,7 @@ import { useTranslations } from 'next-intl';
 import LanguagePicker from '@/UI/LanguagePicker';
 import { Link } from '@/navigation';
 
-export type HeaderTopLine2Props = {
-};
+export type HeaderTopLine2Props = {};
 
 export default function HeaderTopLine2(props: HeaderTopLine2Props) {
   const t = useTranslations('HeaderTopLine2');
@@ -22,8 +21,8 @@ export default function HeaderTopLine2(props: HeaderTopLine2Props) {
             {t('Contacts')}
           </Link>
 
-          <Link className={s.tl2__text_links__link} href={"/about-us"}>
-            {t("AboutUs")}
+          <Link className={s.tl2__text_links__link} href={'/about-us'}>
+            {t('AboutUs')}
           </Link>
         </div>
 

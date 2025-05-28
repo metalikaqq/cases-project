@@ -18,3 +18,16 @@ export interface RoadCase {
   ContactUsButton: string;
   images: any;
 }
+
+export interface ProductType {
+  id: string;
+  name: string;
+  description?: string;
+  imageUrl?: string;
+  linkHref?: string;
+  productNames?: {
+    uk?: string[];
+    en?: string[];
+    [key: string]: string[] | undefined;
+  };
+}

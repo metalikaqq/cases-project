@@ -24,10 +24,10 @@ export default function PreviewSection({
   textPosition,
   titleText,
   description,
-  more = "",
+  more = '',
   onButtonClick,
   imgSrc,
-  blockQuote = "",
+  blockQuote = '',
   imgScale = 1,
 }: PreviewSectionProps) {
   const t = useTranslations('PreviewSection');
@@ -40,13 +40,15 @@ export default function PreviewSection({
   return (
     <section className={s.preview_section}>
       <div className={classNames(s.preview_section__main_text, textSideClass)}>
-      {blockQuote && <h2 className={s.preview_section__section_quote}>{blockQuote}</h2>}
+        {blockQuote && (
+          <h2 className={s.preview_section__section_quote}>{blockQuote}</h2>
+        )}
 
         <h1 className={s.preview_section__title}>{titleText}</h1>
 
         <p className={s.preview_section__subtitle}>{description}</p>
 
-        {more !== "" && (
+        {more !== '' && (
           <button
             className={s.preview_section__button}
             onClick={onButtonClick}
@@ -57,11 +59,11 @@ export default function PreviewSection({
         )}
       </div>
 
-        <AnimationPreview
-          imgSrc={imgSrc}
-          textPosition={textPosition}
-          imgScale={imgScale}
-        />
+      <AnimationPreview
+        imgSrc={imgSrc}
+        textPosition={textPosition}
+        imgScale={imgScale}
+      />
     </section>
   );
 }

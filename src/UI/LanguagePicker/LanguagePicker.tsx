@@ -9,7 +9,11 @@ import arrowDown from '@/assets/svg/arrow-down-black.svg';
 import { usePathname, useRouter } from 'next/navigation'; // Corrected import
 import { useLocale } from 'next-intl';
 
-export default function LanguagePicker({ direction = 'down' }: { direction?: 'up' | 'down' }) {
+export default function LanguagePicker({
+  direction = 'down',
+}: {
+  direction?: 'up' | 'down';
+}) {
   const router = useRouter();
   const pathname = usePathname(); // Get the current pathname
   const localeActive = useLocale(); // Get the active locale

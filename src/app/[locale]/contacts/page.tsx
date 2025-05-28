@@ -35,11 +35,7 @@ function Page() {
             </Link>
           </div>
           <Link href="https://maps.app.goo.gl/rG9XkgoGKKvBizWi7">
-            <Image
-              className={s.google_map}
-              src={mapImage}
-              alt="mapImage"
-            />
+            <Image className={s.google_map} src={mapImage} alt="mapImage" />
           </Link>
         </div>
       </div>

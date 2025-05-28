@@ -47,10 +47,8 @@ export default async function RootLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <div className={s.app}>
-          <Header />
-            <div className={s.page__wrapper}>
-              {children}
-            </div>
+            <Header />
+            <div className={s.page__wrapper}>{children}</div>
             <Footer />
           </div>
         </NextIntlClientProvider>

@@ -13,21 +13,21 @@ export default function HeaderMain(props: HeaderMainProps) {
   return (
     <div className={s.wrapper}>
       <div className={s.header_main}>
-          <Link href={'/'} className={s.header_main__banner}>
-            <Image
-              className={s.header_main__banner__image}
-              src={bannerLogo}
-              alt="site-logo"
-            />
-          </Link>
+        <Link href={'/'} className={s.header_main__banner}>
+          <Image
+            className={s.header_main__banner__image}
+            src={bannerLogo}
+            alt="site-logo"
+          />
+        </Link>
 
-          <Link href={'/login'} className={s.header_main__user}>
-            <Image
-              className={s.header_main__user_icon}
-              src={userIcon}
-              alt="login-ico"
-            />
-          </Link>
+        <Link href={'/login'} className={s.header_main__user}>
+          <Image
+            className={s.header_main__user_icon}
+            src={userIcon}
+            alt="login-ico"
+          />
+        </Link>
       </div>
     </div>
   );

@@ -33,7 +33,6 @@ export default function Page() {
       </div>
 
       <div className={s.about_us}>
-
         <div className={s.about_us__sections}>
           <PreviewSection
             titleText={t('1Title')}
@@ -41,7 +40,6 @@ export default function Page() {
             textPosition={TextPosition.Left}
             imgSrc={caseLoadingImg}
             blockQuote={t('1BlockQuote')}
-
           />
 
           <PreviewSection
@@ -50,7 +48,6 @@ export default function Page() {
             textPosition={TextPosition.Right}
             imgSrc={caseLockImg}
             blockQuote={t('2BlockQuote')}
-
           />
 
           <PreviewSection
@@ -58,7 +55,6 @@ export default function Page() {
             description={t('1Description')}
             textPosition={TextPosition.Left}
             imgSrc={openCaseImg}
-
           />
 
           <PreviewSection
@@ -66,19 +62,14 @@ export default function Page() {
             description={t('1Description')}
             textPosition={TextPosition.Left}
             imgSrc={casesStackImg}
-
           />
         </div>
 
         <div className={s.about_us__team}>
           <div className={s.about_us__team__head}>
-            <h1 className={s.about_us__team__title}>
-              {`${t('OurTeam')}:`}
-            </h1>
+            <h1 className={s.about_us__team__title}>{`${t('OurTeam')}:`}</h1>
 
-            <h2 className={s.about_us__team__subtitle}>
-              {t('WeGet')}
-            </h2>
+            <h2 className={s.about_us__team__subtitle}>{t('WeGet')}</h2>
           </div>
 
           <div className={s.about_us__team__members}>

@@ -52,7 +52,10 @@
   },
   "MainSelection": {
     "Cases": "Cases",
-    "A/C": "A/C"
+    "A/C": "A/C",
+    "Loading": "Loading product types...",
+    "Error": "Error loading product types",
+    "NoProducts": "No product types available"
   },
   "ProductPage": {
     "ProductTitle1": "24 X 30 WORKSTATION",

@@ -14,27 +14,19 @@ export type PresentationalBannerProps = {
 
 export default function PresentationalBanner({
   imgSrc,
-  pageName = "",
+  pageName = '',
   title,
   subtitle,
   topIndent = 50,
   subtitleAsButton = false,
 }: PresentationalBannerProps) {
-
   return (
     <div className={s.banner}>
       <div className={s.banner__image_wrapper}>
-        <Image
-          src={imgSrc}
-          alt={'bannerImage'}
-          className={s.banner__image}
-        />
+        <Image src={imgSrc} alt={'bannerImage'} className={s.banner__image} />
       </div>
 
-      <div
-        className={s.banner__text}
-        style={{ top: `${topIndent}%` }}
-      >
+      <div className={s.banner__text} style={{ top: `${topIndent}%` }}>
         {pageName && <h2 className={s.banner__text__page_name}>{pageName}</h2>}
         {title && <h1 className={s.banner__text__title}>{title}</h1>}
         {subtitle && subtitleAsButton ? (
@@ -48,4 +40,3 @@ export default function PresentationalBanner({
     </div>
   );
 }
-

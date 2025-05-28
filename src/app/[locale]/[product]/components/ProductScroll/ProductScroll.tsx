@@ -1,93 +1,74 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import s from './ProductScroll.module.scss';
-import useRoadCasesInfo from '@/api/roadCasesInfo';
-import { slugify } from '@/utils/slugify';
 import Modal from '@/UI/Modal';
 import EmailForm from '@/components/EmailForm';
 
-export type ProductScrollProps = {};
+interface Product {
+  locale?: string;
+  htmlContent?: { [key: string]: string };
+  productNames?: { [key: string]: string[] };
+  name?: string;
+}
 
-export default function ProductScroll(params: any) {
-  const roadCasesInfo = useRoadCasesInfo();
-
-  const caseKey = Object.keys(roadCasesInfo).find(
-    (key) => slugify(roadCasesInfo[key].title) === params.product
-  );
-
-  const productInfo = caseKey ? roadCasesInfo[caseKey] : null;
-
+export default function ProductScroll({ product }: { product: Product }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  if (!productInfo) {
+  // Додаємо useEffect для кращого відстеження props
+  useEffect(() => {
+    console.log('ProductScroll received product:', product);
+    console.log('ProductScroll product locale:', product?.locale);
+    console.log('ProductScroll available HTML content locales:',
+      product?.htmlContent ? Object.keys(product.htmlContent) : 'none');
+  }, [product]);
+
+  if (!product) {
     return <div>Product not found</div>;
   }
 
+  // Map locale from route to product data format
+  // If locale is 'ua' in route, we need to use 'uk' in product data
+  const routeLocale = product.locale || 'en';
+  const dataLocale = routeLocale === 'ua' ? 'uk' : routeLocale;
+
+  // Get the correct locale version of content with fallback to English
+  const localizedContent = product.htmlContent?.[dataLocale] || product.htmlContent?.en || '';
+
+  // Get product name based on locale with fallback
+  const productNames = product.productNames || {};
+  const productName = (productNames[dataLocale] && productNames[dataLocale][0]) ||
+    (productNames.en && productNames.en[0]) ||
+    product.name ||
+    'Default Product Name';
+
+  console.log('ProductScroll - Using locale:', routeLocale, 'mapped to:', dataLocale);
+  console.log('ProductScroll - Content:', localizedContent ? 'available' : 'missing');
+  console.log('ProductScroll - Selected content language:', dataLocale);
+
+  // Determine if we're showing Ukrainian content
+  const isUkrainian = dataLocale === 'uk';
+
   return (
     <div className={s.productScroll}>
+      {/* Додано маркер для візуальної перевірки
+      <div style={{ padding: '5px', background: '#f0f0f0', color: 'black', fontSize: '12px' }}>
+        Current locale: {routeLocale} → Data locale: {dataLocale}
+      </div> */}
+
       <div className={s.productContent}>
         <div />
 
-        <div className={s.productTitle}>{productInfo.title}</div>
+        <div className={s.productTitle}>{productName}</div>
 
         <div className={s.divider} />
 
-        <div className={s.productDescription}>
-          <p className={s.productParagraph}>
-            {productInfo.ProductDescription1}
-          </p>
-
-          <p className={s.productParagraph}>
-            {productInfo.ProductDescription2}
-          </p>
-
-          <p className={s.productParagraph}>
-            {productInfo.ProductDescription3}
-          </p>
-
-          <ul className={s.productList}>
-            <li className={s.productListItem}>
-              {productInfo.ProductListItem1}
-            </li>
-            <li className={s.productListItem}>
-              {productInfo.ProductListItem2}
-            </li>
-          </ul>
-
-          <p className={s.productParagraph}>
-            {productInfo.ProductDescription4}
-          </p>
-
-          <ul className={s.productList}>
-            <li className={s.productListItem}>
-              <strong>{productInfo.ProductListItem3}</strong>
-              <ul className={s.nestedList}>
-                <li className={s.nestedListItem}>
-                  <span>{productInfo.NestedListItem1}</span>
-                </li>
-              </ul>
-            </li>
-            <li className={s.productListItem}>
-              <strong>{productInfo.ProductListItem4}</strong>
-              <ul className={s.nestedList}>
-                <li className={s.nestedListItem}>
-                  {productInfo.NestedListItem2}
-                </li>
-              </ul>
-            </li>
-            <li className={s.productListItem}>
-              <strong>{productInfo.ProductListItem5}</strong>
-              <ul className={s.nestedList}>
-                <li className={s.nestedListItem}>
-                  {productInfo.NestedListItem3}
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+        <div
+          className={s.productDescription}
+          dangerouslySetInnerHTML={{ __html: localizedContent }}
+        />
       </div>
 
       <div className={s.productButtons}>
@@ -95,25 +76,29 @@ export default function ProductScroll(params: any) {
           href="https://cdn.shopify.com/s/files/1/0664/4275/6332/files/24X30CASEV5.00A4_1.pdf?v=1664743615"
           className={s.link}
         >
-          {productInfo.DownloadLinkText}
+          {isUkrainian ? 'Завантажити PDF' : 'Download PDF'}
         </a>
 
         <button onClick={openModal} className={s.button__blue}>
-          {productInfo.ContactUsButton}
+          {isUkrainian ? 'Зв\'язатися з нами' : 'Contact Us'}
         </button>
 
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <EmailForm selectedValue={productInfo.title} />
+          <EmailForm selectedValue={productName} />
         </Modal>
 
-        <button className={s.accordion}>Specifications</button>
-        <button className={s.accordion}>Shipping Info</button>
+        <button className={s.accordion}>
+          {isUkrainian ? 'Характеристики' : 'Specifications'}
+        </button>
+        <button className={s.accordion}>
+          {isUkrainian ? 'Інформація про доставку' : 'Shipping Info'}
+        </button>
         <div className={s.social}>
           <a href="#" className={s.share}>
-            Share
+            {isUkrainian ? 'Поширити' : 'Share'}
           </a>
           <a href="#" className={s.pin}>
-            Pin
+            {isUkrainian ? 'Закріпити' : 'Pin'}
           </a>
         </div>
       </div>

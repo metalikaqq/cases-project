@@ -11,7 +11,6 @@
   flex-direction: column;
   text-align: center;
 
-
   @include responsive(tablet) {
     padding: 0 40px;
     flex-direction: row;
@@ -153,10 +152,12 @@
       left: -100%;
       width: 150%;
       height: 200%;
-      background: linear-gradient(to right,
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 0.3),
-          rgba(255, 255, 255, 0));
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+      );
       transition: opacity 0.3s;
       @include shimmer(3s);
     }

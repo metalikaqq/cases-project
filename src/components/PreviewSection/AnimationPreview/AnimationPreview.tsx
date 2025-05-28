@@ -19,10 +19,10 @@ export default function AnimationPreview({
 }: AnimationPreviewProps) {
   const [imageRef, isImageVisible] = useIntersectionObserver();
 
-const imageSideClass =
-  textPosition === TextPosition.Left
-    ? previewSection.preview_section__image__order_left
-    : previewSection.preview_section__image__order_right;
+  const imageSideClass =
+    textPosition === TextPosition.Left
+      ? previewSection.preview_section__image__order_left
+      : previewSection.preview_section__image__order_right;
 
   return (
     <div
@@ -33,7 +33,7 @@ const imageSideClass =
         src={imgSrc}
         alt={'deliveryImage'}
         className={`${previewSection.preview_section__image__img}`}
-        style={{ transform: `scale(${imgScale})`, }}
+        style={{ transform: `scale(${imgScale})` }}
       />
     </div>
   );

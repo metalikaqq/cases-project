@@ -5,35 +5,49 @@ import s from './page.module.scss';
 import ProductImages from '../components/ProductImages/ProductImages';
 import ProductScroll from '../components/ProductScroll/ProductScroll';
 
-export default function Page({ params }: { params: { language: string, productName: string, id: string } }) {
-  console.log('Page params:', params); // This will show language, productName, and id
+export default function Page({
+  params,
+}: {
+  params: {
+    [x: string]: any; language: any; productName: string; id: string
+  };
+}) {
+  console.log('Page params:', params);
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // The ID is directly available in params
+    // Перевіряємо, чи params.locale або params.language доступні
+    // Ваші логи показують, що ви використовуєте params.locale
     const productId = params.id;
-    console.log('Product ID:', productId);
+    const locale = params.locale || params.language || 'en';
+
+    console.log('Product ID:', productId, 'Locale from params:', locale);
 
     if (productId) {
       fetch(`http://localhost:3000/products/${productId}`)
-        .then(response => {
+        .then((response) => {
           if (!response.ok) throw new Error('Failed to fetch product');
           return response.json();
         })
-        .then(data => {
-          setProduct(data);
-          console.log('Fetched product:', data);
+        .then((data) => {
+          // Add locale information to the product data
+          const productWithLocale = {
+            ...data,
+            locale: locale // Використовуємо locale з params
+          };
+          setProduct(productWithLocale);
+          console.log('Fetched product with locale:', productWithLocale);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Error fetching product:', error);
         })
         .finally(() => {
           setLoading(false);
         });
     }
-  }, [params.id]);
+  }, [params]); // Залежність від всього params об'єкта
 
   if (loading) return <div>Loading product...</div>;
   if (!product) return <div>Product not found</div>;

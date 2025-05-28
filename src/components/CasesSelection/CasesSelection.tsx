@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
 import { slugify } from '@/utils/slugify';
@@ -73,7 +73,9 @@ export default function CasesSelection() {
         // Get the product name in the current language
         const productName = product.productNames[language]?.[0] || product.name;
         // Get the main image (or the first image if no main image is found)
-        const mainImage = product.images.find(img => img.isMain)?.imageUrl || product.images[0]?.imageUrl;
+        const mainImage =
+          product.images.find((img) => img.isMain)?.imageUrl ||
+          product.images[0]?.imageUrl;
 
         return (
           <MainSelectionItem

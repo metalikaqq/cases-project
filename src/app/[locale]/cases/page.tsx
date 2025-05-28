@@ -26,7 +26,10 @@ function Page() {
       </div>
 
       <div className={s.cases_page}>
-        <MainPageTitle titleText={t('1SectionTitle')} subTitleText={t('1SectionDescription')} />
+        <MainPageTitle
+          titleText={t('1SectionTitle')}
+          subTitleText={t('1SectionDescription')}
+        />
 
         <div className={s.cases_page__sections}>
           <PreviewSection

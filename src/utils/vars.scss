@@ -1,24 +1,16 @@
 $default-black-font: rgb(17, 17, 17);
 $white: white;
 $black: black;
-$blue-button-color: rgb(
-  47,
-  111,
-  190
-);
-$hover-color: lighten(
-  $blue-button-color,
-  20%
-); // Adjust the percentage as needed
-$hover-background-color: darken(
-  $blue-button-color,
-  10%
-); // Adjust the percentage as needed
+$blue-button-color: rgb(47, 111, 190);
+$hover-color: lighten($blue-button-color,
+    20%); // Adjust the percentage as needed
+$hover-background-color: darken($blue-button-color,
+    10%); // Adjust the percentage as needed
 
 $gray-border-color: rgba(0, 0, 0, 0.12);
 $opacity: 0.12;
 $header-inner-margin: 40px;
-$gray-light: rgba(0, 0, 0, 0.1); 
+$gray-light: rgba(0, 0, 0, 0.1);
 $gray-dark: rgba(0, 0, 0, 0.3);
 $header-height: 240px;
 
@@ -28,5 +20,4 @@ $section-gap-mobile: 40px;
 
 $block-gap-mobile: 40px;
 $block-gap-desktop: 70px;
-
-
+$primary-color: #2f6fbe;
