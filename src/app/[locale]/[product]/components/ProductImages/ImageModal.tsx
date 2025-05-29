@@ -13,7 +13,12 @@ interface ImageModalProps {
   alt: string;
 }
 
-export default function ImageModal({ isOpen, onClose, imageUrl, alt }: ImageModalProps) {
+export default function ImageModal({
+  isOpen,
+  onClose,
+  imageUrl,
+  alt,
+}: ImageModalProps) {
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -64,7 +69,7 @@ export default function ImageModal({ isOpen, onClose, imageUrl, alt }: ImageModa
     e.preventDefault();
     setPosition({
       x: e.clientX - dragStart.x,
-      y: e.clientY - dragStart.y
+      y: e.clientY - dragStart.y,
     });
   };
 
@@ -114,7 +119,7 @@ export default function ImageModal({ isOpen, onClose, imageUrl, alt }: ImageModa
             className={s.zoomButton}
             onClick={(e) => {
               e.stopPropagation();
-              setScale(prev => Math.min(prev + 0.2, 4));
+              setScale((prev) => Math.min(prev + 0.2, 4));
             }}
             aria-label="Zoom in"
           >
@@ -124,7 +129,7 @@ export default function ImageModal({ isOpen, onClose, imageUrl, alt }: ImageModa
             className={s.zoomButton}
             onClick={(e) => {
               e.stopPropagation();
-              setScale(prev => Math.max(prev - 0.2, 0.5));
+              setScale((prev) => Math.max(prev - 0.2, 0.5));
             }}
             aria-label="Zoom out"
           >
@@ -154,9 +159,7 @@ export default function ImageModal({ isOpen, onClose, imageUrl, alt }: ImageModa
         </div>
 
         <div className={s.imageContainer}>
-          {imageLoading && (
-            <div className={s.loadingIndicator}>Loading...</div>
-          )}
+          {imageLoading && <div className={s.loadingIndicator}>Loading...</div>}
 
           {imageError ? (
             <div className={s.errorMessage}>
@@ -167,13 +170,13 @@ export default function ImageModal({ isOpen, onClose, imageUrl, alt }: ImageModa
               className={s.zoomableContainer}
               style={{
                 transform: `scale(${scale})`,
-                cursor: isDragging ? 'grabbing' : 'grab'
+                cursor: isDragging ? 'grabbing' : 'grab',
               }}
             >
               <div
                 className={s.panContainer}
                 style={{
-                  transform: `translate(${position.x}px, ${position.y}px)`
+                  transform: `translate(${position.x}px, ${position.y}px)`,
                 }}
               >
                 <Image

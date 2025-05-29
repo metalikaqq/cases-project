@@ -21,8 +21,8 @@ export default function ProductImages({ product }: ProductImagesProps) {
   // Handle image loading errors
   const handleImageError = useCallback((imageUrl: string) => {
     console.warn(`Failed to load image: ${imageUrl}`);
-    setImageErrors(prev => new Set(prev).add(imageUrl));
-    setImageLoading(prev => {
+    setImageErrors((prev) => new Set(prev).add(imageUrl));
+    setImageLoading((prev) => {
       const newSet = new Set(prev);
       newSet.delete(imageUrl);
       return newSet;
@@ -31,12 +31,12 @@ export default function ProductImages({ product }: ProductImagesProps) {
 
   // Handle image load start
   const handleImageLoadStart = useCallback((imageUrl: string) => {
-    setImageLoading(prev => new Set(prev).add(imageUrl));
+    setImageLoading((prev) => new Set(prev).add(imageUrl));
   }, []);
 
   // Handle image load complete
   const handleImageLoadComplete = useCallback((imageUrl: string) => {
-    setImageLoading(prev => {
+    setImageLoading((prev) => {
       const newSet = new Set(prev);
       newSet.delete(imageUrl);
       return newSet;
@@ -44,12 +44,15 @@ export default function ProductImages({ product }: ProductImagesProps) {
   }, []);
 
   // Get image source with error handling
-  const getImageSrc = useCallback((imageUrl: string) => {
-    if (imageErrors.has(imageUrl)) {
-      return caseImage;
-    }
-    return validateImageUrl(imageUrl, caseImage);
-  }, [imageErrors]);
+  const getImageSrc = useCallback(
+    (imageUrl: string) => {
+      if (imageErrors.has(imageUrl)) {
+        return caseImage;
+      }
+      return validateImageUrl(imageUrl, caseImage);
+    },
+    [imageErrors]
+  );
 
   // Handle zoom on main image click
   const handleMainImageClick = useCallback((e: React.MouseEvent) => {
@@ -103,7 +106,9 @@ export default function ProductImages({ product }: ProductImagesProps) {
 
   const handlePrevImage = () => {
     if (sortedImages.length > 1) {
-      setCurrentImageIndex((prev) => (prev - 1 + sortedImages.length) % sortedImages.length);
+      setCurrentImageIndex(
+        (prev) => (prev - 1 + sortedImages.length) % sortedImages.length
+      );
     }
   };
 
@@ -131,9 +136,11 @@ export default function ProductImages({ product }: ProductImagesProps) {
         tabIndex={0}
         onKeyDown={handleMainImageKeyPress}
         role="button"
-        aria-label={sortedImages.length > 1
-          ? "Click to zoom. Use arrow keys to navigate images"
-          : "Click to zoom image"}
+        aria-label={
+          sortedImages.length > 1
+            ? 'Click to zoom. Use arrow keys to navigate images'
+            : 'Click to zoom image'
+        }
         onClick={handleMainImageClick}
       >
         {sortedImages[currentImageIndex] && (
@@ -148,9 +155,17 @@ export default function ProductImages({ product }: ProductImagesProps) {
               className={s.main_image__inner}
               priority
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 500px"
-              onError={() => handleImageError(sortedImages[currentImageIndex].imageUrl)}
-              onLoadStart={() => handleImageLoadStart(sortedImages[currentImageIndex].imageUrl)}
-              onLoad={() => handleImageLoadComplete(sortedImages[currentImageIndex].imageUrl)}
+              onError={() =>
+                handleImageError(sortedImages[currentImageIndex].imageUrl)
+              }
+              onLoadStart={() =>
+                handleImageLoadStart(sortedImages[currentImageIndex].imageUrl)
+              }
+              onLoad={() =>
+                handleImageLoadComplete(
+                  sortedImages[currentImageIndex].imageUrl
+                )
+              }
             />
 
             {/* Zoom indicator */}

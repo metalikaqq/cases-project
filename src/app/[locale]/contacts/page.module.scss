@@ -123,7 +123,6 @@
   cursor: pointer;
   transition: background 0.3s ease;
 
-
   &:hover {
     background: darken($blue-button-color, 10%);
   }
@@ -135,10 +134,12 @@
     left: -100%;
     width: 150%;
     height: 200%;
-    background: linear-gradient(to right,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0));
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0)
+    );
     animation: none;
     transition: opacity 0.3s;
   }

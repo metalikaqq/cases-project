@@ -7,6 +7,8 @@
   padding: 0;
   gap: 10px;
   margin-bottom: 75px;
+  max-width: 1500px;
+  margin: 0 auto;
 
   @include responsive(desktop-md) {
     flex-direction: row;

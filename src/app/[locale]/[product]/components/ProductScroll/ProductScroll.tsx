@@ -8,8 +8,9 @@ import { Product } from '@/types/product';
 import {
   getLocalizedContent,
   getLocalizedProductName,
-  isUkrainianLocale
+  isUkrainianLocale,
 } from '@/utils/productUtils';
+import { prepareHtmlContent } from '@/utils/htmlUtils';
 
 interface ProductScrollProps {
   product: Product;
@@ -43,11 +44,19 @@ export default function ProductScroll({ product }: ProductScrollProps) {
 
   // Get localized content using utility functions
   const localizedContent = getLocalizedContent(product.htmlContent, locale);
-  const productName = getLocalizedProductName(product.productNames, locale, product.name);
+  const processedContent = localizedContent ? prepareHtmlContent(localizedContent) : null;
+  const productName = getLocalizedProductName(
+    product.productNames,
+    locale,
+    product.name
+  );
   const isUkrainian = isUkrainianLocale(locale);
 
   console.log('ProductScroll - Using locale:', locale);
-  console.log('ProductScroll - Content:', localizedContent ? 'available' : 'missing');
+  console.log(
+    'ProductScroll - Content:',
+    localizedContent ? 'available' : 'missing'
+  );
   console.log('ProductScroll - Selected content language:', locale);
 
   return (
@@ -59,10 +68,12 @@ export default function ProductScroll({ product }: ProductScrollProps) {
 
         <div className={s.divider} />
 
-        {localizedContent ? (
+        {processedContent ? (
           <div
             className={s.productDescription}
-            dangerouslySetInnerHTML={{ __html: localizedContent }}
+            dangerouslySetInnerHTML={{
+              __html: processedContent
+            }}
           />
         ) : (
           <div className={s.noContent}>
@@ -81,11 +92,7 @@ export default function ProductScroll({ product }: ProductScrollProps) {
           {isUkrainian ? 'Завантажити PDF' : 'Download PDF'}
         </a>
 
-        <button
-          onClick={openModal}
-          className={s.button__blue}
-          type="button"
-        >
+        <button onClick={openModal} className={s.button__blue} type="button">
           {isUkrainian ? "Зв'язатися з нами" : 'Contact Us'}
         </button>
 
@@ -93,32 +100,18 @@ export default function ProductScroll({ product }: ProductScrollProps) {
           <EmailForm selectedValue={productName} />
         </Modal>
 
-        <button
-          className={s.accordion}
-          type="button"
-        >
+        <button className={s.accordion} type="button">
           {isUkrainian ? 'Характеристики' : 'Specifications'}
         </button>
-        <button
-          className={s.accordion}
-          type="button"
-        >
+        <button className={s.accordion} type="button">
           {isUkrainian ? 'Інформація про доставку' : 'Shipping Info'}
         </button>
 
         <div className={s.social}>
-          <a
-            href="#"
-            className={s.share}
-            onClick={(e) => e.preventDefault()}
-          >
+          <a href="#" className={s.share} onClick={(e) => e.preventDefault()}>
             {isUkrainian ? 'Поширити' : 'Share'}
           </a>
-          <a
-            href="#"
-            className={s.pin}
-            onClick={(e) => e.preventDefault()}
-          >
+          <a href="#" className={s.pin} onClick={(e) => e.preventDefault()}>
             {isUkrainian ? 'Закріпити' : 'Pin'}
           </a>
         </div>

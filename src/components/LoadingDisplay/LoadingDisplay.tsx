@@ -16,7 +16,7 @@ export type { LoadingDisplayProps };
 export const LoadingDisplay: React.FC<LoadingDisplayProps> = ({
   message = 'Loading...',
   className = '',
-  size = 'medium'
+  size = 'medium',
 }) => {
   return (
     <div className={`${styles.loadingContainer} ${styles[size]} ${className}`}>

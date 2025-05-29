@@ -19,12 +19,19 @@ export default function Page({ params }: PageProps) {
   const locale = params.locale || params.language || 'en';
 
   console.log('Page params:', params);
-  console.log('Product ID:', productId, 'Product slug:', productSlug, 'Locale from params:', locale);
+  console.log(
+    'Product ID:',
+    productId,
+    'Product slug:',
+    productSlug,
+    'Locale from params:',
+    locale
+  );
 
   // Use custom hook for product fetching
   const { product, loading, error, refetch } = useProduct({
     productId,
-    locale
+    locale,
   });
 
   // Debug logging
@@ -45,10 +52,7 @@ export default function Page({ params }: PageProps) {
   if (error) {
     return (
       <div className={s.product}>
-        <ErrorDisplay
-          error={error}
-          onRetry={refetch}
-        />
+        <ErrorDisplay error={error} onRetry={refetch} />
       </div>
     );
   }
@@ -56,10 +60,7 @@ export default function Page({ params }: PageProps) {
   if (!product) {
     return (
       <div className={s.product}>
-        <ErrorDisplay
-          error="Product not found"
-          onRetry={refetch}
-        />
+        <ErrorDisplay error="Product not found" onRetry={refetch} />
       </div>
     );
   }

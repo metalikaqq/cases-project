@@ -6,7 +6,11 @@ import MainSelectionItem from '../MainSelection/components/MainSelectionItem';
 import { LoadingDisplay } from '@/components/LoadingDisplay/LoadingDisplay';
 import { ErrorDisplay } from '@/components/ErrorDisplay/ErrorDisplay';
 import { useProducts } from '@/hooks/useProduct';
-import { getMainProductImage, getLocalizedProductName, buildProductUrl } from '@/utils/productUtils';
+import {
+  getMainProductImage,
+  getLocalizedProductName,
+  buildProductUrl,
+} from '@/utils/productUtils';
 import caseImage from '@/assets/image/thumbnail1.webp'; // Fallback image
 
 export default function CasesSelection() {
@@ -14,7 +18,7 @@ export default function CasesSelection() {
 
   // Use custom hook for fetching products filtered by "Cases" type
   const { products, loading, error, refetch } = useProducts({
-    productType: 'Cases'
+    productType: 'Cases',
   });
 
   useEffect(() => {
@@ -37,10 +41,7 @@ export default function CasesSelection() {
   if (error) {
     return (
       <div className={s.selection_cases}>
-        <ErrorDisplay
-          error={error}
-          onRetry={refetch}
-        />
+        <ErrorDisplay error={error} onRetry={refetch} />
       </div>
     );
   }
@@ -52,7 +53,11 @@ export default function CasesSelection() {
       {products.length > 0 ? (
         products.map((product) => {
           // Get the product name in the current language using utility function
-          const productName = getLocalizedProductName(product.productNames, language, product.name);
+          const productName = getLocalizedProductName(
+            product.productNames,
+            language,
+            product.name
+          );
 
           // Get main image with validation and fallback
           const validImageSrc = getMainProductImage(product.images, caseImage);

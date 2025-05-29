@@ -17,7 +17,7 @@ export type { ErrorDisplayProps };
 export const ErrorDisplay: React.FC<ErrorDisplayProps> = ({
   error,
   onRetry,
-  className
+  className,
 }) => {
   const getErrorMessage = (): string => {
     if (typeof error === 'string') return error;
@@ -42,10 +42,7 @@ export const ErrorDisplay: React.FC<ErrorDisplayProps> = ({
           <p className={styles.errorCode}>Error Code: {getErrorCode()}</p>
         )}
         {onRetry && (
-          <button
-            className={styles.retryButton}
-            onClick={onRetry}
-          >
+          <button className={styles.retryButton} onClick={onRetry}>
             Try Again
           </button>
         )}
