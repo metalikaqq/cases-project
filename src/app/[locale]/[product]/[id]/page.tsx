@@ -1,56 +1,68 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import s from './page.module.scss';
 import ProductImages from '../components/ProductImages/ProductImages';
 import ProductScroll from '../components/ProductScroll/ProductScroll';
+import { LoadingDisplay } from '@/components/LoadingDisplay/LoadingDisplay';
+import { ErrorDisplay } from '@/components/ErrorDisplay/ErrorDisplay';
+import { useProduct } from '@/hooks/useProduct';
+import { ProductPageParams } from '@/types/product';
 
-export default function Page({
-  params,
-}: {
-  params: {
-    [x: string]: any; language: any; productName: string; id: string
-  };
-}) {
+interface PageProps {
+  params: ProductPageParams;
+}
+
+export default function Page({ params }: PageProps) {
+  const productId = params.id;
+  const productSlug = params.product; // The dynamic [product] segment
+  const locale = params.locale || params.language || 'en';
+
   console.log('Page params:', params);
+  console.log('Product ID:', productId, 'Product slug:', productSlug, 'Locale from params:', locale);
 
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // Use custom hook for product fetching
+  const { product, loading, error, refetch } = useProduct({
+    productId,
+    locale
+  });
 
+  // Debug logging
   useEffect(() => {
-    // Перевіряємо, чи params.locale або params.language доступні
-    // Ваші логи показують, що ви використовуєте params.locale
-    const productId = params.id;
-    const locale = params.locale || params.language || 'en';
-
-    console.log('Product ID:', productId, 'Locale from params:', locale);
-
-    if (productId) {
-      fetch(`http://localhost:3000/products/${productId}`)
-        .then((response) => {
-          if (!response.ok) throw new Error('Failed to fetch product');
-          return response.json();
-        })
-        .then((data) => {
-          // Add locale information to the product data
-          const productWithLocale = {
-            ...data,
-            locale: locale // Використовуємо locale з params
-          };
-          setProduct(productWithLocale);
-          console.log('Fetched product with locale:', productWithLocale);
-        })
-        .catch((error) => {
-          console.error('Error fetching product:', error);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+    if (product) {
+      console.log('Fetched product with locale:', product);
     }
-  }, [params]); // Залежність від всього params об'єкта
+  }, [product]);
 
-  if (loading) return <div>Loading product...</div>;
-  if (!product) return <div>Product not found</div>;
+  if (loading) {
+    return (
+      <div className={s.product}>
+        <LoadingDisplay message="Loading product..." />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={s.product}>
+        <ErrorDisplay
+          error={error}
+          onRetry={refetch}
+        />
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div className={s.product}>
+        <ErrorDisplay
+          error="Product not found"
+          onRetry={refetch}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={s.product}>

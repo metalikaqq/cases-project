@@ -1,4 +1,3 @@
-
 import { useTranslations } from 'next-intl';
 import s from './MainSelection.module.scss';
 import MainSelectionItem from './components/MainSelectionItem';
@@ -26,7 +25,6 @@ export default function MainSelection() {
 
   return (
     <div className={s.selection_cases}>
-
       <MainSelectionItem
         linkHref="/cases"
         imageSrc={caseImage}

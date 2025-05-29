@@ -4,60 +4,54 @@ import { useState, useEffect } from 'react';
 import s from './ProductScroll.module.scss';
 import Modal from '@/UI/Modal';
 import EmailForm from '@/components/EmailForm';
+import { Product } from '@/types/product';
+import {
+  getLocalizedContent,
+  getLocalizedProductName,
+  isUkrainianLocale
+} from '@/utils/productUtils';
 
-interface Product {
-  locale?: string;
-  htmlContent?: { [key: string]: string };
-  productNames?: { [key: string]: string[] };
-  name?: string;
+interface ProductScrollProps {
+  product: Product;
 }
 
-export default function ProductScroll({ product }: { product: Product }) {
+export default function ProductScroll({ product }: ProductScrollProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  // Додаємо useEffect для кращого відстеження props
+  // Log product data for debugging
   useEffect(() => {
     console.log('ProductScroll received product:', product);
     console.log('ProductScroll product locale:', product?.locale);
-    console.log('ProductScroll available HTML content locales:',
-      product?.htmlContent ? Object.keys(product.htmlContent) : 'none');
+    console.log(
+      'ProductScroll available HTML content locales:',
+      product?.htmlContent ? Object.keys(product.htmlContent) : 'none'
+    );
   }, [product]);
 
   if (!product) {
-    return <div>Product not found</div>;
+    return (
+      <div className={s.productScroll}>
+        <div className={s.error}>Product not found</div>
+      </div>
+    );
   }
 
-  // Map locale from route to product data format
-  // If locale is 'ua' in route, we need to use 'uk' in product data
-  const routeLocale = product.locale || 'en';
-  const dataLocale = routeLocale === 'ua' ? 'uk' : routeLocale;
+  const locale = product.locale || 'en';
 
-  // Get the correct locale version of content with fallback to English
-  const localizedContent = product.htmlContent?.[dataLocale] || product.htmlContent?.en || '';
+  // Get localized content using utility functions
+  const localizedContent = getLocalizedContent(product.htmlContent, locale);
+  const productName = getLocalizedProductName(product.productNames, locale, product.name);
+  const isUkrainian = isUkrainianLocale(locale);
 
-  // Get product name based on locale with fallback
-  const productNames = product.productNames || {};
-  const productName = (productNames[dataLocale] && productNames[dataLocale][0]) ||
-    (productNames.en && productNames.en[0]) ||
-    product.name ||
-    'Default Product Name';
-
-  console.log('ProductScroll - Using locale:', routeLocale, 'mapped to:', dataLocale);
+  console.log('ProductScroll - Using locale:', locale);
   console.log('ProductScroll - Content:', localizedContent ? 'available' : 'missing');
-  console.log('ProductScroll - Selected content language:', dataLocale);
-
-  // Determine if we're showing Ukrainian content
-  const isUkrainian = dataLocale === 'uk';
+  console.log('ProductScroll - Selected content language:', locale);
 
   return (
     <div className={s.productScroll}>
-      {/* Додано маркер для візуальної перевірки
-      <div style={{ padding: '5px', background: '#f0f0f0', color: 'black', fontSize: '12px' }}>
-        Current locale: {routeLocale} → Data locale: {dataLocale}
-      </div> */}
-
       <div className={s.productContent}>
         <div />
 
@@ -65,39 +59,66 @@ export default function ProductScroll({ product }: { product: Product }) {
 
         <div className={s.divider} />
 
-        <div
-          className={s.productDescription}
-          dangerouslySetInnerHTML={{ __html: localizedContent }}
-        />
+        {localizedContent ? (
+          <div
+            className={s.productDescription}
+            dangerouslySetInnerHTML={{ __html: localizedContent }}
+          />
+        ) : (
+          <div className={s.noContent}>
+            {isUkrainian ? 'Контент недоступний' : 'Content not available'}
+          </div>
+        )}
       </div>
 
       <div className={s.productButtons}>
         <a
           href="https://cdn.shopify.com/s/files/1/0664/4275/6332/files/24X30CASEV5.00A4_1.pdf?v=1664743615"
           className={s.link}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {isUkrainian ? 'Завантажити PDF' : 'Download PDF'}
         </a>
 
-        <button onClick={openModal} className={s.button__blue}>
-          {isUkrainian ? 'Зв\'язатися з нами' : 'Contact Us'}
+        <button
+          onClick={openModal}
+          className={s.button__blue}
+          type="button"
+        >
+          {isUkrainian ? "Зв'язатися з нами" : 'Contact Us'}
         </button>
 
         <Modal isOpen={isModalOpen} onClose={closeModal}>
           <EmailForm selectedValue={productName} />
         </Modal>
 
-        <button className={s.accordion}>
+        <button
+          className={s.accordion}
+          type="button"
+        >
           {isUkrainian ? 'Характеристики' : 'Specifications'}
         </button>
-        <button className={s.accordion}>
+        <button
+          className={s.accordion}
+          type="button"
+        >
           {isUkrainian ? 'Інформація про доставку' : 'Shipping Info'}
         </button>
+
         <div className={s.social}>
-          <a href="#" className={s.share}>
+          <a
+            href="#"
+            className={s.share}
+            onClick={(e) => e.preventDefault()}
+          >
             {isUkrainian ? 'Поширити' : 'Share'}
           </a>
-          <a href="#" className={s.pin}>
+          <a
+            href="#"
+            className={s.pin}
+            onClick={(e) => e.preventDefault()}
+          >
             {isUkrainian ? 'Закріпити' : 'Pin'}
           </a>
         </div>

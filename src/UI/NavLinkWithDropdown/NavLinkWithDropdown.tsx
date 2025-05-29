@@ -2,8 +2,8 @@
 
 import s from './NavLinkWithDropdown.module.scss';
 import { useState } from 'react';
-import { slugify } from '@/utils/slugify';
 import { Link } from '@/navigation';
+import { slugify } from '@/utils/slugify';
 
 export type NavLinkWithDropdownProps = {
   linkName: string;
@@ -33,20 +33,22 @@ export default function NavLinkWithDropdown({
       >
         <p className={s.nav__link__text}>{linkName}</p>
       </Link>
-      <ul className={`${s.dropdown} ${isHovered ? s.visible : ''}`}>
-        {items.map((item, index) => {
-          const formattedTitle = slugify(item);
-          const itemName = names ? names[index] : item; // Вибираємо відповідну назву зі списку names
+      {items && (
+        <ul className={`${s.dropdown} ${isHovered ? s.visible : ''}`}>
+          {items.map((item, index) => {
+            const formattedTitle = slugify(item);
+            const itemName = names ? names[index] : item; // Вибираємо відповідну назву зі списку names
 
-          return (
-            <li key={index} className={s.dropdown__item}>
-              <Link href={`/${formattedTitle}`}>
-                <p>{itemName}</p>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+            return (
+              <li key={index} className={s.dropdown__item}>
+                <Link href={`/${formattedTitle}`}>
+                  <p>{itemName}</p>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }

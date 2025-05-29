@@ -47,6 +47,25 @@
   line-height: 1.5;
 }
 
+.error {
+  padding: 1rem;
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.noContent {
+  padding: 1rem;
+  color: #856404;
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  text-align: center;
+  font-style: italic;
+}
+
 .productParagraph {
   margin-bottom: 10px;
 }
@@ -146,12 +165,10 @@
     left: -100%;
     width: 150%;
     height: 200%;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0)
-    );
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0));
     animation: none;
     transition: opacity 0.3s;
   }
@@ -165,9 +182,11 @@
   0% {
     transform: translateX(-100%);
   }
+
   50% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(100%);
   }

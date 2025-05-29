@@ -1,39 +1,21 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { slugify } from '@/utils/slugify';
 import s from './CasesSelection.module.scss';
 import MainSelectionItem from '../MainSelection/components/MainSelectionItem';
-
-interface Image {
-  id: string;
-  imageUrl: string;
-  isMain: boolean;
-  createdAt: string;
-  updatedAt: string;
-  productId: string;
-}
-
-interface Product {
-  id: string;
-  name: string;
-  productNames: {
-    uk: string[];
-    en: string[];
-  };
-  htmlContent: {
-    uk: string;
-    en: string;
-  };
-  images: Image[];
-  createdAt: string;
-}
+import { LoadingDisplay } from '@/components/LoadingDisplay/LoadingDisplay';
+import { ErrorDisplay } from '@/components/ErrorDisplay/ErrorDisplay';
+import { useProducts } from '@/hooks/useProduct';
+import { getMainProductImage, getLocalizedProductName, buildProductUrl } from '@/utils/productUtils';
+import caseImage from '@/assets/image/thumbnail1.webp'; // Fallback image
 
 export default function CasesSelection() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [language, setLanguage] = useState<'en' | 'uk'>('en'); // Default language
+
+  // Use custom hook for fetching products filtered by "Cases" type
+  const { products, loading, error, refetch } = useProducts({
+    productType: 'Cases'
+  });
 
   useEffect(() => {
     // This code only runs on the client side
@@ -44,51 +26,57 @@ export default function CasesSelection() {
     }
   }, []);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/products');
-        if (!response.ok) {
-          throw new Error('Failed to fetch products');
-        }
-        const data = await response.json();
-        setProducts(data);
-      } catch (err) {
-        setError('Error fetching products. Please try again later.');
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  if (loading) {
+    return (
+      <div className={s.selection_cases}>
+        <LoadingDisplay message="Loading cases..." />
+      </div>
+    );
+  }
 
-    fetchProducts();
-  }, []);
+  if (error) {
+    return (
+      <div className={s.selection_cases}>
+        <ErrorDisplay
+          error={error}
+          onRetry={refetch}
+        />
+      </div>
+    );
+  }
 
-  if (loading) return <div className={s.loading}>Loading...</div>;
-  if (error) return <div className={s.error}>{error}</div>;
+  console.log('Filtered Cases products for rendering:', products);
 
   return (
     <div className={s.selection_cases}>
-      {products.map((product) => {
-        // Get the product name in the current language
-        const productName = product.productNames[language]?.[0] || product.name;
-        // Get the main image (or the first image if no main image is found)
-        const mainImage =
-          product.images.find((img) => img.isMain)?.imageUrl ||
-          product.images[0]?.imageUrl;
+      {products.length > 0 ? (
+        products.map((product) => {
+          // Get the product name in the current language using utility function
+          const productName = getLocalizedProductName(product.productNames, language, product.name);
 
-        return (
-          <MainSelectionItem
-            key={product.id}
-            linkHref={`/${slugify(productName)}/${product.id}`} // Include ID in the path
-            imageSrc={mainImage}
-            imageAlt={productName}
-            text={productName}
-            width={500}
-            height={300}
-          />
-        );
-      })}
+          // Get main image with validation and fallback
+          const validImageSrc = getMainProductImage(product.images, caseImage);
+
+          // Build product URL with proper slug (Next.js handles locale automatically)
+          const productUrl = buildProductUrl(productName, product.id);
+
+          return (
+            <MainSelectionItem
+              key={product.id}
+              linkHref={productUrl}
+              imageSrc={validImageSrc}
+              imageAlt={productName}
+              text={productName}
+              width={500}
+              height={300}
+            />
+          );
+        })
+      ) : (
+        <div className={s.no_products}>
+          No Cases products available at the moment.
+        </div>
+      )}
     </div>
   );
 }

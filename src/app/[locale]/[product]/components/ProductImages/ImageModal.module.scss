@@ -1,0 +1,208 @@
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+  animation: fadeIn 0.2s ease-out;
+  z-index: 1000;
+}
+
+.modalContent {
+  /* Високий z-index, щоб модалка була поверх усього */
+  z-index: 1050;
+  position: relative;
+  width: 95vw;
+  height: 90vh;
+  max-width: 1600px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+  animation: scaleIn 0.2s ease-out;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.zoomableContainer {
+  position: relative;
+  transition: transform 0.1s ease;
+  transform-origin: center;
+}
+
+.panContainer {
+  position: relative;
+  transition: transform 0.1s ease;
+  width: 95vw;
+  height: 90vh;
+}
+
+.zoomableImage {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.controls {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  gap: 10px;
+  z-index: 1051;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.zoomButton,
+.resetButton,
+.closeButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: white;
+    transform: scale(1.1);
+  }
+
+  &:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+  }
+
+  span {
+    display: block;
+    line-height: 1;
+  }
+}
+
+.closeButton {
+  font-size: 24px;
+  background-color: rgba(255, 70, 70, 0.85);
+  color: white;
+
+  &:hover {
+    background-color: rgba(255, 70, 70, 1);
+  }
+}
+
+.zoomLevel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 10px;
+  min-width: 60px;
+}
+
+.instructions {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  z-index: 1051;
+  user-select: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @include responsive(mobile-sm) {
+    font-size: 12px;
+    padding: 6px 12px;
+    max-width: 90vw;
+    text-align: center;
+  }
+}
+
+.loadingIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+
+  span {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
