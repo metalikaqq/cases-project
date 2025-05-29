@@ -40,7 +40,7 @@
     overflow: hidden;
 
     &:hover {
-      border-color: #000;
+      border-color: #007bff;
       transform: scale(1.05);
     }
 
@@ -50,8 +50,8 @@
     // }
 
     &.active {
-      border-color: #000;
-      box-shadow: 0 0 0 1px #000;
+      border-color: #007bff;
+      box-shadow: 0 0 0 1px #007bff;
     }
 
     .thumbnail_image {
@@ -68,7 +68,7 @@
       width: 20px;
       height: 20px;
       border: 2px solid #f3f3f3;
-      border-top: 2px solid #007bff;
+      // border-top: 2px solid #007bff;
       border-radius: 50%;
       animation: spin 1s linear infinite;
       z-index: 2;
@@ -109,7 +109,7 @@
   }
 
   &:focus {
-    outline: 2px solid #007bff;
+    // outline: 2px solid #007bff;
     outline-offset: 2px;
   }
 
@@ -149,10 +149,10 @@
     transform: translateY(-50%) scale(1.1);
   }
 
-  &:focus {
-    outline: 2px solid #007bff;
-    outline-offset: 2px;
-  }
+  // &:focus {
+  //   outline: 2px solid #007bff;
+  //   outline-offset: 2px;
+  // }
 
   &_left {
     left: 15px;

@@ -170,7 +170,7 @@ export default function ProductImages({ product }: ProductImagesProps) {
 
             {/* Zoom indicator */}
             <div className={s.zoom_indicator}>
-              <span className={s.zoom_icon}>🔍</span>
+              {/* <span className={s.zoom_icon}>🔍</span> */}
               <span className={s.zoom_text}>Click to zoom</span>
             </div>
 

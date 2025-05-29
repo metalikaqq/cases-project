@@ -19,10 +19,18 @@ export default function Home() {
   return (
     <>
       <div className={s.presentation_wrapper}>
-        <PresentationalBanner
+        {/* <PresentationalBanner
           title="BETTER TOURING"
           subtitle="THINK OUTSIDE THE BOX"
           imgSrc={mainBannerImg}
+        /> */}
+
+        <PresentationalBanner
+          imgSrc={mainBannerImg}
+          title="BETTER TOURING"
+          subtitle="THINK OUTSIDE THE BOX"
+          topIndent={40}
+          subtitleAsButton
         />
       </div>
 

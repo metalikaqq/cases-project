@@ -44,12 +44,14 @@ export default function ProductScroll({ product }: ProductScrollProps) {
 
   // Get localized content using utility functions
   const localizedContent = getLocalizedContent(product.htmlContent, locale);
-  const processedContent = localizedContent ? prepareHtmlContent(localizedContent) : null;
   const productName = getLocalizedProductName(
     product.productNames,
     locale,
     product.name
   );
+  const processedContent = localizedContent
+    ? prepareHtmlContent(localizedContent, productName)
+    : null;
   const isUkrainian = isUkrainianLocale(locale);
 
   console.log('ProductScroll - Using locale:', locale);
@@ -72,7 +74,7 @@ export default function ProductScroll({ product }: ProductScrollProps) {
           <div
             className={s.productDescription}
             dangerouslySetInnerHTML={{
-              __html: processedContent
+              __html: processedContent,
             }}
           />
         ) : (

@@ -82,6 +82,11 @@
     margin: 1rem 0 !important;
     padding-left: 2rem !important;
     list-style-position: outside !important;
+
+    // Ensure lists are visible and properly formatted
+    &:empty {
+      display: none;
+    }
   }
 
   ul {
@@ -97,6 +102,11 @@
     padding: 0 !important;
     line-height: 1.5;
     display: list-item !important;
+
+    // Ensure list items have proper content spacing
+    &:empty {
+      display: none;
+    }
 
     // Nested lists
     ul,
@@ -125,6 +135,18 @@
     }
   }
 
+  // Handle cases where content starts immediately after processing
+  &:first-child {
+    margin-top: 0;
+  }
+
+  // Ensure proper spacing for first elements after h1 removal
+  >ul:first-child,
+  >ol:first-child,
+  >p:first-child {
+    margin-top: 0;
+  }
+
   strong,
   b {
     font-weight: bold;
@@ -139,7 +161,7 @@
     line-height: 1;
     display: block;
     margin: 0.5em 0;
-    content: "";
+    content: '';
   }
 
   // Ensure proper spacing and prevent style inheritance issues
