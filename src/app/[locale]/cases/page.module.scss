@@ -24,6 +24,22 @@
       gap: $section-gap-desktop;
     }
   }
+
+  &__cases_title {
+    color: $default-black-font;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 20px;
+
+    @include responsive(desktop-md) {
+      font-size: 1.5rem;
+      line-height: 40px;
+      margin-bottom: 30px;
+    }
+  }
 }
 
 .presentation_wrapper {
@@ -39,8 +55,7 @@
   text-align: center;
   text-transform: uppercase;
 
-  @include responsive(desktop-md) {
-  }
+  @include responsive(desktop-md) {}
 }
 
 .sub_title {

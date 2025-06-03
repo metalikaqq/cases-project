@@ -32,7 +32,7 @@ export default function MainSelection() {
         text={t('Cases')}
       />
       <MainSelectionItem
-        linkHref="/cases"
+        linkHref="/acoustic-systems"
         imageSrc={caseImage}
         imageAlt={t('A/C')}
         text={t('A/C')}

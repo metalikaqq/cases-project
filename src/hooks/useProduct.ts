@@ -8,6 +8,7 @@ import {
   Product,
   ProductError,
   SingleProductApiResponse,
+  ProductApiResponse,
 } from '@/types/product';
 import { parseApiResponse, createProductError } from '@/utils/productUtils';
 
@@ -126,7 +127,7 @@ export const useProducts = ({
       setError(null);
 
       const response = await fetch(`${baseUrl}/products`);
-      const apiResponse = await parseApiResponse<any>(response);
+      const apiResponse = await parseApiResponse<ProductApiResponse>(response);
 
       // Check if API response is successful
       if (!apiResponse.success) {
@@ -137,11 +138,13 @@ export const useProducts = ({
         );
       }
 
-      let filteredProducts = apiResponse.data;
+      // Extract the actual products array from the nested response structure
+      const productsData = apiResponse.data.data || [];
+      let filteredProducts = productsData;
 
       // Filter by product type if specified
       if (productType) {
-        filteredProducts = apiResponse.data.filter(
+        filteredProducts = productsData.filter(
           (product: Product) => product.productType?.name === productType
         );
       }

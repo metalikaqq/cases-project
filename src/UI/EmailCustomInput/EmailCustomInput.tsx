@@ -15,6 +15,7 @@ export type EmailCustomInputProps = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error: string;
+  disabled?: boolean;
 };
 
 const countryCodes = [
@@ -30,6 +31,7 @@ export default function EmailCustomInput({
   value,
   onChange,
   error,
+  disabled = false,
 }: EmailCustomInputProps) {
   const [selectedCountry, setSelectedCountry] = useState(countryCodes[2].code); // Default to Ukraine
 
@@ -86,6 +88,7 @@ export default function EmailCustomInput({
             className={s.countryCodeSelect}
             value={selectedCountry}
             onChange={(e) => setSelectedCountry(e.target.value)}
+            disabled={disabled}
           >
             {countryCodes.map((country) => (
               <option key={country.code} value={country.code}>
@@ -100,6 +103,7 @@ export default function EmailCustomInput({
             onChange={handleChange}
             onPaste={handlePaste}
             placeholder={'xxx xxx xxxx'}
+            disabled={disabled}
           />
         </div>
       )}
@@ -111,6 +115,7 @@ export default function EmailCustomInput({
           onChange={handleChange}
           onPaste={handlePaste}
           placeholder={type === InputType.Email ? 'you@example.com' : ''}
+          disabled={disabled}
         />
       )}
       <label className={s.label}>{text}</label>

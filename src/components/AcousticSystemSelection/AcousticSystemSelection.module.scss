@@ -1,0 +1,38 @@
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
+
+$desktop: 1024px;
+$tablet: 768px;
+$mobile: 450px;
+
+.selection_acoustic_systems {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 13px;
+  width: calc(100% - 40px);
+  /* Ensure 20px padding on each side */
+  margin: 0 auto;
+  /* Center the grid */
+  padding: 20px;
+
+  @media (min-width: 550px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 14px;
+  }
+
+  @media (min-width: $desktop) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 22px;
+    padding: 30px;
+  }
+}
+
+.no_products {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 0;
+  font-size: 1.1rem;
+  color: #6c757d;
+  background-color: rgba(#6c757d, 0.05);
+  border: 1px solid rgba(#6c757d, 0.15);
+}

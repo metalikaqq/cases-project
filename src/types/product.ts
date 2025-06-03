@@ -52,7 +52,21 @@ export interface ApiResponse<T = any> {
   message: string | null;
 }
 
-export interface ProductApiResponse extends ApiResponse<Product[]> {}
+export interface PaginationInfo {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
+  hasNext: boolean;
+  hasPrev: boolean;
+}
+
+export interface PaginatedProductData {
+  data: Product[];
+  pagination: PaginationInfo;
+}
+
+export interface ProductApiResponse extends ApiResponse<PaginatedProductData> {}
 
 export interface SingleProductApiResponse extends ApiResponse<Product> {}
 

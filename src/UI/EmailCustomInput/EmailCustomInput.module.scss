@@ -14,6 +14,7 @@
   font-size: 16px;
   transition: all 0.3s ease;
   background-color: #fff;
+
   &::placeholder {
     color: #aaa;
   }
@@ -22,6 +23,17 @@
     border-color: #80bdff;
     outline: none;
     box-shadow: 0 0 8px rgba(128, 189, 255, 0.5);
+  }
+
+  &:disabled {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
+
+    &::placeholder {
+      color: #ccc;
+    }
   }
 
   &.inputError {
@@ -56,14 +68,17 @@
 }
 
 @keyframes shake {
+
   0%,
   100% {
     transform: translateX(0);
   }
+
   20%,
   60% {
     transform: translateX(-10px);
   }
+
   40%,
   80% {
     transform: translateX(10px);
@@ -74,6 +89,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -104,6 +120,13 @@
     border-color: #80bdff;
     outline: none;
     box-shadow: 0 0 8px rgba(128, 189, 255, 0.5);
+  }
+
+  &:disabled {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.7;
   }
 
   &.inputError {

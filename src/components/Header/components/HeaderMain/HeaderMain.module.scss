@@ -15,15 +15,21 @@
 
   &__banner {
     margin: 0 auto;
+    height: 150px;
+    position: relative;
 
     &__image {
-      width: 140px;
-      height: 63px;
+      position: absolute;
+      top: -74px;
+      left: -111px;
+      width: 310px;
+      height: 310px;
 
-      @include responsive(desktop-md) {
-        width: 250px;
-        height: 112px;
-      }
+
+      // @include responsive(desktop-md) {
+      //   width: 250px;
+      //   height: 112px;
+      // }
     }
   }
 

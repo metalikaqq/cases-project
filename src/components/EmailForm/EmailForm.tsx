@@ -28,6 +28,9 @@ export default function EmailForm(props: EmailFormProps) {
     message: '',
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const handleChange =
     (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       const { value } = e.target;
@@ -57,24 +60,44 @@ export default function EmailForm(props: EmailFormProps) {
     let isValid = true;
     const newErrors = { ...errors };
 
-    if (!form.firstName) {
+    // Enhanced validation with better error messages
+    if (!form.firstName.trim()) {
       newErrors.firstName = t('FirstNameCannotBeBlank');
       isValid = false;
+    } else if (form.firstName.trim().length < 2) {
+      newErrors.firstName = 'First name must be at least 2 characters';
+      isValid = false;
     }
-    if (!form.lastName) {
+
+    if (!form.lastName.trim()) {
       newErrors.lastName = t('LastNameCannotBeBlank');
       isValid = false;
+    } else if (form.lastName.trim().length < 2) {
+      newErrors.lastName = 'Last name must be at least 2 characters';
+      isValid = false;
     }
-    if (!form.phoneNumber) {
+
+    if (!form.phoneNumber.trim()) {
       newErrors.phoneNumber = t('PhoneNumberCannotBeBlank');
       isValid = false;
-    }
-    if (!form.email) {
-      newErrors.email = t('EmailCannotBeBlank');
+    } else if (!/^\d{3}\s\d{3}\s\d{4}$/.test(form.phoneNumber.trim())) {
+      newErrors.phoneNumber = 'Please enter a valid phone number';
       isValid = false;
     }
-    if (!form.message) {
+
+    if (!form.email.trim()) {
+      newErrors.email = t('EmailCannotBeBlank');
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      newErrors.email = 'Please enter a valid email address';
+      isValid = false;
+    }
+
+    if (!form.message.trim()) {
       newErrors.message = t('MessageCannotBeBlank');
+      isValid = false;
+    } else if (form.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
       isValid = false;
     }
 
@@ -94,9 +117,17 @@ export default function EmailForm(props: EmailFormProps) {
     return phoneNumber;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
       const formattedPhoneNumber = formatPhoneNumberForSubmit(
         '+380',
         form.phoneNumber
@@ -107,7 +138,30 @@ export default function EmailForm(props: EmailFormProps) {
         phoneNumber: formattedPhoneNumber,
       };
 
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
       console.log('Form submitted:', formattedForm);
+
+      setSubmitStatus('success');
+
+      // Reset form after successful submission
+      setForm({
+        firstName: '',
+        lastName: '',
+        phoneNumber: '',
+        email: '',
+        message: '',
+      });
+
+      // Clear success message after 3 seconds
+      setTimeout(() => setSubmitStatus('idle'), 3000);
+
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -127,6 +181,7 @@ export default function EmailForm(props: EmailFormProps) {
                   value={form.firstName}
                   onChange={handleChange('firstName')}
                   error={errors.firstName}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className={s.input}>
@@ -136,6 +191,7 @@ export default function EmailForm(props: EmailFormProps) {
                   value={form.lastName}
                   onChange={handleChange('lastName')}
                   error={errors.lastName}
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -150,6 +206,7 @@ export default function EmailForm(props: EmailFormProps) {
                 value={form.phoneNumber}
                 onChange={handleChange('phoneNumber')}
                 error={errors.phoneNumber}
+                disabled={isSubmitting}
               />
             </div>
           </div>
@@ -164,6 +221,7 @@ export default function EmailForm(props: EmailFormProps) {
                   value={form.email}
                   onChange={handleChange('email')}
                   error={errors.email}
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -172,6 +230,7 @@ export default function EmailForm(props: EmailFormProps) {
                   className={s.selected_item}
                   value={props.selectedValue}
                   type="text"
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -187,12 +246,30 @@ export default function EmailForm(props: EmailFormProps) {
             id="message-input"
             value={form.message}
             onChange={handleTextAreaChange}
+            disabled={isSubmitting}
           />
           {errors.message && <span className={s.error}>{errors.message}</span>}
         </div>
 
-        <button type="submit" className={s.submit_button}>
-          {t('Submit')}
+        {/* Status Messages */}
+        {submitStatus === 'success' && (
+          <div className={`${s.status_message} ${s.success_message}`}>
+            ✅ Your message has been sent successfully! We&apos;ll get back to you soon.
+          </div>
+        )}
+
+        {submitStatus === 'error' && (
+          <div className={`${s.status_message} ${s.error_message}`}>
+            ❌ There was an error sending your message. Please try again.
+          </div>
+        )}
+
+        <button
+          type="submit"
+          className={`${s.submit_button} ${isSubmitting ? s.submit_button_loading : ''}`}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? '' : t('Submit')}
         </button>
       </form>
     </div>

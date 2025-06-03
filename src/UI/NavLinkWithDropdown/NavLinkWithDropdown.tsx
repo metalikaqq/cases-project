@@ -21,6 +21,19 @@ export default function NavLinkWithDropdown({
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
+  // Determine the main link href based on linkName
+  const getMainHref = () => {
+    const linkNameLower = linkName.toLowerCase();
+    if (linkNameLower.includes('acoustic') || linkNameLower.includes('акустичн')) {
+      return '/acoustic-systems';
+    }
+    if (linkNameLower.includes('case') || linkNameLower.includes('кейс')) {
+      return '/cases';
+    }
+    // Default fallback for other nav items
+    return '#';
+  };
+
   return (
     <div
       className={s.nav__item}
@@ -28,7 +41,7 @@ export default function NavLinkWithDropdown({
       onMouseLeave={handleMouseLeave}
     >
       <Link
-        href="/cases"
+        href={getMainHref()}
         className={`${s.nav__link} ${isHovered ? s.nav__link__text_visible : ''}`}
       >
         <p className={s.nav__link__text}>{linkName}</p>

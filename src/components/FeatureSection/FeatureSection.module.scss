@@ -1,0 +1,51 @@
+@import '@/utils/mixins.scss';
+@import '@/utils/vars.scss';
+
+.feature_section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+
+  @include responsive(tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include responsive(desktop-md) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.feature_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+
+  &__icon {
+    margin-bottom: 1rem;
+
+    svg {
+      width: 64px;
+      height: 64px;
+      color: $default-black-font;
+    }
+  }
+
+  &__title {
+    color: $default-black-font;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.075rem;
+  }
+
+  &__description {
+    color: $default-black-font;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}

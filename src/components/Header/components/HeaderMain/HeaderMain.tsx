@@ -2,6 +2,8 @@ import s from './HeaderMain.module.scss';
 import Image from 'next/image';
 
 import bannerLogo from '@/assets/svg/banner-logo-main.svg';
+import bannerLogo1 from '@/assets/svg/transparent_1748546923_2956.svg';
+
 import userIcon from '@/assets/svg/user-icon-black.svg';
 import { Link } from '@/navigation';
 
@@ -16,7 +18,7 @@ export default function HeaderMain(props: HeaderMainProps) {
         <Link href={'/'} className={s.header_main__banner}>
           <Image
             className={s.header_main__banner__image}
-            src={bannerLogo}
+            src={bannerLogo1}
             alt="site-logo"
           />
         </Link>
