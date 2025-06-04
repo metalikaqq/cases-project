@@ -12,7 +12,12 @@ import openCaseImg from '@/assets/image/open-case.jpeg';
 import casesOnFloorImg from '@/assets/image/cases-on-floor.jpg';
 import headBanner from '@/assets/image/about-us-head-banner.jpg';
 import FeatureSection from '@/components/FeatureSection';
-import { MoneyIcon, RecycleIcon, SafetyIcon, TruckIcon } from '@/components/FeatureSection/FeatureIcons';
+import {
+  MoneyIcon,
+  RecycleIcon,
+  SafetyIcon,
+  TruckIcon,
+} from '@/components/FeatureSection/FeatureIcons';
 
 function AcousticSystemsPage() {
   const t = useTranslations('AcousticSystemsPage');
@@ -70,23 +75,23 @@ function AcousticSystemsPage() {
               {
                 icon: <TruckIcon />,
                 title: t('FasterLoadsTitle'),
-                description: t('FasterLoadsDescription')
+                description: t('FasterLoadsDescription'),
               },
               {
                 icon: <MoneyIcon />,
                 title: t('SaveMoneyTitle'),
-                description: t('SaveMoneyDescription')
+                description: t('SaveMoneyDescription'),
               },
               {
                 icon: <SafetyIcon />,
                 title: t('HealthAndSafetyTitle'),
-                description: t('HealthAndSafetyDescription')
+                description: t('HealthAndSafetyDescription'),
               },
               {
                 icon: <RecycleIcon />,
                 title: t('MultiUseTitle'),
-                description: t('MultiUseDescription')
-              }
+                description: t('MultiUseDescription'),
+              },
             ]}
           />
         </div>

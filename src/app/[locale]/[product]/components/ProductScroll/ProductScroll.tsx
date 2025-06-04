@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import s from './ProductScroll.module.scss';
 import Modal from '@/UI/Modal';
-import EmailForm from '@/components/EmailForm';
+import ContactForm from '@/components/ContactForm';
 import { Product } from '@/types/product';
 import {
   getLocalizedContent,
@@ -99,7 +99,11 @@ export default function ProductScroll({ product }: ProductScrollProps) {
         </button>
 
         <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <EmailForm selectedValue={productName} />
+          <ContactForm
+            locale={locale}
+            productName={productName}
+            onClose={closeModal}
+          />
         </Modal>
 
         <button className={s.accordion} type="button">

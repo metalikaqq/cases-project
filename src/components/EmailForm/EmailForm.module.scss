@@ -302,6 +302,11 @@
 .row {
   height: 1px;
   width: 100%;
-  background: linear-gradient(90deg, transparent 0%, #e0e0e0 50%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #e0e0e0 50%,
+    transparent 100%
+  );
   margin: 20px 0;
 }

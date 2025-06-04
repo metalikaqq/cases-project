@@ -6,7 +6,12 @@ import { useTranslations } from 'next-intl';
 import CasesSelection from '@/components/CasesSelection';
 import PresentationalBanner from '@/components/PresentationalBanner';
 import FeatureSection from '@/components/FeatureSection';
-import { TruckIcon, MoneyIcon, SafetyIcon, RecycleIcon } from '@/components/FeatureSection/FeatureIcons';
+import {
+  TruckIcon,
+  MoneyIcon,
+  SafetyIcon,
+  RecycleIcon,
+} from '@/components/FeatureSection/FeatureIcons';
 
 import casesWithMetricsImg from '@/assets/image/cases-with-metrics.jpg';
 import casesVarietyGif from '@/assets/image/cases-variety.gif';
@@ -61,36 +66,33 @@ function Page() {
         </div>
 
         <div>
-
           <FeatureSection
             items={[
               {
                 icon: <TruckIcon />,
                 title: t('FasterLoadsTitle'),
-                description: t('FasterLoadsDescription')
+                description: t('FasterLoadsDescription'),
               },
               {
                 icon: <MoneyIcon />,
                 title: t('SaveMoneyTitle'),
-                description: t('SaveMoneyDescription')
+                description: t('SaveMoneyDescription'),
               },
               {
                 icon: <SafetyIcon />,
                 title: t('HealthAndSafetyTitle'),
-                description: t('HealthAndSafetyDescription')
+                description: t('HealthAndSafetyDescription'),
               },
               {
                 icon: <RecycleIcon />,
                 title: t('MultiUseTitle'),
-                description: t('MultiUseDescription')
-              }
+                description: t('MultiUseDescription'),
+              },
             ]}
           />
         </div>
 
-        <h1 className={s.cases_page__cases_title}>
-          {t('FeatureTitle')}
-        </h1>
+        <h1 className={s.cases_page__cases_title}>{t('FeatureTitle')}</h1>
 
         <CasesSelection />
       </div>

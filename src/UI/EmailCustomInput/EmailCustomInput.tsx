@@ -51,9 +51,14 @@ export default function EmailCustomInput({
       newValue = newValue.replace(/\D/g, ''); // Remove non-numeric characters
       newValue = newValue.slice(0, 10); // Limit to 10 characters (or adjust based on country code)
       newValue = formatPhoneNumber(newValue);
+    } else if (type === InputType.Email) {
+      // Remove line breaks and whitespace for email
+      newValue = newValue.replace(/[\r\n\s]/g, '');
+    } else {
+      // For regular text, remove line breaks but keep spaces
+      newValue = newValue.replace(/[\r\n]/g, '');
     }
 
-    // For email and text, we just pass the raw value without formatting
     onChange({
       ...e,
       target: { ...e.target, value: newValue },
@@ -67,6 +72,12 @@ export default function EmailCustomInput({
       pasteData = pasteData.replace(/\D/g, ''); // Remove non-numeric characters
       pasteData = pasteData.slice(0, 10); // Limit to 10 characters
       pasteData = formatPhoneNumber(pasteData);
+    } else if (type === InputType.Email) {
+      // Remove line breaks and whitespace for email
+      pasteData = pasteData.replace(/[\r\n\s]/g, '');
+    } else {
+      // For regular text, remove line breaks but keep spaces
+      pasteData = pasteData.replace(/[\r\n]/g, '');
     }
 
     const fakeEvent = {

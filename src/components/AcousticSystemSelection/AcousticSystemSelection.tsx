@@ -60,7 +60,10 @@ export default function AcousticSystemSelection() {
           );
 
           // Get main image with validation and fallback
-          const validImageSrc = getMainProductImage(product.images, acousticSystemImage);
+          const validImageSrc = getMainProductImage(
+            product.images,
+            acousticSystemImage
+          );
 
           // Build product URL with proper slug (Next.js handles locale automatically)
           const productUrl = buildProductUrl(productName, product.id);

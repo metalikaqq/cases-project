@@ -24,7 +24,10 @@ export default function NavLinkWithDropdown({
   // Determine the main link href based on linkName
   const getMainHref = () => {
     const linkNameLower = linkName.toLowerCase();
-    if (linkNameLower.includes('acoustic') || linkNameLower.includes('акустичн')) {
+    if (
+      linkNameLower.includes('acoustic') ||
+      linkNameLower.includes('акустичн')
+    ) {
       return '/acoustic-systems';
     }
     if (linkNameLower.includes('case') || linkNameLower.includes('кейс')) {

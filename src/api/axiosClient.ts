@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000', // Use environment variable or fallback
+  baseURL: process.env.BACKEND_API_URL || 'http://localhost:3000', // Use environment variable or fallback
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
