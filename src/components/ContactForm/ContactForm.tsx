@@ -13,14 +13,18 @@ interface ContactFormProps {
   onClose?: () => void;
 }
 
-export default function ContactForm({ locale, productName, onClose }: ContactFormProps) {
+export default function ContactForm({
+  locale,
+  productName,
+  onClose,
+}: ContactFormProps) {
   const [formData, setFormData] = useState<ContactFormData>({
     firstName: '',
     lastName: '',
     email: '',
     phoneNumber: '',
     message: '',
-    selectedValue: productName || 'Product Inquiry'
+    selectedValue: productName || 'Product Inquiry',
   });
 
   const [errors, setErrors] = useState({
@@ -32,7 +36,9 @@ export default function ContactForm({ locale, productName, onClose }: ContactFor
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    'idle' | 'success' | 'error'
+  >('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
   const isUkrainian = isUkrainianLocale(locale);
@@ -44,46 +50,60 @@ export default function ContactForm({ locale, productName, onClose }: ContactFor
     email: isUkrainian ? 'Електронна пошта' : 'Email',
     phoneNumber: isUkrainian ? 'Номер телефону' : 'Phone Number',
     message: isUkrainian ? 'Повідомлення' : 'Message',
-    messagePlaceholder: isUkrainian ? 'Введіть ваше повідомлення тут...' : 'Enter your message here...',
+    messagePlaceholder: isUkrainian
+      ? 'Введіть ваше повідомлення тут...'
+      : 'Enter your message here...',
     submit: isUkrainian ? 'Відправити' : 'Send Message',
     submitting: isUkrainian ? 'Відправляємо...' : 'Sending...',
     successMessage: isUkrainian
-      ? 'Повідомлення успішно відправлено! Ми зв\'яжемося з вами найближчим часом.'
+      ? "Повідомлення успішно відправлено! Ми зв'яжемося з вами найближчим часом."
       : 'Message sent successfully! We will get back to you soon.',
-    errorGeneral: isUkrainian ? 'Помилка відправки повідомлення. Спробуйте ще раз.' : 'Error sending message. Please try again.',
-    requiredFields: isUkrainian ? "Заповніть всі обов'язкові поля" : 'Please fill in all required fields',
-    validEmail: isUkrainian ? 'Введіть коректну електронну адресу' : 'Please enter a valid email address',
-    validPhone: isUkrainian ? 'Введіть коректний номер телефону' : 'Please enter a valid phone number',
-    messageMinLength: isUkrainian ? 'Повідомлення має містити мінімум 10 символів' : 'Message must be at least 10 characters long'
+    errorGeneral: isUkrainian
+      ? 'Помилка відправки повідомлення. Спробуйте ще раз.'
+      : 'Error sending message. Please try again.',
+    requiredFields: isUkrainian
+      ? "Заповніть всі обов'язкові поля"
+      : 'Please fill in all required fields',
+    validEmail: isUkrainian
+      ? 'Введіть коректну електронну адресу'
+      : 'Please enter a valid email address',
+    validPhone: isUkrainian
+      ? 'Введіть коректний номер телефону'
+      : 'Please enter a valid phone number',
+    messageMinLength: isUkrainian
+      ? 'Повідомлення має містити мінімум 10 символів'
+      : 'Message must be at least 10 characters long',
   };
 
-  const handleInputChange = (field: keyof ContactFormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-
-    // Clear error when user starts typing
-    if (errors[field as keyof typeof errors]) {
-      setErrors(prev => ({
+  const handleInputChange =
+    (field: keyof ContactFormData) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+      setFormData((prev) => ({
         ...prev,
-        [field]: ''
+        [field]: value,
       }));
-    }
-  };
+
+      // Clear error when user starts typing
+      if (errors[field as keyof typeof errors]) {
+        setErrors((prev) => ({
+          ...prev,
+          [field]: '',
+        }));
+      }
+    };
 
   const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      message: value
+      message: value,
     }));
 
     if (errors.message) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        message: ''
+        message: '',
       }));
     }
   };
@@ -94,7 +114,7 @@ export default function ContactForm({ locale, productName, onClose }: ContactFor
       lastName: '',
       email: '',
       phoneNumber: '',
-      message: ''
+      message: '',
     };
 
     let isValid = true;
@@ -169,7 +189,7 @@ export default function ContactForm({ locale, productName, onClose }: ContactFor
           email: '',
           phoneNumber: '',
           message: '',
-          selectedValue: productName || 'Product Inquiry'
+          selectedValue: productName || 'Product Inquiry',
         });
 
         // Auto close modal after 3 seconds

@@ -5,23 +5,16 @@ import Image, { StaticImageData } from 'next/image';
 import s from './MainSelectionItem.module.scss';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { Link } from '@/navigation';
+import { MainSelectionItemProps } from './SelectionItemType';
 
-export type MainSelectionItemProps = {
-  linkHref: string;
-  imageSrc: StaticImageData | string;
-  imageAlt: string;
-  text: string;
-  width?: number;
-  height?: number;
-};
 
 export default function MainSelectionItem({
   linkHref,
   imageSrc,
   imageAlt,
   text,
-  width = 500, // Default width
-  height = 300, // Default height
+  width = 500,
+  height = 300,
 }: MainSelectionItemProps) {
   const [imageRef, isImageVisible] = useIntersectionObserver();
 

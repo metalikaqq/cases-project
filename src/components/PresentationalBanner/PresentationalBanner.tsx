@@ -30,9 +30,9 @@ export default function PresentationalBanner({
         {pageName && <h2 className={s.banner__text__page_name}>{pageName}</h2>}
         {title && <h1 className={s.banner__text__title}>{title}</h1>}
         {subtitle && subtitleAsButton ? (
-          <button className={s.banner__text__subtitle_button}>
+          <div className={s.banner__text__subtitle_button}>
             <p className={s.banner__text__subtitle_button__font}>{subtitle}</p>
-          </button>
+          </div>
         ) : (
           <p className={s.banner__text__subtitle}>{subtitle}</p>
         )}

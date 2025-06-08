@@ -12,11 +12,9 @@ import {
   SafetyIcon,
   RecycleIcon,
 } from '@/components/FeatureSection/FeatureIcons';
-
 import casesWithMetricsImg from '@/assets/image/cases-with-metrics.jpg';
 import casesVarietyGif from '@/assets/image/cases-variety.gif';
 import caseDrillingImg from '@/assets/image/case-drilling.jpeg';
-
 import headBanner from '@/assets/image/about-us-head-banner.jpg';
 
 function Page() {

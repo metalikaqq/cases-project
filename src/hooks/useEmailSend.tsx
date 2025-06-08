@@ -41,10 +41,11 @@ export const useEmailSend = (): UseEmailSendReturn => {
         config: {
           url: err.config?.url,
           method: err.config?.method,
-          data: err.config?.data
-        }
+          data: err.config?.data,
+        },
       });
-      const errorMessage = err.response?.data?.message || 'Failed to send email';
+      const errorMessage =
+        err.response?.data?.message || 'Failed to send email';
       setError(errorMessage);
       return false;
     } finally {

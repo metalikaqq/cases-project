@@ -19,11 +19,6 @@ export default function Home() {
   return (
     <>
       <div className={s.presentation_wrapper}>
-        {/* <PresentationalBanner
-          title="BETTER TOURING"
-          subtitle="THINK OUTSIDE THE BOX"
-          imgSrc={mainBannerImg}
-        /> */}
 
         <PresentationalBanner
           imgSrc={mainBannerImg}
