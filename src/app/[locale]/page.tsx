@@ -1,3 +1,4 @@
+'use client';
 import s from './page.module.scss';
 import PreviewSection from '@/components/PreviewSection';
 import { TextPosition } from '@/components/PreviewSection/PreviewSection';
@@ -5,6 +6,8 @@ import MainPageTitle from '@/components/Main/components/MainPageTitle';
 import { useTranslations } from 'next-intl';
 import MainSelection from '@/components/MainSelection';
 import PresentationalBanner from '@/components/PresentationalBanner';
+import { useAuth } from '@/contexts/AuthContext';
+import { Link } from '@/navigation';
 
 import casesLoadingImg from '@/assets/image/cases-loading-wide.jpeg';
 import caseDrillingImg from '@/assets/image/case-drilling.jpeg';
@@ -15,11 +18,11 @@ import mainBannerImg from '@/assets/image/main-head-banner.png';
 export default function Home() {
   const t = useTranslations('MainPageTitle');
   const t2 = useTranslations('PreviewSection');
+  const { user, isAuthenticated } = useAuth();
 
   return (
     <>
       <div className={s.presentation_wrapper}>
-
         <PresentationalBanner
           imgSrc={mainBannerImg}
           title="BETTER TOURING"

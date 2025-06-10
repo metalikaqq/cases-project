@@ -5,9 +5,9 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { AuthProvider } from '@/contexts/AuthContext';
 import s from './page.module.scss';
 import 'reset-css';
-import { headers } from 'next/headers';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,28 +37,18 @@ export default async function RootLayout({
   params: { locale },
 }: Readonly<RootLayoutProps>) {
   const messages = await getMessages();
-  const headersList = headers();
-  const pathname = headersList.get('X-Path-Without-Locale') || '';
-
-  const checkHeaderNeed = () => {
-    if (pathname === '/login') {
-      return false;
-    } else if (pathname === '/register') {
-      return false;
-    }
-
-    return true;
-  };
 
   return (
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
-          <div className={s.app}>
-            <Header />
-            <div className={s.page__wrapper}>{children}</div>
-            <Footer />
-          </div>
+          <AuthProvider>
+            <div className={s.app}>
+              <Header />
+              <div className={s.page__wrapper}>{children}</div>
+              <Footer />
+            </div>
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>

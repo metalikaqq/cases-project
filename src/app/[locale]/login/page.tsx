@@ -1,85 +1,107 @@
 'use client';
 import React, { useState } from 'react';
-import Link from 'next/link';
 import s from './page.module.scss';
-import { signIn } from '@/api/routes/auth';
-import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
+import { Link, useRouter } from '@/navigation';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { loginSchema, LoginFormData } from '@/utils/validationSchemas';
 
-const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const LoginPage = () => {
   const [showPass, setShowPass] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [loginError, setLoginError] = useState('');
+  const [showResendButton, setShowResendButton] = useState(false);
+  const [resendEmail, setResendEmail] = useState('');
 
   const router = useRouter();
+  const { login, resendVerification } = useAuth();
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    setError('');
-    setSuccess(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = async (data: LoginFormData) => {
+    setIsLoading(true);
+    setLoginError('');
+    setShowResendButton(false);
 
     try {
-      const response = await signIn({ email, password });
+      const response = await login(data);
 
-      setError('');
-
-      if (response.user) {
-        setSuccess(true);
-        console.log('Login successful');
-
+      if (response.success) {
+        // Login successful, redirect to home
         router.push('/');
-
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
       } else {
-        setError('Login failed. Please check your credentials and try again.');
+        // Check if error is related to email verification
+        if (response.error?.includes('email not verified') ||
+          response.error?.includes('verify your email')) {
+          setShowResendButton(true);
+          setResendEmail(data.email);
+        }
+        setLoginError(response.error || 'Login failed. Please try again.');
       }
-    } catch (err) {
-      setError('An unexpected error occurred. Please try again later.');
+    } catch (error) {
+      console.error('Login error:', error);
+      setLoginError('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleResendVerification = async () => {
+    try {
+      await resendVerification(resendEmail);
+      router.push('/en/verify-email-pending');
+    } catch (error) {
+      console.error('Resend verification error:', error);
     }
   };
 
   return (
     <div className={s.loginContainer}>
       <div className={s.formWrapper}>
-        <h1 className={s.title}>LOGIN</h1>
+        <h1 className={s.title}>SIGN IN</h1>
 
-        <form className={s.form} onSubmit={handleSubmit}>
+        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div>
             <div className={s.inputContainer}>
               <label htmlFor="email" className={s.label}>
-                EMAIL
+                EMAIL ADDRESS
               </label>
               <input
+                {...register('email')}
                 type="email"
-                name="email"
                 id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 className={s.input}
                 placeholder="name@example.com"
-                required
               />
+              {errors.email && (
+                <span className={s.errorText}>{errors.email.message}</span>
+              )}
             </div>
+
             <div className={s.inputContainer}>
               <label htmlFor="password" className={s.label}>
                 PASSWORD
               </label>
               <input
+                {...register('password')}
                 type={showPass ? 'text' : 'password'}
-                name="password"
                 id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className={s.input}
-                required
-                autoComplete="true"
               />
+              {errors.password && (
+                <span className={s.errorText}>{errors.password.message}</span>
+              )}
             </div>
           </div>
+
           <div className={s.flexContainer}>
             <div className={s.flexStart}>
               <input
@@ -93,18 +115,36 @@ const LoginForm = () => {
                 Show Password
               </label>
             </div>
-            <Link href="/forgot-password" className={s.forgotPassword}>
-              Forgot password?
+            <Link href="/password-reset" className={s.forgotPassword}>
+              Forgot Password?
             </Link>
           </div>
-          {error && <p className={s.errorMessage}>{error}</p>}
-          {success && <p className={s.successMessage}>Login successful!</p>}
-          <button type="submit" className={s.submitButton}>
-            SIGN IN
+
+          {loginError && (
+            <div className={s.errorContainer}>
+              <div className={s.errorMessage}>{loginError}</div>
+              {showResendButton && (
+                <button
+                  type="button"
+                  onClick={handleResendVerification}
+                  className={s.resendButton}
+                >
+                  Resend verification email
+                </button>
+              )}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={s.submitButton}
+          >
+            {isLoading ? 'Signing in...' : 'SIGN IN'}
           </button>
 
           <p className={s.registerText}>
-            Don’t have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link href="/register" className={s.signUpLink}>
               Sign up
             </Link>
@@ -115,4 +155,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default LoginPage;

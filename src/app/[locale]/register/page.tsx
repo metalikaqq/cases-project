@@ -1,52 +1,45 @@
 'use client';
 import React, { useState } from 'react';
-import Link from 'next/link';
 import s from '../login/page.module.scss';
-import { signUp } from '@/api/routes/auth';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
+import { Link } from '@/navigation';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { registerSchema, RegisterFormData } from '@/utils/validationSchemas';
 
 const RegisterForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const validatePassword = (password: string) => {
-    if (password.length < 6) {
-      return 'Password must be at least 6 characters long.';
-    }
+  const router = useRouter();
+  const { register: registerUser } = useAuth();
 
-    const uniqueChars = new Set(password).size;
-    if (uniqueChars < 3) {
-      return 'Password must contain at least 3 different characters.';
-    }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormData>({
+    resolver: zodResolver(registerSchema),
+  });
 
-    return ''; // No error
-  };
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-
-    const passwordError = validatePassword(password);
-    if (passwordError) {
-      setError(passwordError);
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError('Passwords do not match!');
-      return;
-    }
-
-    setError(''); // Clear errors if everything is valid
+  const onSubmit = async (data: RegisterFormData) => {
+    setIsLoading(true);
 
     try {
-      await signUp({ email, password });
-      setSuccess(true);
-      console.log('Registration successful');
+      const response = await registerUser(data);
+
+      if (response.success) {
+        // Redirect to email verification pending page
+        router.push('/en/verify-email-pending');
+      } else {
+        // Form errors are handled by react-hook-form
+        console.error('Registration failed:', response.error);
+      }
     } catch (error) {
-      setError('Registration failed. Please try again.');
+      console.error('Registration error:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,60 +48,55 @@ const RegisterForm = () => {
       <div className={s.formWrapper}>
         <h1 className={s.title}>CREATE ACCOUNT</h1>
 
-        <form className={s.form} onSubmit={handleSubmit}>
+        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <div>
             <div className={s.inputContainer}>
               <label htmlFor="email" className={s.label}>
-                Email Address
+                EMAIL ADDRESS
               </label>
               <input
+                {...register('email')}
                 type="email"
-                name="email"
                 id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
                 className={s.input}
                 placeholder="name@example.com"
-                required
               />
+              {errors.email && (
+                <span className={s.errorText}>{errors.email.message}</span>
+              )}
             </div>
             <div className={s.inputContainer}>
               <label htmlFor="password" className={s.label}>
-                Password
+                PASSWORD
               </label>
               <input
+                {...register('password')}
                 type={showPass ? 'text' : 'password'}
-                name="password"
                 id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className={s.input}
-                required
               />
+              {errors.password && (
+                <span className={s.errorText}>{errors.password.message}</span>
+              )}
             </div>
             <div className={s.inputContainer}>
               <label htmlFor="confirmPassword" className={s.label}>
-                Confirm Password
+                CONFIRM PASSWORD
               </label>
               <input
+                {...register('confirmPassword')}
                 type={showPass ? 'text' : 'password'}
-                name="confirmPassword"
                 id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••"
                 className={s.input}
-                required
               />
+              {errors.confirmPassword && (
+                <span className={s.errorText}>{errors.confirmPassword.message}</span>
+              )}
             </div>
           </div>
-          {error && <p className={s.errorMessage}>{error}</p>}{' '}
-          {/* Display error message */}
-          {success && (
-            <p className={s.successMessage}>Registration successful!</p>
-          )}{' '}
-          {/* Display success message */}
+
           <div className={s.flexContainer}>
             <div className={s.flexStart}>
               <input
@@ -123,9 +111,15 @@ const RegisterForm = () => {
               </label>
             </div>
           </div>
-          <button type="submit" className={s.submitButton}>
-            Sign up
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={s.submitButton}
+          >
+            {isLoading ? 'Creating account...' : 'SIGN UP'}
           </button>
+
           <p className={s.registerText}>
             Have an account?{' '}
             <Link href="/login" className={s.signUpLink}>

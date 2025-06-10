@@ -43,7 +43,6 @@ export default function CasesSelection() {
     );
   }
 
-
   return (
     <div className={s.selection_cases}>
       {products.length > 0 ? (

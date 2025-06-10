@@ -7,7 +7,6 @@ import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { Link } from '@/navigation';
 import { MainSelectionItemProps } from './SelectionItemType';
 
-
 export default function MainSelectionItem({
   linkHref,
   imageSrc,
