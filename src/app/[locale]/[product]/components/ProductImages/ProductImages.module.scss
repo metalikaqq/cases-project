@@ -135,7 +135,6 @@
 
   // Animation states for swipe
   &.animating {
-
     // This targets the .main_image__inner *before* its src changes (i.e., the old image)
     &.swipe_left .main_image__inner,
     &.swipe_right .main_image__inner {

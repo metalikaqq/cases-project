@@ -20,7 +20,9 @@ export default function ProductImages({ product }: ProductImagesProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [mouseStart, setMouseStart] = useState<number | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(
+    null
+  );
 
   // Minimum distance to trigger swipe
   const minSwipeDistance = 30;
@@ -97,40 +99,49 @@ export default function ProductImages({ product }: ProductImagesProps) {
     }
   }, [sortedImages.length, isAnimating]);
 
-  const handleImageSelect = useCallback((index: number) => {
-    if (!isAnimating) {
-      const direction = index > currentImageIndex ? 'left' : 'right';
-      setIsAnimating(true);
-      setSwipeDirection(direction);
-
-      setTimeout(() => {
-        setCurrentImageIndex(index);
-        setTimeout(() => {
-          setIsAnimating(false);
-          setSwipeDirection(null);
-        }, 100);
-      }, 200);
-    }
-  }, [currentImageIndex, isAnimating]);
-
-  const handleKeyPress = useCallback((event: React.KeyboardEvent, index: number) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
+  const handleImageSelect = useCallback(
+    (index: number) => {
       if (!isAnimating) {
-        handleImageSelect(index);
-      }
-    }
-  }, [handleImageSelect, isAnimating]);
+        const direction = index > currentImageIndex ? 'left' : 'right';
+        setIsAnimating(true);
+        setSwipeDirection(direction);
 
-  const handleMainImageKeyPress = useCallback((event: React.KeyboardEvent) => {
-    if (event.key === 'ArrowLeft') {
-      event.preventDefault();
-      handlePrevImage();
-    } else if (event.key === 'ArrowRight') {
-      event.preventDefault();
-      handleNextImage();
-    }
-  }, [handlePrevImage, handleNextImage]);
+        setTimeout(() => {
+          setCurrentImageIndex(index);
+          setTimeout(() => {
+            setIsAnimating(false);
+            setSwipeDirection(null);
+          }, 100);
+        }, 200);
+      }
+    },
+    [currentImageIndex, isAnimating]
+  );
+
+  const handleKeyPress = useCallback(
+    (event: React.KeyboardEvent, index: number) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        if (!isAnimating) {
+          handleImageSelect(index);
+        }
+      }
+    },
+    [handleImageSelect, isAnimating]
+  );
+
+  const handleMainImageKeyPress = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        handlePrevImage();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        handleNextImage();
+      }
+    },
+    [handlePrevImage, handleNextImage]
+  );
 
   // Handle touch events for swipe
   const onTouchStart = useCallback((e: React.TouchEvent) => {
@@ -138,13 +149,16 @@ export default function ProductImages({ product }: ProductImagesProps) {
     setTouchStart(e.targetTouches[0].clientX);
   }, []);
 
-  const onTouchMove = useCallback((e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-    // Prevent default behavior to avoid conflicts with browser scrolling
-    if (sortedImages.length > 1) {
-      e.preventDefault();
-    }
-  }, [sortedImages.length]);
+  const onTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      setTouchEnd(e.targetTouches[0].clientX);
+      // Prevent default behavior to avoid conflicts with browser scrolling
+      if (sortedImages.length > 1) {
+        e.preventDefault();
+      }
+    },
+    [sortedImages.length]
+  );
 
   const onTouchEnd = useCallback(() => {
     if (!touchStart || !touchEnd || isAnimating) return;
@@ -163,47 +177,77 @@ export default function ProductImages({ product }: ProductImagesProps) {
     // Reset touch values
     setTouchStart(null);
     setTouchEnd(null);
-  }, [touchStart, touchEnd, minSwipeDistance, sortedImages.length, handleNextImage, handlePrevImage, isAnimating]);
+  }, [
+    touchStart,
+    touchEnd,
+    minSwipeDistance,
+    sortedImages.length,
+    handleNextImage,
+    handlePrevImage,
+    isAnimating,
+  ]);
 
   // Handle mouse events for drag (desktop)
-  const onMouseDown = useCallback((e: React.MouseEvent) => {
-    if (sortedImages.length > 1) {
-      setIsDragging(true);
-      setMouseStart(e.clientX);
+  const onMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      if (sortedImages.length > 1) {
+        setIsDragging(true);
+        setMouseStart(e.clientX);
+        e.preventDefault();
+      }
+    },
+    [sortedImages.length]
+  );
+
+  const onMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (!isDragging || !mouseStart || sortedImages.length <= 1) return;
+
+      const currentX = e.clientX;
+      const distance = mouseStart - currentX;
+
+      // Add visual feedback during drag
       e.preventDefault();
-    }
-  }, [sortedImages.length]);
+    },
+    [isDragging, mouseStart, sortedImages.length]
+  );
 
-  const onMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isDragging || !mouseStart || sortedImages.length <= 1) return;
+  const onMouseUp = useCallback(
+    (e: React.MouseEvent) => {
+      if (
+        !isDragging ||
+        !mouseStart ||
+        sortedImages.length <= 1 ||
+        isAnimating
+      ) {
+        setIsDragging(false);
+        setMouseStart(null);
+        return;
+      }
 
-    const currentX = e.clientX;
-    const distance = mouseStart - currentX;
+      const distance = mouseStart - e.clientX;
+      const isLeftSwipe = distance > minSwipeDistance;
+      const isRightSwipe = distance < -minSwipeDistance;
 
-    // Add visual feedback during drag
-    e.preventDefault();
-  }, [isDragging, mouseStart, sortedImages.length]);
+      if (isLeftSwipe) {
+        handleNextImage();
+      } else if (isRightSwipe) {
+        handlePrevImage();
+      }
 
-  const onMouseUp = useCallback((e: React.MouseEvent) => {
-    if (!isDragging || !mouseStart || sortedImages.length <= 1 || isAnimating) {
       setIsDragging(false);
       setMouseStart(null);
-      return;
-    }
-
-    const distance = mouseStart - e.clientX;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    if (isLeftSwipe) {
-      handleNextImage();
-    } else if (isRightSwipe) {
-      handlePrevImage();
-    }
-
-    setIsDragging(false);
-    setMouseStart(null);
-  }, [isDragging, mouseStart, minSwipeDistance, sortedImages.length, handleNextImage, handlePrevImage, isAnimating]);
+    },
+    [
+      isDragging,
+      mouseStart,
+      minSwipeDistance,
+      sortedImages.length,
+      handleNextImage,
+      handlePrevImage,
+      isAnimating,
+    ]
+  );
 
   const onMouseLeave = useCallback(() => {
     setIsDragging(false);
@@ -249,7 +293,13 @@ export default function ProductImages({ product }: ProductImagesProps) {
         onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
         onMouseLeave={onMouseLeave}
-        style={{ cursor: isDragging ? 'grabbing' : sortedImages.length > 1 ? 'grab' : 'default' }}
+        style={{
+          cursor: isDragging
+            ? 'grabbing'
+            : sortedImages.length > 1
+              ? 'grab'
+              : 'default',
+        }}
       >
         {sortedImages[currentImageIndex] && (
           <>

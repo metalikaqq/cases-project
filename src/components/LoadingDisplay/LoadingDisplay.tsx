@@ -20,12 +20,7 @@ export const LoadingDisplay: React.FC<LoadingDisplayProps> = ({
 }) => {
   return (
     <div className={`${styles.loadingContainer} ${styles[size]} ${className}`}>
-      <div className={styles.spinner}>
-        <div className={styles.spinnerRing}></div>
-        <div className={styles.spinnerRing}></div>
-        <div className={styles.spinnerRing}></div>
-        <div className={styles.spinnerRing}></div>
-      </div>
+      <div className={styles.spinner}></div>
       <p className={styles.loadingMessage}>{message}</p>
     </div>
   );
