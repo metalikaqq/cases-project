@@ -38,8 +38,10 @@ const LoginPage = () => {
         router.push('/');
       } else {
         // Check if error is related to email verification
-        if (response.error?.includes('email not verified') ||
-          response.error?.includes('verify your email')) {
+        if (
+          response.error?.includes('email not verified') ||
+          response.error?.includes('verify your email')
+        ) {
           setShowResendButton(true);
           setResendEmail(data.email);
         }
@@ -135,11 +137,7 @@ const LoginPage = () => {
             </div>
           )}
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className={s.submitButton}
-          >
+          <button type="submit" disabled={isLoading} className={s.submitButton}>
             {isLoading ? 'Signing in...' : 'SIGN IN'}
           </button>
 

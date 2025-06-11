@@ -1,5 +1,6 @@
 @import '@/utils/mixins.scss';
 @import '@/utils/vars.scss';
+@import '@/utils/animations.scss';
 
 .about_us {
   @include container;
@@ -19,6 +20,7 @@
     display: flex;
     flex-direction: column;
     gap: $section-gap-mobile;
+    opacity: 0;
 
     @include responsive(desktop-md) {
       gap: $section-gap-desktop;
@@ -26,6 +28,8 @@
   }
 
   &__team {
+    opacity: 0;
+
     &__head {
       display: flex;
       flex-direction: column;
@@ -83,4 +87,14 @@
 
 .presentation_wrapper {
   @include bannerWrapper;
+}
+
+.animate_sections {
+  @include fadeInUp(0.8s, 40px);
+  @include staggeredAnimation(0.3s, 0.4s);
+}
+
+.animate_team {
+  @include fadeInUp(0.8s, 30px, 0.2s);
+  @include staggeredAnimation(0.2s, 0.3s);
 }

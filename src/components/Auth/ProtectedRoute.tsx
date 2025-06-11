@@ -17,7 +17,7 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   requireAuth = true,
   requireVerification = false,
   redirectTo = '/login',
-  fallback = <div className="loading">Loading...</div>
+  fallback = <div className="loading">Loading...</div>,
 }) => {
   const { isAuthenticated, user, isLoading } = useAuth();
   const router = useRouter();
@@ -34,7 +34,15 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
         return;
       }
     }
-  }, [isAuthenticated, user, isLoading, requireAuth, requireVerification, redirectTo, router]);
+  }, [
+    isAuthenticated,
+    user,
+    isLoading,
+    requireAuth,
+    requireVerification,
+    redirectTo,
+    router,
+  ]);
 
   if (isLoading) {
     return <>{fallback}</>;
@@ -58,7 +66,7 @@ interface GuestOnlyRouteProps {
 
 export const GuestOnlyRoute: React.FC<GuestOnlyRouteProps> = ({
   children,
-  redirectTo = '/'
+  redirectTo = '/',
 }) => {
   const { isAuthenticated, isLoading } = useAuth();
   const router = useRouter();

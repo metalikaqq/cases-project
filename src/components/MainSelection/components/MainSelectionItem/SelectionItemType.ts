@@ -7,4 +7,5 @@ export type MainSelectionItemProps = {
   text: string;
   width?: number;
   height?: number;
+  animationDelay?: number;
 };

@@ -3,7 +3,7 @@
 
 import Image, { StaticImageData } from 'next/image';
 import s from './MainSelectionItem.module.scss';
-import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import useScrollAnimation from '@/hooks/useScrollAnimation';
 import { Link } from '@/navigation';
 import { MainSelectionItemProps } from './SelectionItemType';
 
@@ -14,15 +14,21 @@ export default function MainSelectionItem({
   text,
   width = 500,
   height = 300,
+  animationDelay = 0,
 }: MainSelectionItemProps) {
-  const [imageRef, isImageVisible] = useIntersectionObserver();
+  const [itemRef, isItemVisible] = useScrollAnimation<HTMLAnchorElement>({
+    animationType: 'scaleIn',
+    delay: animationDelay,
+    threshold: 0.2
+  });
 
   return (
-    <Link className={s.case} href={linkHref}>
-      <div
-        ref={imageRef}
-        className={`${s.image__container} ${isImageVisible ? s.fadeIn : ''}`}
-      >
+    <Link
+      ref={itemRef}
+      className={`${s.case} ${isItemVisible ? s.scaleIn : ''}`}
+      href={linkHref}
+    >
+      <div className={`${s.image__container} ${s.hover_container}`}>
         <Image
           src={imageSrc}
           alt={imageAlt}

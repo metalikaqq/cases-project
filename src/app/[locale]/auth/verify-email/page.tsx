@@ -3,10 +3,18 @@ import React, { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { Link } from '@/navigation';
-import { handleVerificationFailure, isAlreadyVerifiedError } from '@/utils/verificationUtils';
+import {
+  handleVerificationFailure,
+  isAlreadyVerifiedError,
+} from '@/utils/verificationUtils';
 import './VerifyEmail.scss';
 
-type VerificationState = 'loading' | 'success' | 'error' | 'invalid-token' | 'already-verified';
+type VerificationState =
+  | 'loading'
+  | 'success'
+  | 'error'
+  | 'invalid-token'
+  | 'already-verified';
 
 const VerifyEmailPage: React.FC = () => {
   const [state, setState] = useState<VerificationState>('loading');
@@ -23,7 +31,9 @@ const VerifyEmailPage: React.FC = () => {
 
     if (!token) {
       setState('invalid-token');
-      setMessage('Invalid verification link. Please check your email and try again.');
+      setMessage(
+        'Invalid verification link. Please check your email and try again.'
+      );
       return;
     }
 
@@ -45,7 +55,10 @@ const VerifyEmailPage: React.FC = () => {
         if (response.success) {
           console.log('✅ Verification successful!');
           setState('success');
-          setMessage(response.data?.message || 'Email verified successfully! You are now logged in.');
+          setMessage(
+            response.data?.message ||
+              'Email verified successfully! You are now logged in.'
+          );
 
           // Start countdown for redirect
           const interval = setInterval(() => {
@@ -154,7 +167,7 @@ const VerifyEmailPage: React.FC = () => {
                         strokeDashoffset: `${220 - (220 * (10 - countdown)) / 10}`,
                         transform: 'rotate(-90deg)',
                         transformOrigin: '40px 40px',
-                        transition: 'stroke-dashoffset 1s linear'
+                        transition: 'stroke-dashoffset 1s linear',
                       }}
                     />
                   </svg>
@@ -241,11 +254,7 @@ const VerifyEmailPage: React.FC = () => {
     }
   };
 
-  return (
-    <>
-      {renderContent()}
-    </>
-  );
+  return <>{renderContent()}</>;
 };
 
 export default VerifyEmailPage;

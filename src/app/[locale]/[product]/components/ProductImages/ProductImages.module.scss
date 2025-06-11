@@ -9,7 +9,7 @@
     top: 0;
     left: 0;
     width: 60%;
-    padding-top: 50px;
+    padding-top: 30px;
   }
 }
 
@@ -40,7 +40,9 @@
     overflow: hidden;
 
     &:hover {
-      border-color: #007bff;
+      // border-color: #007bff;
+      border-color: black;
+
       transform: scale(1.05);
     }
 
@@ -50,8 +52,10 @@
     // }
 
     &.active {
-      border-color: #007bff;
-      box-shadow: 0 0 0 1px #007bff;
+      // border-color: #007bff;
+      border-color: black;
+      // box-shadow: 0 0 0 1px #007bff;
+      // box-shadow: 0 0 0 1px black;
     }
 
     .thumbnail_image {

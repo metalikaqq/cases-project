@@ -4,7 +4,10 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { changePasswordSchema, ChangePasswordFormData } from '@/utils/validationSchemas';
+import {
+  changePasswordSchema,
+  ChangePasswordFormData,
+} from '@/utils/validationSchemas';
 import { ProtectedRoute } from '@/components/Auth/ProtectedRoute';
 import s from '../login/page.module.scss';
 
@@ -91,7 +94,9 @@ const ProfilePage = () => {
                 placeholder="••••••••"
               />
               {errors.currentPassword && (
-                <span className={s.errorText}>{errors.currentPassword.message}</span>
+                <span className={s.errorText}>
+                  {errors.currentPassword.message}
+                </span>
               )}
             </div>
 
@@ -107,7 +112,9 @@ const ProfilePage = () => {
                 placeholder="••••••••"
               />
               {errors.newPassword && (
-                <span className={s.errorText}>{errors.newPassword.message}</span>
+                <span className={s.errorText}>
+                  {errors.newPassword.message}
+                </span>
               )}
             </div>
 
@@ -123,7 +130,9 @@ const ProfilePage = () => {
                 placeholder="••••••••"
               />
               {errors.confirmNewPassword && (
-                <span className={s.errorText}>{errors.confirmNewPassword.message}</span>
+                <span className={s.errorText}>
+                  {errors.confirmNewPassword.message}
+                </span>
               )}
             </div>
 

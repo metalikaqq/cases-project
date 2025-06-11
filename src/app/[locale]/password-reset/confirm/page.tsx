@@ -5,7 +5,10 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Link } from '@/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { passwordResetConfirmSchema, PasswordResetConfirmFormData } from '@/utils/validationSchemas';
+import {
+  passwordResetConfirmSchema,
+  PasswordResetConfirmFormData,
+} from '@/utils/validationSchemas';
 
 const PasswordResetConfirmPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +32,9 @@ const PasswordResetConfirmPage: React.FC = () => {
   useEffect(() => {
     const resetToken = searchParams.get('token');
     if (!resetToken) {
-      setError('Invalid or missing reset token. Please request a new password reset.');
+      setError(
+        'Invalid or missing reset token. Please request a new password reset.'
+      );
       return;
     }
     setToken(resetToken);
@@ -56,7 +61,9 @@ const PasswordResetConfirmPage: React.FC = () => {
           router.push('/login');
         }, 3000);
       } else {
-        setError(response.error || 'Failed to reset password. Please try again.');
+        setError(
+          response.error || 'Failed to reset password. Please try again.'
+        );
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again later.');
@@ -73,7 +80,8 @@ const PasswordResetConfirmPage: React.FC = () => {
             <div className="success-icon">✓</div>
             <h1>Password Reset Successfully!</h1>
             <p>
-              Your password has been reset successfully. You can now log in with your new password.
+              Your password has been reset successfully. You can now log in with
+              your new password.
             </p>
             <p>You will be redirected to the login page in a few seconds...</p>
             <Link href="/login" className="login-button">
@@ -148,7 +156,8 @@ const PasswordResetConfirmPage: React.FC = () => {
             <div className="error-icon">⚠</div>
             <h1>Invalid Reset Link</h1>
             <p>
-              This password reset link is invalid or has expired. Please request a new password reset.
+              This password reset link is invalid or has expired. Please request
+              a new password reset.
             </p>
             <div className="actions">
               <Link href="/password-reset" className="reset-button">
@@ -279,13 +288,13 @@ const PasswordResetConfirmPage: React.FC = () => {
                 className={errors.confirmPassword ? 'error' : ''}
               />
               {errors.confirmPassword && (
-                <span className="error-text">{errors.confirmPassword.message}</span>
+                <span className="error-text">
+                  {errors.confirmPassword.message}
+                </span>
               )}
             </div>
 
-            {error && (
-              <div className="error-message">{error}</div>
-            )}
+            {error && <div className="error-message">{error}</div>}
 
             <button
               type="submit"

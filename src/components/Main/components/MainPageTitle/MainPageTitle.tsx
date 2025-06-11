@@ -1,7 +1,7 @@
 'use client';
 
 import s from './MainPageTitle.module.scss';
-import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import useScrollAnimation from '@/hooks/useScrollAnimation';
 
 export type MainPageTitleProps = {
   titleText: string;
@@ -12,15 +12,31 @@ export default function MainPageTitle({
   titleText,
   subTitleText,
 }: MainPageTitleProps) {
-  const [elementRef, isVisible] = useIntersectionObserver();
+  const [titleRef, isTitleVisible] = useScrollAnimation<HTMLHeadingElement>({
+    animationType: 'fadeInUp',
+    delay: 200,
+    threshold: 0.3
+  });
+  const [subtitleRef, isSubtitleVisible] = useScrollAnimation<HTMLSpanElement>({
+    animationType: 'fadeInUp',
+    delay: 400,
+    threshold: 0.3
+  });
 
   return (
-    <div
-      ref={elementRef}
-      className={`${s.container} ${isVisible ? s.fadeIn : ''}`}
-    >
-      <h1 className={s.title}>{titleText}</h1>
-      <span className={s.sub_title}>{subTitleText}</span>
+    <div className={s.container}>
+      <h1
+        ref={titleRef}
+        className={`${s.title} ${isTitleVisible ? s.fadeInUp : ''}`}
+      >
+        {titleText}
+      </h1>
+      <span
+        ref={subtitleRef}
+        className={`${s.sub_title} ${isSubtitleVisible ? s.fadeInUp : ''}`}
+      >
+        {subTitleText}
+      </span>
     </div>
   );
 }

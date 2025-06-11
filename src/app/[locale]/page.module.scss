@@ -1,5 +1,6 @@
 @import '../../utils/mixins.scss';
 @import '../../utils/vars.scss';
+@import '../../utils/animations.scss';
 
 .app {
   min-height: 100vh;
@@ -7,7 +8,6 @@
   flex-direction: column;
 }
 
-.page__wrapper {}
 
 .main {
   margin: 20px 0;
@@ -28,6 +28,7 @@
     display: flex;
     flex-direction: column;
     gap: $section-gap-mobile;
+    opacity: 0;
 
     @include responsive(desktop-md) {
       gap: $section-gap-desktop;
@@ -93,4 +94,9 @@
   align-items: center;
   height: 100vh;
   background-color: #f0f0f0;
+}
+
+.animate_sections {
+  @include fadeInUp(0.8s, 40px);
+  @include staggeredAnimation(0.3s, 0.4s);
 }

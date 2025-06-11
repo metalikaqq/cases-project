@@ -20,7 +20,9 @@ const VerifyEmailPage: React.FC = () => {
 
     if (!token) {
       setState('invalid-token');
-      setMessage('Invalid verification link. Please check your email and try again.');
+      setMessage(
+        'Invalid verification link. Please check your email and try again.'
+      );
       return;
     }
 
@@ -30,7 +32,10 @@ const VerifyEmailPage: React.FC = () => {
 
         if (response.success) {
           setState('success');
-          setMessage(response.data?.message || 'Email verified successfully! You are now logged in.');
+          setMessage(
+            response.data?.message ||
+              'Email verified successfully! You are now logged in.'
+          );
 
           // Start countdown for redirect
           const interval = setInterval(() => {
@@ -47,7 +52,9 @@ const VerifyEmailPage: React.FC = () => {
           return () => clearInterval(interval);
         } else {
           setState('error');
-          setMessage(response.error || 'Email verification failed. Please try again.');
+          setMessage(
+            response.error || 'Email verification failed. Please try again.'
+          );
         }
       } catch (error) {
         console.error('Email verification error:', error);
@@ -79,7 +86,9 @@ const VerifyEmailPage: React.FC = () => {
               <div className="success-icon">✓</div>
               <h1>Email Verified Successfully!</h1>
               <p>{message}</p>
-              <p>You will be redirected to the dashboard in {countdown} seconds.</p>
+              <p>
+                You will be redirected to the dashboard in {countdown} seconds.
+              </p>
               <Link href="/en" className="continue-button">
                 Continue to Dashboard
               </Link>
@@ -164,11 +173,16 @@ const VerifyEmailPage: React.FC = () => {
         }
 
         @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
         }
 
-        .success-icon, .error-icon {
+        .success-icon,
+        .error-icon {
           font-size: 60px;
           margin-bottom: 20px;
         }

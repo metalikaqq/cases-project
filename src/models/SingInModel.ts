@@ -1,4 +1,4 @@
-import UserCredentialsModel from "./UserCredentialsModel";
+import UserCredentialsModel from './UserCredentialsModel';
 
 export interface SignInData {
   access_token: string;

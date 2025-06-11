@@ -1,5 +1,11 @@
 'use client';
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from 'react';
 import {
   AuthContextType,
   AuthState,
@@ -13,7 +19,7 @@ import {
   RegisterResponse,
   VerifyEmailResponse,
   PasswordResetResponse,
-  User
+  User,
 } from '@/types/auth';
 import * as authApi from '@/api/routes/auth';
 
@@ -32,7 +38,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   });
 
   // Додаємо Map для відстеження активних запитів верифікації
-  const [activeVerifications, setActiveVerifications] = useState<Map<string, Promise<any>>>(new Map());
+  const [activeVerifications, setActiveVerifications] = useState<
+    Map<string, Promise<any>>
+  >(new Map());
 
   // Initialize auth state from localStorage
   useEffect(() => {
@@ -55,7 +63,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 isAuthenticated: true,
               });
               // Update stored user data
-              localStorage.setItem('user', JSON.stringify(profileResponse.data));
+              localStorage.setItem(
+                'user',
+                JSON.stringify(profileResponse.data)
+              );
               return;
             }
           } catch (error) {
@@ -79,7 +90,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     initializeAuth();
   }, []);
 
-  const login = async (credentials: LoginRequest): Promise<AuthResponse<LoginResponse>> => {
+  const login = async (
+    credentials: LoginRequest
+  ): Promise<AuthResponse<LoginResponse>> => {
     try {
       const response = await authApi.login(credentials);
 
@@ -105,7 +118,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const register = async (data: RegisterRequest): Promise<AuthResponse<RegisterResponse>> => {
+  const register = async (
+    data: RegisterRequest
+  ): Promise<AuthResponse<RegisterResponse>> => {
     try {
       const response = await authApi.register(data);
       return response;
@@ -127,7 +142,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     });
   };
 
-  const verifyEmail = async (token: string): Promise<AuthResponse<VerifyEmailResponse>> => {
+  const verifyEmail = async (
+    token: string
+  ): Promise<AuthResponse<VerifyEmailResponse>> => {
     // Перевіряємо чи вже є активний запит для цього токена
     if (activeVerifications.has(token)) {
       console.log('🔄 Using existing verification request for token:', token);
@@ -136,13 +153,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const verificationPromise = (async () => {
       try {
-        console.log('🔑 AuthContext: Starting new verification request for token:', token);
+        console.log(
+          '🔑 AuthContext: Starting new verification request for token:',
+          token
+        );
         const response = await authApi.verifyEmail({ token });
         console.log('📨 AuthContext: Verification API response:', response);
 
         if (response.success && response.data) {
           const { access_token, user } = response.data;
-          console.log('🎉 AuthContext: Verification successful, setting user:', user);
+          console.log(
+            '🎉 AuthContext: Verification successful, setting user:',
+            user
+          );
 
           // Store token and user data
           localStorage.setItem('access_token', access_token);
@@ -155,7 +178,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             isAuthenticated: true,
           });
         } else {
-          console.log('⚠️ AuthContext: Verification failed with response:', response);
+          console.log(
+            '⚠️ AuthContext: Verification failed with response:',
+            response
+          );
         }
 
         return response;
@@ -164,7 +190,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         throw error;
       } finally {
         // Видаляємо з активних запитів після завершення
-        setActiveVerifications(prev => {
+        setActiveVerifications((prev) => {
           const newMap = new Map(prev);
           newMap.delete(token);
           return newMap;
@@ -173,12 +199,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     })();
 
     // Додаємо до активних запитів
-    setActiveVerifications(prev => new Map(prev).set(token, verificationPromise));
+    setActiveVerifications((prev) =>
+      new Map(prev).set(token, verificationPromise)
+    );
 
     return verificationPromise;
   };
 
-  const resendVerification = async (email: string): Promise<AuthResponse<void>> => {
+  const resendVerification = async (
+    email: string
+  ): Promise<AuthResponse<void>> => {
     try {
       const response = await authApi.resendVerification({ email });
       return response;
@@ -188,7 +218,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const requestPasswordReset = async (email: string): Promise<AuthResponse<PasswordResetResponse>> => {
+  const requestPasswordReset = async (
+    email: string
+  ): Promise<AuthResponse<PasswordResetResponse>> => {
     try {
       const response = await authApi.requestPasswordReset({ email });
       return response;
@@ -198,7 +230,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const confirmPasswordReset = async (data: PasswordResetConfirmRequest): Promise<AuthResponse<void>> => {
+  const confirmPasswordReset = async (
+    data: PasswordResetConfirmRequest
+  ): Promise<AuthResponse<void>> => {
     try {
       const response = await authApi.confirmPasswordReset(data);
       return response;
@@ -208,7 +242,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const changePassword = async (data: ChangePasswordRequest): Promise<AuthResponse<void>> => {
+  const changePassword = async (
+    data: ChangePasswordRequest
+  ): Promise<AuthResponse<void>> => {
     try {
       const response = await authApi.changePassword(data);
       return response;
@@ -224,7 +260,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       if (response.success && response.data) {
         const updatedUser = response.data;
         localStorage.setItem('user', JSON.stringify(updatedUser));
-        setAuthState(prev => ({
+        setAuthState((prev) => ({
           ...prev,
           user: updatedUser,
         }));

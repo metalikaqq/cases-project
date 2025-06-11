@@ -92,7 +92,9 @@ const RegisterForm = () => {
                 className={s.input}
               />
               {errors.confirmPassword && (
-                <span className={s.errorText}>{errors.confirmPassword.message}</span>
+                <span className={s.errorText}>
+                  {errors.confirmPassword.message}
+                </span>
               )}
             </div>
           </div>
@@ -112,11 +114,7 @@ const RegisterForm = () => {
             </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className={s.submitButton}
-          >
+          <button type="submit" disabled={isLoading} className={s.submitButton}>
             {isLoading ? 'Creating account...' : 'SIGN UP'}
           </button>
 

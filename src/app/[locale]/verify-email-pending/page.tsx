@@ -53,7 +53,10 @@ const VerifyEmailPendingPage: React.FC = () => {
           });
         }, 1000);
       } else {
-        setResendError(response.error || 'Failed to resend verification email. Please try again.');
+        setResendError(
+          response.error ||
+            'Failed to resend verification email. Please try again.'
+        );
       }
     } catch (error) {
       setResendError('An unexpected error occurred. Please try again.');
@@ -69,8 +72,9 @@ const VerifyEmailPendingPage: React.FC = () => {
           <div className="email-icon">📧</div>
           <h1>Check Your Email</h1>
           <p>
-            We&apos;ve sent a verification link to your email address. Please check your inbox
-            and click the link to verify your account and complete the registration process.
+            We&apos;ve sent a verification link to your email address. Please
+            check your inbox and click the link to verify your account and
+            complete the registration process.
           </p>
 
           <div className="tips">
@@ -84,7 +88,10 @@ const VerifyEmailPendingPage: React.FC = () => {
 
           <div className="resend-section">
             <h3>Resend Verification Email</h3>
-            <form onSubmit={handleSubmit(onResendSubmit)} className="resend-form">
+            <form
+              onSubmit={handleSubmit(onResendSubmit)}
+              className="resend-form"
+            >
               <div className="input-group">
                 <input
                   {...register('email')}
@@ -112,9 +119,11 @@ const VerifyEmailPendingPage: React.FC = () => {
                 disabled={isResending || cooldown > 0}
                 className="resend-button"
               >
-                {isResending ? 'Sending...' :
-                  cooldown > 0 ? `Resend in ${cooldown}s` :
-                    'Resend Verification Email'}
+                {isResending
+                  ? 'Sending...'
+                  : cooldown > 0
+                    ? `Resend in ${cooldown}s`
+                    : 'Resend Verification Email'}
               </button>
             </form>
           </div>

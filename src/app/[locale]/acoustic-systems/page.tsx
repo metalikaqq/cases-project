@@ -1,10 +1,11 @@
+'use client';
 import s from './page.module.scss';
-import PreviewSection from '@/components/PreviewSection';
-import { TextPosition } from '@/components/PreviewSection/PreviewSection';
+import AnimatedPreviewSection, { TextPosition } from '@/components/PreviewSection/AnimatedPreviewSection';
 import MainPageTitle from '@/components/Main/components/MainPageTitle';
 import { useTranslations } from 'next-intl';
 import PresentationalBanner from '@/components/PresentationalBanner';
 import AcousticSystemSelection from '@/components/AcousticSystemSelection';
+import useScrollAnimation from '@/hooks/useScrollAnimation';
 
 // Using existing images that could represent acoustic systems
 import peopleGroupImg from '@/assets/image/people-group.jpeg';
@@ -21,6 +22,18 @@ import {
 
 function AcousticSystemsPage() {
   const t = useTranslations('AcousticSystemsPage');
+
+  const [sectionsRef, isSectionsVisible] = useScrollAnimation<HTMLDivElement>({
+    animationType: 'fadeInUp',
+    delay: 100,
+    threshold: 0.1
+  });
+
+  const [featuresRef, isFeaturesVisible] = useScrollAnimation<HTMLDivElement>({
+    animationType: 'fadeInUp',
+    delay: 200,
+    threshold: 0.1
+  });
 
   return (
     <>
@@ -39,8 +52,11 @@ function AcousticSystemsPage() {
           subTitleText={t('1SectionDescription')}
         />
 
-        <div className={s.acoustic_systems_page__sections}>
-          <PreviewSection
+        <div
+          ref={sectionsRef}
+          className={`${s.acoustic_systems_page__sections} ${isSectionsVisible ? s.animate_sections : ''}`}
+        >
+          <AnimatedPreviewSection
             blockQuote={t('1BlockQuote')}
             imgSrc={peopleGroupImg}
             titleText={t('1BlockTitle')}
@@ -48,7 +64,7 @@ function AcousticSystemsPage() {
             textPosition={TextPosition.Left}
           />
 
-          <PreviewSection
+          <AnimatedPreviewSection
             blockQuote={t('2BlockQuote')}
             imgSrc={openCaseImg}
             titleText={t('2BlockTitle')}
@@ -56,7 +72,7 @@ function AcousticSystemsPage() {
             textPosition={TextPosition.Right}
           />
 
-          <PreviewSection
+          <AnimatedPreviewSection
             blockQuote={t('3BlockQuote')}
             imgSrc={casesOnFloorImg}
             titleText={t('3BlockTitle')}
@@ -65,7 +81,10 @@ function AcousticSystemsPage() {
           />
         </div>
 
-        <div>
+        <div
+          ref={featuresRef}
+          className={`${isFeaturesVisible ? s.animate_features : ''}`}
+        >
           <h1 className={s.acoustic_systems_page__title}>
             {t('FeatureTitle')}
           </h1>

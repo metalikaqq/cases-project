@@ -18,9 +18,46 @@ interface ProductScrollProps {
 
 export default function ProductScroll({ product }: ProductScrollProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+  
+  const toggleAccordion = (section: string) => {
+    setActiveAccordion(activeAccordion === section ? null : section);
+  };
+                  
+                  <div className={s.highlight}>
+                    <p>Perfect for transporting sensitive equipment safely</p>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>dal';
+import ContactForm from '@/components/ContactForm';
+import { Product } from '@/types/product';
+import {
+  getLocalizedContent,
+  getLocalizedProductName,
+  isUkrainianLocale,
+} from '@/utils/productUtils';
+import { prepareHtmlContent } from '@/utils/htmlUtils';
+
+interface ProductScrollProps {
+  product: Product;
+}
+
+export default function ProductScroll({ product }: ProductScrollProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const toggleAccordion = (section: string) => {
+    setActiveAccordion(activeAccordion === section ? null : section);
+  };
 
   // Log product data for debugging
   useEffect(() => {
@@ -91,11 +128,11 @@ export default function ProductScroll({ product }: ProductScrollProps) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {isUkrainian ? 'Завантажити PDF' : 'Download PDF'}
+          {isUkrainian ? 'Завантажити специфікацію продукту' : 'Download Product Spec Sheet'}
         </a>
 
         <button onClick={openModal} className={s.button__blue} type="button">
-          {isUkrainian ? "Зв'язатися з нами" : 'Contact Us'}
+          {isUkrainian ? "Зв'язатися для отримання котирування" : 'Contact Us For A Quote'}
         </button>
 
         <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -106,19 +143,50 @@ export default function ProductScroll({ product }: ProductScrollProps) {
           />
         </Modal>
 
-        <button className={s.accordion} type="button">
-          {isUkrainian ? 'Характеристики' : 'Specifications'}
-        </button>
-        <button className={s.accordion} type="button">
-          {isUkrainian ? 'Інформація про доставку' : 'Shipping Info'}
-        </button>
+        <div>
+          <button
+            className={`${s.accordion} ${activeAccordion === 'specifications' ? s.active : ''}`}
+            type="button"
+            onClick={() => toggleAccordion('specifications')}
+          >
+            {isUkrainian ? 'Характеристики' : 'Specifications'}
+          </button>
+          <div className={`${s.accordionContent} ${activeAccordion === 'specifications' ? s.open : ''}`}>
+            <div className={s.accordionInner}>
+              {isUkrainian ? (
+                <p>Детальні характеристики продукту будуть доступні незабаром.</p>
+              ) : (
+                <p>Detailed product specifications will be available soon.</p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button
+            className={`${s.accordion} ${activeAccordion === 'shipping' ? s.active : ''}`}
+            type="button"
+            onClick={() => toggleAccordion('shipping')}
+          >
+            {isUkrainian ? 'Інформація про доставку' : 'Shipping Information'}
+          </button>
+          <div className={`${s.accordionContent} ${activeAccordion === 'shipping' ? s.open : ''}`}>
+            <div className={s.accordionInner}>
+              {isUkrainian ? (
+                <p>Інформація про доставку та умови поставки.</p>
+              ) : (
+                <p>Shipping information and delivery terms.</p>
+              )}
+            </div>
+          </div>
+        </div>
 
         <div className={s.social}>
-          <a href="#" className={s.share} onClick={(e) => e.preventDefault()}>
+          <a href="#" className="share" onClick={(e) => e.preventDefault()}>
             {isUkrainian ? 'Поширити' : 'Share'}
           </a>
-          <a href="#" className={s.pin} onClick={(e) => e.preventDefault()}>
-            {isUkrainian ? 'Закріпити' : 'Pin'}
+          <a href="#" className="pin" onClick={(e) => e.preventDefault()}>
+            {isUkrainian ? 'Закріпити' : 'Pin It'}
           </a>
         </div>
       </div>

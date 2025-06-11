@@ -1,5 +1,6 @@
 @import '@/utils/vars.scss';
 @import '@/utils/mixins.scss';
+@import '@/utils/animations.scss';
 
 $desktop: 1024px;
 $tablet: 768px;
@@ -8,40 +9,39 @@ $mobile: 450px;
 .selection_cases {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* Default for tablets */
   grid-gap: 17px;
   width: calc(100% - 40px);
-  /* Ensure 20px padding on each side */
   margin: 0 auto;
-  /* Center the grid */
   padding: 20px;
   justify-content: center;
-  /* Center items in grid */
+  opacity: 0;
 
   @media (min-width: $desktop) {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 22px;
     width: calc(80% - 40px);
-    /* Reduce width to make items more centered */
   }
 
   @media (max-width: $tablet) and (min-width: $mobile) {
     grid-template-columns: repeat(2, 1fr);
-    /* 2 columns for tablet */
     grid-gap: 15px;
   }
 
   @media (max-width: $mobile) {
     grid-template-columns: 1fr;
-    /* 1 column for mobile */
     grid-gap: 10px;
   }
+}
+
+.animate_container {
+  @include fadeInUp(0.8s, 30px);
+  @include staggeredAnimation(0.2s, 0.2s);
 }
 
 .loading_message,
 .error_message,
 .no_products_message {
-  grid-column: 1 / -1; // Span all columns
+  grid-column: 1 / -1;
   text-align: center;
   padding: 40px 20px;
   font-size: 1.1rem;

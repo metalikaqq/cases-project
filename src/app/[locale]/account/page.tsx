@@ -27,8 +27,13 @@ function AccountPage() {
     },
   ];
 
-  const totalSpent = orders.reduce((sum, order) => sum + parseFloat(order.total.replace('$', '')), 0);
-  const deliveredOrders = orders.filter(order => order.status === 'Delivered').length;
+  const totalSpent = orders.reduce(
+    (sum, order) => sum + parseFloat(order.total.replace('$', '')),
+    0
+  );
+  const deliveredOrders = orders.filter(
+    (order) => order.status === 'Delivered'
+  ).length;
 
   return (
     <div className={s.account}>
@@ -63,9 +68,7 @@ function AccountPage() {
           <button className={s.account__header__button}>
             Continue Shopping
           </button>
-          <button className={s.account__header__button}>
-            Log Out
-          </button>
+          <button className={s.account__header__button}>Log Out</button>
         </div>
       </header>
 
@@ -75,8 +78,12 @@ function AccountPage() {
 
           <div className={s.account__stats}>
             <div className={s.account__stats__item}>
-              <span className={s.account__stats__item__number}>{orders.length}</span>
-              <span className={s.account__stats__item__label}>Total Orders</span>
+              <span className={s.account__stats__item__number}>
+                {orders.length}
+              </span>
+              <span className={s.account__stats__item__label}>
+                Total Orders
+              </span>
             </div>
             <div className={s.account__stats__item}>
               <span className={s.account__stats__item__number}>
@@ -103,8 +110,12 @@ function AccountPage() {
                 <div key={order.id} className={s.account__orders__item}>
                   <span className={s.account__orders__id}>#{order.id}</span>
                   <span className={s.account__orders__date}>{order.date}</span>
-                  <span className={s.account__orders__total}>{order.total}</span>
-                  <span className={`${s.account__status} ${s[`account__status--${order.status.toLowerCase()}`]}`}>
+                  <span className={s.account__orders__total}>
+                    {order.total}
+                  </span>
+                  <span
+                    className={`${s.account__status} ${s[`account__status--${order.status.toLowerCase()}`]}`}
+                  >
                     {order.status}
                   </span>
                   <button className={s.account__orders__button}>
@@ -131,11 +142,15 @@ function AccountPage() {
             </div>
             <div className={s.account__details__row}>
               <span className={s.account__details__label}>Email</span>
-              <span className={s.account__details__value}>{user?.email || 'sasha@example.com'}</span>
+              <span className={s.account__details__value}>
+                {user?.email || 'sasha@example.com'}
+              </span>
             </div>
             <div className={s.account__details__row}>
               <span className={s.account__details__label}>Phone</span>
-              <span className={s.account__details__value}>+380 XX XXX XXXX</span>
+              <span className={s.account__details__value}>
+                +380 XX XXX XXXX
+              </span>
             </div>
           </div>
 
@@ -143,9 +158,7 @@ function AccountPage() {
             <button className={s.account__details__button}>
               View Address Book
             </button>
-            <button className={s.account__details__button}>
-              Edit Profile
-            </button>
+            <button className={s.account__details__button}>Edit Profile</button>
             <button className={s.account__details__button}>
               Change Password
             </button>

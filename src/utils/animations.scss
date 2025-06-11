@@ -1,0 +1,267 @@
+// Scroll animations mixins
+@import './vars.scss';
+
+// Enhanced fadeIn animations
+@mixin fadeInUp($duration: 0.8s, $distance: 30px, $delay: 0s) {
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY($distance);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  opacity: 0;
+  animation: fadeInUp $duration cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: $delay;
+}
+
+@mixin fadeInDown($duration: 0.8s, $distance: 30px, $delay: 0s) {
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-$distance);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  opacity: 0;
+  animation: fadeInDown $duration cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: $delay;
+}
+
+@mixin fadeInLeft($duration: 0.8s, $distance: 40px, $delay: 0s) {
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-$distance);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  opacity: 0;
+  animation: fadeInLeft $duration cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: $delay;
+}
+
+@mixin fadeInRight($duration: 0.8s, $distance: 40px, $delay: 0s) {
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX($distance);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  opacity: 0;
+  animation: fadeInRight $duration cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: $delay;
+}
+
+@mixin scaleIn($duration: 0.6s, $scale: 0.8, $delay: 0s) {
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale($scale);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  opacity: 0;
+  animation: scaleIn $duration cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: $delay;
+}
+
+@mixin slideInLeft($duration: 0.8s, $distance: 100px, $delay: 0s) {
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-$distance);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  opacity: 0;
+  animation: slideInLeft $duration cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: $delay;
+}
+
+@mixin slideInRight($duration: 0.8s, $distance: 100px, $delay: 0s) {
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX($distance);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  opacity: 0;
+  animation: slideInRight $duration cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: $delay;
+}
+
+@mixin rotateIn($duration: 0.8s, $rotation: -180deg, $delay: 0s) {
+  @keyframes rotateIn {
+    from {
+      opacity: 0;
+      transform: rotate($rotation) scale(0.8);
+      transform-origin: center;
+    }
+
+    to {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+      transform-origin: center;
+    }
+  }
+
+  opacity: 0;
+  animation: rotateIn $duration cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: $delay;
+}
+
+@mixin bounceIn($duration: 1s, $delay: 0s) {
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    70% {
+      transform: scale(0.9);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  opacity: 0;
+  animation: bounceIn $duration cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: $delay;
+}
+
+// Staggered animations for lists and containers
+@mixin staggeredAnimation($base-delay: 0.1s, $increment: 0.1s) {
+  >* {
+    &:nth-child(1) {
+      animation-delay: $base-delay;
+    }
+
+    &:nth-child(2) {
+      animation-delay: $base-delay + $increment;
+    }
+
+    &:nth-child(3) {
+      animation-delay: $base-delay + ($increment * 2);
+    }
+
+    &:nth-child(4) {
+      animation-delay: $base-delay + ($increment * 3);
+    }
+
+    &:nth-child(5) {
+      animation-delay: $base-delay + ($increment * 4);
+    }
+
+    &:nth-child(6) {
+      animation-delay: $base-delay + ($increment * 5);
+    }
+  }
+}
+
+// Hover animations
+@mixin hoverFloat($duration: 0.3s, $distance: -5px) {
+  transition: transform $duration ease-in-out;
+
+  &:hover {
+    transform: translateY($distance);
+  }
+}
+
+@mixin hoverScale($scale: 1.05, $duration: 0.3s) {
+  transition: transform $duration ease-in-out;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Utility classes for animations
+.animate-fadeInUp {
+  @include fadeInUp();
+}
+
+.animate-fadeInDown {
+  @include fadeInDown();
+}
+
+.animate-fadeInLeft {
+  @include fadeInLeft();
+}
+
+.animate-fadeInRight {
+  @include fadeInRight();
+}
+
+.animate-scaleIn {
+  @include scaleIn();
+}
+
+.animate-slideInLeft {
+  @include slideInLeft();
+}
+
+.animate-slideInRight {
+  @include slideInRight();
+}
+
+.animate-rotateIn {
+  @include rotateIn();
+}
+
+.animate-bounceIn {
+  @include bounceIn();
+}
+
+.hover-float {
+  @include hoverFloat();
+}
+
+.hover-scale {
+  @include hoverScale();
+}

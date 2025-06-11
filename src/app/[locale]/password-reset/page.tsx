@@ -4,7 +4,10 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Link } from '@/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { passwordResetRequestSchema, PasswordResetRequestFormData } from '@/utils/validationSchemas';
+import {
+  passwordResetRequestSchema,
+  PasswordResetRequestFormData,
+} from '@/utils/validationSchemas';
 
 const PasswordResetPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +35,10 @@ const PasswordResetPage: React.FC = () => {
       if (response.success) {
         setSuccess(true);
       } else {
-        setError(response.error || 'Failed to send password reset email. Please try again.');
+        setError(
+          response.error ||
+            'Failed to send password reset email. Please try again.'
+        );
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again later.');
@@ -50,10 +56,13 @@ const PasswordResetPage: React.FC = () => {
             <h1>Check Your Email</h1>
             <p>
               We&apos;ve sent a password reset link to your email address.
-              Please check your inbox and follow the instructions to reset your password.
+              Please check your inbox and follow the instructions to reset your
+              password.
             </p>
             <div className="tips">
-              <p><strong>Don&apos;t see the email?</strong></p>
+              <p>
+                <strong>Don&apos;t see the email?</strong>
+              </p>
               <ul>
                 <li>Check your spam or junk mail folder</li>
                 <li>Make sure you entered the correct email address</li>
@@ -146,7 +155,10 @@ const PasswordResetPage: React.FC = () => {
       <div className="reset-container">
         <div className="reset-card">
           <h1>Reset Password</h1>
-          <p>Enter your email address and we&apos;ll send you a link to reset your password.</p>
+          <p>
+            Enter your email address and we&apos;ll send you a link to reset
+            your password.
+          </p>
 
           <form onSubmit={handleSubmit(onSubmit)} className="reset-form">
             <div className="form-group">
@@ -163,9 +175,7 @@ const PasswordResetPage: React.FC = () => {
               )}
             </div>
 
-            {error && (
-              <div className="error-message">{error}</div>
-            )}
+            {error && <div className="error-message">{error}</div>}
 
             <button
               type="submit"
