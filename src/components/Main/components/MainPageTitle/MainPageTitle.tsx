@@ -15,12 +15,12 @@ export default function MainPageTitle({
   const [titleRef, isTitleVisible] = useScrollAnimation<HTMLHeadingElement>({
     animationType: 'fadeInUp',
     delay: 200,
-    threshold: 0.3
+    threshold: 0.3,
   });
   const [subtitleRef, isSubtitleVisible] = useScrollAnimation<HTMLSpanElement>({
     animationType: 'fadeInUp',
     delay: 400,
-    threshold: 0.3
+    threshold: 0.3,
   });
 
   return (

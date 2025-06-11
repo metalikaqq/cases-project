@@ -9,6 +9,7 @@
   margin-bottom: 75px;
   max-width: 1500px;
   margin: 0 auto;
+  margin-bottom: 150px;
 
   @include responsive(desktop-md) {
     flex-direction: row;

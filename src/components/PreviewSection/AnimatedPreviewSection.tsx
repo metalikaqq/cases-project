@@ -37,21 +37,23 @@ export default function AnimatedPreviewSection({
 
   // Separate animations for text and image with different delays
   const [textRef, isTextVisible] = useScrollAnimation<HTMLDivElement>({
-    animationType: textPosition === TextPosition.Left ? 'slideInLeft' : 'slideInRight',
+    animationType:
+      textPosition === TextPosition.Left ? 'slideInLeft' : 'slideInRight',
     delay: 200,
-    threshold: 0.2
+    threshold: 0.2,
   });
 
   const [imageRef, isImageVisible] = useScrollAnimation<HTMLDivElement>({
-    animationType: textPosition === TextPosition.Left ? 'slideInRight' : 'slideInLeft',
+    animationType:
+      textPosition === TextPosition.Left ? 'slideInRight' : 'slideInLeft',
     delay: 400,
-    threshold: 0.2
+    threshold: 0.2,
   });
 
   const [quoteRef, isQuoteVisible] = useScrollAnimation<HTMLHeadingElement>({
     animationType: 'fadeInDown',
     delay: 100,
-    threshold: 0.3
+    threshold: 0.3,
   });
 
   const textSideClass =
@@ -65,15 +67,19 @@ export default function AnimatedPreviewSection({
       : previewStyles.preview_section__image__order_right;
 
   return (
-    <section className={`${previewStyles.preview_section} ${s.animated_section}`}>
+    <section
+      className={`${previewStyles.preview_section} ${s.animated_section}`}
+    >
       <div
         ref={textRef}
         className={classNames(
           previewStyles.preview_section__main_text,
           textSideClass,
           {
-            [s.slideInLeft]: isTextVisible && textPosition === TextPosition.Left,
-            [s.slideInRight]: isTextVisible && textPosition === TextPosition.Right,
+            [s.slideInLeft]:
+              isTextVisible && textPosition === TextPosition.Left,
+            [s.slideInRight]:
+              isTextVisible && textPosition === TextPosition.Right,
           }
         )}
       >
@@ -107,8 +113,10 @@ export default function AnimatedPreviewSection({
           previewStyles.preview_section__image,
           imageSideClass,
           {
-            [s.slideInRight]: isImageVisible && textPosition === TextPosition.Left,
-            [s.slideInLeft]: isImageVisible && textPosition === TextPosition.Right,
+            [s.slideInRight]:
+              isImageVisible && textPosition === TextPosition.Left,
+            [s.slideInLeft]:
+              isImageVisible && textPosition === TextPosition.Right,
           }
         )}
       >

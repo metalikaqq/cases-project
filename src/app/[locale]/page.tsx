@@ -1,6 +1,8 @@
 'use client';
 import s from './page.module.scss';
-import AnimatedPreviewSection, { TextPosition } from '@/components/PreviewSection/AnimatedPreviewSection';
+import AnimatedPreviewSection, {
+  TextPosition,
+} from '@/components/PreviewSection/AnimatedPreviewSection';
 import MainPageTitle from '@/components/Main/components/MainPageTitle';
 import { useTranslations } from 'next-intl';
 import MainSelection from '@/components/MainSelection';
@@ -23,7 +25,7 @@ export default function Home() {
   const [sectionsRef, isSectionsVisible] = useScrollAnimation<HTMLDivElement>({
     animationType: 'fadeInUp',
     delay: 100,
-    threshold: 0.1
+    threshold: 0.1,
   });
 
   return (

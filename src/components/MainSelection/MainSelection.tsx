@@ -9,11 +9,13 @@ import useScrollAnimation from '@/hooks/useScrollAnimation';
 export default function MainSelection() {
   const t = useTranslations('MainSelection');
 
-  const [containerRef, isContainerVisible] = useScrollAnimation<HTMLDivElement>({
-    animationType: 'fadeInUp',
-    delay: 200,
-    threshold: 0.3
-  });
+  const [containerRef, isContainerVisible] = useScrollAnimation<HTMLDivElement>(
+    {
+      animationType: 'fadeInUp',
+      delay: 200,
+      threshold: 0.3,
+    }
+  );
 
   return (
     <div

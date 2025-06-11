@@ -2,7 +2,9 @@
 import Image from 'next/image';
 import s from './page.module.scss';
 import PresentationalBanner from '@/components/PresentationalBanner/PresentationalBanner';
-import AnimatedPreviewSection, { TextPosition } from '@/components/PreviewSection/AnimatedPreviewSection';
+import AnimatedPreviewSection, {
+  TextPosition,
+} from '@/components/PreviewSection/AnimatedPreviewSection';
 import { useTranslations } from 'next-intl';
 import useScrollAnimation from '@/hooks/useScrollAnimation';
 
@@ -24,13 +26,13 @@ export default function Page() {
   const [sectionsRef, isSectionsVisible] = useScrollAnimation<HTMLDivElement>({
     animationType: 'fadeInUp',
     delay: 100,
-    threshold: 0.1
+    threshold: 0.1,
   });
 
   const [teamRef, isTeamVisible] = useScrollAnimation<HTMLDivElement>({
     animationType: 'fadeInUp',
     delay: 200,
-    threshold: 0.1
+    threshold: 0.1,
   });
 
   return (

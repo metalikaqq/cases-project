@@ -19,7 +19,7 @@ export default function MainSelectionItem({
   const [itemRef, isItemVisible] = useScrollAnimation<HTMLAnchorElement>({
     animationType: 'scaleIn',
     delay: animationDelay,
-    threshold: 0.2
+    threshold: 0.2,
   });
 
   return (

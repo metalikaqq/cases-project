@@ -1,6 +1,8 @@
 'use client';
 import s from './page.module.scss';
-import AnimatedPreviewSection, { TextPosition } from '@/components/PreviewSection/AnimatedPreviewSection';
+import AnimatedPreviewSection, {
+  TextPosition,
+} from '@/components/PreviewSection/AnimatedPreviewSection';
 import MainPageTitle from '@/components/Main/components/MainPageTitle';
 import { useTranslations } from 'next-intl';
 import PresentationalBanner from '@/components/PresentationalBanner';
@@ -26,13 +28,13 @@ function AcousticSystemsPage() {
   const [sectionsRef, isSectionsVisible] = useScrollAnimation<HTMLDivElement>({
     animationType: 'fadeInUp',
     delay: 100,
-    threshold: 0.1
+    threshold: 0.1,
   });
 
   const [featuresRef, isFeaturesVisible] = useScrollAnimation<HTMLDivElement>({
     animationType: 'fadeInUp',
     delay: 200,
-    threshold: 0.1
+    threshold: 0.1,
   });
 
   return (

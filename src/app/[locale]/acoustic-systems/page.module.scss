@@ -57,7 +57,8 @@
   text-align: center;
   text-transform: uppercase;
 
-  @include responsive(desktop-md) {}
+  @include responsive(desktop-md) {
+  }
 }
 
 .sub_title {
