@@ -5,7 +5,7 @@
   max-height: none;
   overflow-y: visible;
   background-color: transparent;
-  padding: 0 0 0 45px;
+  padding: 30px;
   flex: 2;
 
   @include responsive(desktop-md) {
@@ -13,6 +13,7 @@
     max-height: 100vh;
     overflow-y: auto;
     background-color: #fff;
+    padding: 0 0 0 45px;
     @include hide-scrollbar;
   }
 }

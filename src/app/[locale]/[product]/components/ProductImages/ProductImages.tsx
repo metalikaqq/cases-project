@@ -6,7 +6,6 @@ import s from './ProductImages.module.scss';
 import { Product } from '@/types/product';
 import { sortProductImages, validateImageUrl } from '@/utils/productUtils';
 import caseImage from '@/assets/image/thumbnail1.webp'; // Fallback image
-import ImageModal from './ImageModal';
 
 interface ProductImagesProps {
   product: Product;
@@ -16,7 +15,15 @@ export default function ProductImages({ product }: ProductImagesProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
   const [imageLoading, setImageLoading] = useState<Set<string>>(new Set());
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [mouseStart, setMouseStart] = useState<number | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+
+  // Minimum distance to trigger swipe
+  const minSwipeDistance = 30;
 
   // Handle image loading errors
   const handleImageError = useCallback((imageUrl: string) => {
@@ -54,18 +61,156 @@ export default function ProductImages({ product }: ProductImagesProps) {
     [imageErrors]
   );
 
-  // Handle zoom on main image click
-  const handleMainImageClick = useCallback((e: React.MouseEvent) => {
-    // Prevent click from triggering other events
-    e.stopPropagation();
-    setIsModalOpen(true);
+  // Sort images or use empty array
+  const sortedImages = product?.images ? sortProductImages(product.images) : [];
+
+  // Navigation functions with animation
+  const handleNextImage = useCallback(() => {
+    if (sortedImages.length > 1 && !isAnimating) {
+      setIsAnimating(true);
+      setSwipeDirection('left');
+
+      setTimeout(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % sortedImages.length);
+        setTimeout(() => {
+          setIsAnimating(false);
+          setSwipeDirection(null);
+        }, 100);
+      }, 200);
+    }
+  }, [sortedImages.length, isAnimating]);
+
+  const handlePrevImage = useCallback(() => {
+    if (sortedImages.length > 1 && !isAnimating) {
+      setIsAnimating(true);
+      setSwipeDirection('right');
+
+      setTimeout(() => {
+        setCurrentImageIndex(
+          (prev) => (prev - 1 + sortedImages.length) % sortedImages.length
+        );
+        setTimeout(() => {
+          setIsAnimating(false);
+          setSwipeDirection(null);
+        }, 100);
+      }, 200);
+    }
+  }, [sortedImages.length, isAnimating]);
+
+  const handleImageSelect = useCallback((index: number) => {
+    if (!isAnimating) {
+      const direction = index > currentImageIndex ? 'left' : 'right';
+      setIsAnimating(true);
+      setSwipeDirection(direction);
+
+      setTimeout(() => {
+        setCurrentImageIndex(index);
+        setTimeout(() => {
+          setIsAnimating(false);
+          setSwipeDirection(null);
+        }, 100);
+      }, 200);
+    }
+  }, [currentImageIndex, isAnimating]);
+
+  const handleKeyPress = useCallback((event: React.KeyboardEvent, index: number) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      if (!isAnimating) {
+        handleImageSelect(index);
+      }
+    }
+  }, [handleImageSelect, isAnimating]);
+
+  const handleMainImageKeyPress = useCallback((event: React.KeyboardEvent) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      handlePrevImage();
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      handleNextImage();
+    }
+  }, [handlePrevImage, handleNextImage]);
+
+  // Handle touch events for swipe
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
   }, []);
 
-  // Handle modal close
-  const handleModalClose = useCallback(() => {
-    setIsModalOpen(false);
+  const onTouchMove = useCallback((e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+    // Prevent default behavior to avoid conflicts with browser scrolling
+    if (sortedImages.length > 1) {
+      e.preventDefault();
+    }
+  }, [sortedImages.length]);
+
+  const onTouchEnd = useCallback(() => {
+    if (!touchStart || !touchEnd || isAnimating) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && sortedImages.length > 1) {
+      handleNextImage();
+    }
+    if (isRightSwipe && sortedImages.length > 1) {
+      handlePrevImage();
+    }
+
+    // Reset touch values
+    setTouchStart(null);
+    setTouchEnd(null);
+  }, [touchStart, touchEnd, minSwipeDistance, sortedImages.length, handleNextImage, handlePrevImage, isAnimating]);
+
+  // Handle mouse events for drag (desktop)
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
+    if (sortedImages.length > 1) {
+      setIsDragging(true);
+      setMouseStart(e.clientX);
+      e.preventDefault();
+    }
+  }, [sortedImages.length]);
+
+  const onMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging || !mouseStart || sortedImages.length <= 1) return;
+
+    const currentX = e.clientX;
+    const distance = mouseStart - currentX;
+
+    // Add visual feedback during drag
+    e.preventDefault();
+  }, [isDragging, mouseStart, sortedImages.length]);
+
+  const onMouseUp = useCallback((e: React.MouseEvent) => {
+    if (!isDragging || !mouseStart || sortedImages.length <= 1 || isAnimating) {
+      setIsDragging(false);
+      setMouseStart(null);
+      return;
+    }
+
+    const distance = mouseStart - e.clientX;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNextImage();
+    } else if (isRightSwipe) {
+      handlePrevImage();
+    }
+
+    setIsDragging(false);
+    setMouseStart(null);
+  }, [isDragging, mouseStart, minSwipeDistance, sortedImages.length, handleNextImage, handlePrevImage, isAnimating]);
+
+  const onMouseLeave = useCallback(() => {
+    setIsDragging(false);
+    setMouseStart(null);
   }, []);
 
+  // Early return for no images case
   if (!product || !product.images || product.images.length === 0) {
     return (
       <div className={s.product_images}>
@@ -84,64 +229,27 @@ export default function ProductImages({ product }: ProductImagesProps) {
     );
   }
 
-  // Sort images with main image first using utility function
-  const sortedImages = sortProductImages(product.images);
-
-  const handleImageSelect = (index: number) => {
-    setCurrentImageIndex(index);
-  };
-
-  const handleKeyPress = (event: React.KeyboardEvent, index: number) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      handleImageSelect(index);
-    }
-  };
-
-  const handleNextImage = () => {
-    if (sortedImages.length > 1) {
-      setCurrentImageIndex((prev) => (prev + 1) % sortedImages.length);
-    }
-  };
-
-  const handlePrevImage = () => {
-    if (sortedImages.length > 1) {
-      setCurrentImageIndex(
-        (prev) => (prev - 1 + sortedImages.length) % sortedImages.length
-      );
-    }
-  };
-
-  const handleMainImageKeyPress = (event: React.KeyboardEvent) => {
-    if (event.key === 'ArrowLeft') {
-      event.preventDefault();
-      handlePrevImage();
-    } else if (event.key === 'ArrowRight') {
-      event.preventDefault();
-      handleNextImage();
-    } else if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      setIsModalOpen(true);
-    }
-  };
-
-  // Get current image URL
-  const currentImageUrl = sortedImages[currentImageIndex]?.imageUrl || '';
-
   return (
     <div className={s.product_images}>
-      {/* Main Image with click to zoom */}
+      {/* Main Image with swipe support */}
       <div
-        className={s.main_image}
+        className={`${s.main_image} ${isAnimating ? s.animating : ''} ${swipeDirection ? s[`swipe_${swipeDirection}`] : ''}`}
         tabIndex={0}
         onKeyDown={handleMainImageKeyPress}
         role="button"
         aria-label={
           sortedImages.length > 1
-            ? 'Click to zoom. Use arrow keys to navigate images'
-            : 'Click to zoom image'
+            ? 'Swipe or use arrow keys to navigate images'
+            : 'Product image'
         }
-        onClick={handleMainImageClick}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseLeave}
+        style={{ cursor: isDragging ? 'grabbing' : sortedImages.length > 1 ? 'grab' : 'default' }}
       >
         {sortedImages[currentImageIndex] && (
           <>
@@ -167,45 +275,6 @@ export default function ProductImages({ product }: ProductImagesProps) {
                 )
               }
             />
-
-            {/* Zoom indicator */}
-            <div className={s.zoom_indicator}>
-              {/* <span className={s.zoom_icon}>🔍</span> */}
-              <span className={s.zoom_text}>Click to zoom</span>
-            </div>
-
-            {/* Navigation arrows for multiple images */}
-            {sortedImages.length > 1 && (
-              <>
-                <button
-                  className={`${s.nav_arrow} ${s.nav_arrow_left}`}
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent triggering zoom
-                    handlePrevImage();
-                  }}
-                  aria-label="Previous image"
-                  type="button"
-                >
-                  ‹
-                </button>
-                <button
-                  className={`${s.nav_arrow} ${s.nav_arrow_right}`}
-                  onClick={(e) => {
-                    e.stopPropagation(); // Prevent triggering zoom
-                    handleNextImage();
-                  }}
-                  aria-label="Next image"
-                  type="button"
-                >
-                  ›
-                </button>
-
-                {/* Image counter */}
-                <div className={s.image_counter}>
-                  {currentImageIndex + 1} / {sortedImages.length}
-                </div>
-              </>
-            )}
           </>
         )}
       </div>
@@ -217,7 +286,7 @@ export default function ProductImages({ product }: ProductImagesProps) {
             <div
               key={image.id}
               className={`${s.thumbnail} ${currentImageIndex === index ? s.active : ''}`}
-              onClick={() => handleImageSelect(index)}
+              onClick={() => !isAnimating && handleImageSelect(index)}
               onKeyDown={(e) => handleKeyPress(e, index)}
               tabIndex={0}
               role="button"
@@ -241,16 +310,6 @@ export default function ProductImages({ product }: ProductImagesProps) {
             </div>
           ))}
         </div>
-      )}
-
-      {/* Image Modal for zooming */}
-      {isModalOpen && (
-        <ImageModal
-          isOpen={isModalOpen}
-          onClose={handleModalClose}
-          imageUrl={currentImageUrl}
-          alt={product.name || 'Product image'}
-        />
       )}
     </div>
   );

@@ -5,7 +5,9 @@ interface SpecificationsSectionProps {
   isUkrainian: boolean;
 }
 
-export const SpecificationsSection: React.FC<SpecificationsSectionProps> = ({ isUkrainian }) => {
+export const SpecificationsSection: React.FC<SpecificationsSectionProps> = ({
+  isUkrainian,
+}) => {
   return (
     <>
       {isUkrainian ? (
@@ -18,7 +20,9 @@ export const SpecificationsSection: React.FC<SpecificationsSectionProps> = ({ is
               </tr>
               <tr>
                 <td>Колісна дошка</td>
-                <td>5/8&quot; березова фанера з низькими вирізами для підйому</td>
+                <td>
+                  5/8&quot; березова фанера з низькими вирізами для підйому
+                </td>
               </tr>
               <tr>
                 <td>Екструзії</td>
@@ -56,7 +60,9 @@ export const SpecificationsSection: React.FC<SpecificationsSectionProps> = ({ is
           </table>
 
           <div className={s.highlight}>
-            <p>Ідеально підходить для транспортування професійного обладнання</p>
+            <p>
+              Ідеально підходить для транспортування професійного обладнання
+            </p>
           </div>
         </>
       ) : (

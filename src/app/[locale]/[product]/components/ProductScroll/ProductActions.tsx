@@ -18,7 +18,7 @@ export const ProductActions: React.FC<ProductActionsProps> = ({
   productName,
   isModalOpen,
   openModal,
-  closeModal
+  closeModal,
 }) => {
   return (
     <>

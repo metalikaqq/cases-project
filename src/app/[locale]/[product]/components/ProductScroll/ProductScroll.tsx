@@ -108,9 +108,7 @@ export default function ProductScroll({ product }: ProductScrollProps) {
         </a>
 
         <button onClick={openModal} className={s.button__blue} type="button">
-          {isUkrainian
-            ? "Зв'язатися з нами"
-            : 'Contact Us For A Quote'}
+          {isUkrainian ? "Зв'язатися з нами" : 'Contact Us For A Quote'}
         </button>
 
         <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -130,7 +128,9 @@ export default function ProductScroll({ product }: ProductScrollProps) {
         </AccordionItem>
 
         <AccordionItem
-          title={isUkrainian ? 'Інформація про доставку' : 'Shipping Information'}
+          title={
+            isUkrainian ? 'Інформація про доставку' : 'Shipping Information'
+          }
           isActive={activeAccordion === 'shipping'}
           onToggle={() => toggleAccordion('shipping')}
         >

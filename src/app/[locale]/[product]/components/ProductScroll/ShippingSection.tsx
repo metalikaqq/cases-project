@@ -5,7 +5,9 @@ interface ShippingSectionProps {
   isUkrainian: boolean;
 }
 
-export const ShippingSection: React.FC<ShippingSectionProps> = ({ isUkrainian }) => {
+export const ShippingSection: React.FC<ShippingSectionProps> = ({
+  isUkrainian,
+}) => {
   return (
     <>
       {isUkrainian ? (
@@ -13,19 +15,35 @@ export const ShippingSection: React.FC<ShippingSectionProps> = ({ isUkrainian })
           <div className={s.shippingGrid}>
             <div className={s.shippingCard}>
               <h4>Стандартна доставка</h4>
-              <p>5-7 робочих днів<br />Безкоштовно від 500€</p>
+              <p>
+                5-7 робочих днів
+                <br />
+                Безкоштовно від 500€
+              </p>
             </div>
             <div className={s.shippingCard}>
               <h4>Експрес доставка</h4>
-              <p>2-3 робочих дні<br />Додаткова плата 50€</p>
+              <p>
+                2-3 робочих дні
+                <br />
+                Додаткова плата 50€
+              </p>
             </div>
             <div className={s.shippingCard}>
               <h4>Міжнародна доставка</h4>
-              <p>10-15 робочих днів<br />Розрахунок індивідуально</p>
+              <p>
+                10-15 робочих днів
+                <br />
+                Розрахунок індивідуально
+              </p>
             </div>
             <div className={s.shippingCard}>
               <h4>Самовивіз</h4>
-              <p>Можливий з наших складів<br />Безкоштовно</p>
+              <p>
+                Можливий з наших складів
+                <br />
+                Безкоштовно
+              </p>
             </div>
           </div>
 
@@ -46,19 +64,35 @@ export const ShippingSection: React.FC<ShippingSectionProps> = ({ isUkrainian })
           <div className={s.shippingGrid}>
             <div className={s.shippingCard}>
               <h4>Standard Shipping</h4>
-              <p>5-7 business days<br />Free over $500</p>
+              <p>
+                5-7 business days
+                <br />
+                Free over $500
+              </p>
             </div>
             <div className={s.shippingCard}>
               <h4>Express Shipping</h4>
-              <p>2-3 business days<br />Additional $50 fee</p>
+              <p>
+                2-3 business days
+                <br />
+                Additional $50 fee
+              </p>
             </div>
             <div className={s.shippingCard}>
               <h4>International Shipping</h4>
-              <p>10-15 business days<br />Calculated individually</p>
+              <p>
+                10-15 business days
+                <br />
+                Calculated individually
+              </p>
             </div>
             <div className={s.shippingCard}>
               <h4>Pick-up</h4>
-              <p>Available from our warehouses<br />Free of charge</p>
+              <p>
+                Available from our warehouses
+                <br />
+                Free of charge
+              </p>
             </div>
           </div>
 

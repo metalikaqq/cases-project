@@ -12,7 +12,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
   title,
   isActive,
   onToggle,
-  children
+  children,
 }) => {
   return (
     <div>
@@ -24,9 +24,7 @@ export const AccordionItem: React.FC<AccordionItemProps> = ({
         {title}
       </button>
       <div className={`${s.accordionContent} ${isActive ? s.open : ''}`}>
-        <div className={s.accordionInner}>
-          {children}
-        </div>
+        <div className={s.accordionInner}>{children}</div>
       </div>
     </div>
   );
