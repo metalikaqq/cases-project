@@ -10,7 +10,7 @@
 
   @include responsive(desktop-md) {
     width: 40%;
-    max-height: 100vh;
+    // max-height: 100vh;
     overflow-y: auto;
     background-color: #fff;
     padding: 0 0 0 45px;
@@ -143,9 +143,9 @@
   }
 
   // Ensure proper spacing for first elements after h1 removal
-  > ul:first-child,
-  > ol:first-child,
-  > p:first-child {
+  >ul:first-child,
+  >ol:first-child,
+  >p:first-child {
     margin-top: 0;
   }
 
@@ -190,7 +190,7 @@
   }
 
   // Additional defensive styles to ensure proper rendering
-  & > * {
+  &>* {
     max-width: 100%;
   }
 
@@ -542,12 +542,10 @@
     left: -100%;
     width: 150%;
     height: 200%;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0)
-    );
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0));
     animation: none;
     transition: opacity 0.3s;
   }

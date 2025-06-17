@@ -8,7 +8,8 @@
 
 .nav__link {
   &__text {
-    position: relative; /* Для коректної позиції псевдоелемента */
+    position: relative;
+    /* Для коректної позиції псевдоелемента */
     color: $black;
     font-size: 16px;
     font-weight: 400;
@@ -27,13 +28,15 @@
     &::after {
       content: '';
       position: absolute;
-      bottom: 0; /* Розташування під текстом */
+      bottom: 0;
+      /* Розташування під текстом */
       left: 0;
       width: 0;
       height: 2px;
       border-radius: 5px;
       background-color: $black;
-      transition: width 0.4s ease; /* Плавна зміна ширини */
+      transition: width 0.4s ease;
+      /* Плавна зміна ширини */
     }
 
     &:hover {
@@ -60,13 +63,14 @@
     opacity 0.3s ease,
     transform 0.3s ease;
   pointer-events: none;
-  min-width: 255px;
+  min-width: 160px;
   overflow: hidden;
 
   &.visible {
     display: block;
     transform: translateY(0);
-    pointer-events: auto; /* Enable interaction when visible */
+    pointer-events: auto;
+    /* Enable interaction when visible */
   }
 }
 
@@ -82,4 +86,7 @@
   color: $black;
   text-decoration: none;
   display: block;
+
+  //add button default styles
+
 }

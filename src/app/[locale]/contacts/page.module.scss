@@ -2,7 +2,7 @@
 @import '../../../utils/mixins.scss';
 
 .page__wrapper {
-  @include container;
+  // @include container;
   display: flex;
   flex-direction: column;
 }
@@ -55,7 +55,7 @@
   margin: 30px;
   background-color: #fff;
   left: auto;
-  border: 1px solid #000;
+  // border: 1px solid #000;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
@@ -67,7 +67,7 @@
   @include responsive(desktop-md) {
     transform: translate(0, -50%);
     position: absolute;
-    left: 30px;
+    left: 2%;
     top: 50%;
   }
 
@@ -80,10 +80,11 @@
   &__text {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
     color: rgb(17, 17, 17);
     font-size: 18px;
     font-weight: 400;
+
   }
 
   &__container {
@@ -93,15 +94,22 @@
     text-decoration: none;
     width: 100%;
     position: relative;
+    padding: 10px;
   }
 }
 
-.google_map {
+.map_container {
   width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 450px; // Or your desired height
+  overflow: hidden;
+  border-radius: 8px; // Optional: if you want rounded corners
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Optional: for a subtle shadow
+}
+
+.google_map_iframe {
+  width: 100%;
+  height: 100%;
+  border: none; // Remove default iframe border
 }
 
 .button {
@@ -134,12 +142,10 @@
     left: -100%;
     width: 150%;
     height: 200%;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0)
-    );
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0));
     animation: none;
     transition: opacity 0.3s;
   }
